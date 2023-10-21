@@ -27,9 +27,21 @@ CLI-lock is a lightweight Command Line Interface password manager program, jampa
 This project is important to us because it relates to the creation of practical solutions to existing problems for members within the project group. For example, some of us are keeping passwords in plain text files, while some use full-fledged applications with user interfaces. We would like to enhance the security, while keeping the solution small upfront. This program does not have any outbound connections, nor does it use any kind of complex or robust databases. The name of the game here is: Simple, Practical, and Convenient. With some of the technologies that will be featured in our project, another importance is the opportunity to learn about computational cryptography techniques. Understanding what are and aren't real modern industry options, as well as classifying which options are suited for our solution's needs.
 
 ## Language, Tools, and Technologies:
-[C++](https://gcc.gnu.org/projects/cxx-status.html) - This project is programmed in C++ from GCC. The language of the version will be C++11 to ensure project group compiler compatibility.
+[C++](https://gcc.gnu.org/projects/cxx-status.html) - This project is programmed in C++ from GCC. The version will be C++11 to ensure group compiler compatibility.
 
-[Git](https://git-scm.com/) + [GitHub](https://github.com/) - Version control systems.
+[CMake](https://cmake.org/) - Build system to help us manage the compilation process of our project.
+
+[GDB](https://www.sourceware.org/gdb/) | [GoogleTest](https://github.com/google/googletest) | [Valgrind](https://valgrind.org/) - Set of tools used to assist in debugging and testing during our development stages.
+
+[Crypto++](https://github.com/weidai11/cryptopp) - Library for implementing various SHA, AES, and KDF algorithms.
+
+[Git](https://git-scm.com/) + [GitHub](https://github.com/) - Version control systems to keep our project organized.
+
+[VSCode](https://code.visualstudio.com/) - Our code/text editor of choice for this project's development.
+
+[Draw.io](https://www.drawio.com/) - App used to design our program's UML diagram and flowchart during planning phase.
+
+
 
 
 
