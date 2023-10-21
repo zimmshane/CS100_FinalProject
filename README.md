@@ -12,7 +12,6 @@ Authors:
 
 ## Expectations
 > * You can incorporate additional technologies/tools but they must be approved (in writing) by the instructor or the TA. < ASK ABOUT USING CRYPTO++ TO IMPLEMENT SHA3 HASHING ALGORITHMS AND AES ENCRYPTION. \>
-> * You should modify this README file to reflect the different phases of the project. You will need to hold two to three scrum/check-in meetings with your lab TA/reader at different times in addition to the final demo.
 
 ## Project Description
 > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
@@ -41,11 +40,15 @@ This project is important to us because it relates to the creation of practical 
 
 [Draw.io](https://www.drawio.com/) - App used to design our program's UML diagram and flowchart during planning phase.
 
-## Ins and Outs
+## Ins and Outs:
 The primary inputs of the program will be the account's information, the domain in which the account belongs to, and some description to help the user remember what the account is used for. To access these stored passwords, the user must also login with a master account and key that are relevant to the vault they accessing to. Other types of input will be pre-configured by the user on initial-startup, stored in a config file the program will reference to. Another variation of input are substrings that aggregate informaton via pattern matching algorithms to domain names which then retrieves account(s) attached to the category/domain.
 
 
 Outputs consist mostly of account information which the user has stored within their vault file that is encrypted upon input but decrypted for retrieval.
+
+## Features:
+The main features of this program will allow the user to store accounts with descriptions that provide where and what the account is used for. Some of the more important features rely on computational cryptography, such as master key hashing, account information encryption, general file salting, and decryption of retrieved information. On startup, the program will look for a config file in its directory where the user can store preset setings to increase the conveniency of interaction with the program. Shell provided arguments will allow the program to flow differently, such as instead of going to the login menu, the user may provide master account information that leads straight to the main menu, or even provide substrings for immediate retrieval of aggregated information.
+
 
 > ## Phase II
 > In addition to completing the "User Interface Specification" and "Class Diagram" sections below, you will need to:
