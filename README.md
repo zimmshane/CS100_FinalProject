@@ -1,5 +1,3 @@
-# CLI-lock
-
 <h1 align="center">CLI-lock</h1>
 
 Authors:
@@ -8,24 +6,24 @@ Authors:
    [Jeff Tan](https://github.com/bttlfwtr) |
    [Shane Zimmerman](https://github.com/zimmshane)
 
-> If you want to propose your own original idea, you will have to contact your instructor to discuss the project and obtain written permission before you submit your project proposal (Phase 1). specifically the use of a Scrum (Project) board, Sprints, and Scrum meetings. < ASK PROFESSOR ALI TO SEE IF PASSWORD MANAGER FALLS UNDER A LIBRARY SYSTEM, CREATE OUR OWN REPO TO HANDLE SETTINGS EASIER, OR DOES IT HAVE TO BE A CS100 MANAGED GROUP ON GITHUB? THE PROJECT PAGE LINKS TO ALL OF THE OTHER PROJECT BOARDS BY CS100, WHICH IS ANNOYING. \>
+> If you want to propose your own original idea, you will have to contact your instructor to discuss the project and obtain written permission before you submit your project proposal (Phase 1). specifically the use of a Scrum (Project) board, Sprints, and Scrum meetings.
+
+< ASK PROFESSOR ALI TO SEE IF PASSWORD MANAGER FALLS UNDER A LIBRARY SYSTEM, CREATE OUR OWN REPO TO HANDLE SETTINGS EASIER, OR DOES IT HAVE TO BE A CS100 MANAGED GROUP ON GITHUB? THE PROJECT PAGE LINKS TO ALL OF THE OTHER PROJECT BOARDS BY CS100, WHICH IS ANNOYING. \>
 
 ## Expectations
-> * You can incorporate additional technologies/tools but they must be approved (in writing) by the instructor or the TA. < ASK ABOUT USING CRYPTO++ TO IMPLEMENT SHA3 HASHING ALGORITHMS AND AES ENCRYPTION. \>
+> * You can incorporate additional technologies/tools but they must be approved (in writing) by the instructor or the TA.
+
+< ASK ABOUT USING CRYPTO++ TO IMPLEMENT SHA3 HASHING ALGORITHMS AND AES ENCRYPTION. \>
 
 ## Project Description
-> * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
-> * What will be the input/output of your project?
-> * What are the features that the project provides?
-> This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted.
 
-## General:
+### General:
 CLI-lock is a lightweight Command Line Interface password manager program, jampacked under the hood with practical user features. The program is designed with minimizing footprints in mind, ensuring secure local file storage, while providing important user interactions as conveniently as possible.
 
-## Importance:
+### Importance:
 This project is important to us because it relates to the creation of practical solutions to existing problems for members within the project group. For example, some of us are keeping passwords in plain text files, while some use full-fledged applications with user interfaces. We would like to enhance the security, while keeping the solution small upfront. This program does not have any outbound connections, nor does it use any kind of complex or robust databases. The name of the game here is: Simple, Practical, and Convenient. With some of the technologies that will be featured in our project, another importance is the opportunity to learn about computational cryptography techniques. Understanding what are and aren't real modern industry options, as well as classifying which options are suited for our solution's needs.
 
-## Language, Tools, and Technologies:
+### Language, Tools, and Technologies:
 [C++](https://gcc.gnu.org/projects/cxx-status.html) - This project is programmed in C++ from GCC. The version will be C++11 to ensure group compiler compatibility.
 
 [CMake](https://cmake.org/) - Build system to help us manage the compilation process of our project.
@@ -40,13 +38,13 @@ This project is important to us because it relates to the creation of practical 
 
 [Draw.io](https://www.drawio.com/) - App used to design our program's UML diagram and flowchart during planning phase.
 
-## Ins and Outs:
+### Ins and Outs:
 The primary inputs of the program will be the account's information, the domain in which the account belongs to, and some description to help the user remember what the account is used for. To access these stored passwords, the user must also login with a master account and key that are relevant to the vault they accessing to. Other types of input will be pre-configured by the user on initial-startup, stored in a config file the program will reference to. Another variation of input are substrings that aggregate informaton via pattern matching algorithms to domain names which then retrieves account(s) attached to the category/domain.
 
 
 Outputs consist mostly of account information which the user has stored within their vault file that is encrypted upon input but decrypted for retrieval.
 
-## Features:
+### Features:
 The main features of this program will allow the user to store accounts with descriptions that provide where and what the account is used for. Some of the more important features rely on computational cryptography, such as master key hashing, account information encryption, general file salting, and decryption of retrieved information. On startup, the program will look for a config file in its directory where the user can store preset setings to increase the conveniency of interaction with the program. Shell provided arguments will allow the program to flow differently, such as instead of going to the login menu, the user may provide master account information that leads straight to the main menu, or even provide substrings for immediate retrieval of aggregated information.
 
 
