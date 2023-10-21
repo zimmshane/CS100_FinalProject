@@ -15,13 +15,31 @@ Authors:
 > * You should modify this README file to reflect the different phases of the project. You will need to hold two to three scrum/check-in meetings with your lab TA/reader at different times in addition to the final demo.
 
 ## Project Description
-> Your project description should summarize the project you are proposing. Be sure to include:
-> * Why is it important or interesting to you?
 > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
 > * What will be the input/output of your project?
 > * What are the features that the project provides?
 > This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted.
->
+
+## General:
+CLI-lock is a lightweight Command Line Interface password manager program, jampacked under the hood with practical user features. The program is designed with minimizing footprints in mind, ensuring secure local file storage, while providing important user interactions as conveniently as possible.
+
+## Importance:
+This project is important to us because it relates to the creation of practical solutions to existing problems for members within the project group. For example, some of us are keeping passwords in plain text files, while some use full-fledged applications with user interfaces. We would like to enhance the security, while keeping the solution small upfront. This program does not have any outbound connections, nor does it use any kind of complex or robust databases. The name of the game here is: Simple, Practical, and Convenient. With some of the technologies that will be featured in our project, another importance is the opportunity to learn about computational cryptography techniques. Understanding what are and aren't real modern industry options, as well as classifying which options are suited for our solution's needs.
+
+## Language, Tools, and Technologies:
+[C++](https://gcc.gnu.org/projects/cxx-status.html) - This project is programmed in C++ from GCC. The language of the version will be C++11 to ensure project group compiler compatibility.
+
+[Git](https://git-scm.com/) + [GitHub](https://github.com/) - Version control systems.
+
+
+
+
+
+
+
+
+
+
 > You also need to set up an empty project board using GitHub projects (board view). Make sure you add the board under your project repository. You should also have a Product Backlog and In testing columns added.
 > ## Phase II
 > In addition to completing the "User Interface Specification" and "Class Diagram" sections below, you will need to:
