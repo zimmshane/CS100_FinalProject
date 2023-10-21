@@ -47,16 +47,6 @@ The primary inputs of the program will be the account's information, the domain 
 
 Outputs consist mostly of account information which the user has stored within their vault file that is encrypted upon input but decrypted for retrieval.
 
-
-
-
-
-
-
-
-
-
-> You also need to set up an empty project board using GitHub projects (board view). Make sure you add the board under your project repository. You should also have a Product Backlog and In testing columns added.
 > ## Phase II
 > In addition to completing the "User Interface Specification" and "Class Diagram" sections below, you will need to:
 > * Create an "Epic" (note) for each feature. Place these epics in the `Product Backlog` column
