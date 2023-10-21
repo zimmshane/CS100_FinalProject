@@ -1,4 +1,4 @@
-# <h1 align="center">\<NAME\></h1>
+# <h1 align="center">\CLI-lock\></h1>
 
 > Authors:
    [Aaron Wang](https://github.com/1aaronw) |
@@ -6,20 +6,16 @@
    [Jeff Tan](https://github.com/bttlfwtr) |
    [Shane Zimmerman](https://github.com/zimmshane)
 
-
-> ## Expectations
-> * The backend of your project should be implemented in C++. If you wish to choose anoher programming language (e.g. Java, Python), please discuss with your lab TA to obtain permission.
-> * You can incorporate additional technologies/tools but they must be approved (in writing) by the instructor or the TA.
-> * Each member of the group **must** be committing code regularly and make sure their code is correctly attributed to them. We will be checking attributions to determine if there was equal contribution to the project.
-> * **Each member of the group must actively participate in the Github Project board, writing unit tests, and reviewing commited code.**
-> * All project phases are to be submitted to this GitHub repository. You should modify this README file to reflect the different phases of the project. In addition, you should regularly hold sprint meetings with your group. You will need to hold two to three scrum/check-in meetings with your lab TA/reader at different times in addition to the final demo.
-
 ## Project Description
 > Your project description should summarize the project you are proposing. Be sure to include:
 > * Why is it important or interesting to you?
+>    This project is important to us because this relates to practical need while learning more about string implementation. This project can be used on a daily basis to keep track of passwords for various accounts. Our group felt that this project an introduction to computer cryptography. 
 > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
+> We will be using C++ to program our project as well as deploying state of the art hashing and encryption methods such as SHA3 hasing and AES encryption to protect the privacy of our users' passwords. In addition, we will implement salting to enhance stored data's cryptography. To do this we will be utilizing the library Cryto++. We will also be using string pattern matching algorithms for data retrival for the user
 > * What will be the input/output of your project?
+> The inputs will be the domain in which the accounts belong to such as the username, password, and password description. The output of the project will be the passwords with the password description. 
 > * What are the features that the project provides?
+> The features will include password hashing, encrypting/decrypting, string pattern matching retrival, salting techniques, and command line arguments. 
 > This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted.
 >
 > You also need to set up an empty project board using GitHub projects (board view). Make sure you add the board under your project repository. You should also have a Product Backlog and In testing columns added.
