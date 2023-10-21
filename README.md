@@ -41,7 +41,11 @@ This project is important to us because it relates to the creation of practical 
 
 [Draw.io](https://www.drawio.com/) - App used to design our program's UML diagram and flowchart during planning phase.
 
+## Ins and Outs
+The primary inputs of the program will be the account's information, the domain in which the account belongs to, and some description to help the user remember what the account is used for. To access these stored passwords, the user must also login with a master account and key that are relevant to the vault they accessing to. Other types of input will be pre-configured by the user on initial-startup, stored in a config file the program will reference to. Another variation of input are substrings that aggregate informaton via pattern matching algorithms to domain names which then retrieves account(s) attached to the category/domain.
 
+
+Outputs consist mostly of account information which the user has stored within their vault file that is encrypted upon input but decrypted for retrieval.
 
 
 
