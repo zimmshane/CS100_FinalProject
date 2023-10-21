@@ -1,6 +1,8 @@
 # CLI-lock
 
-> Authors:
+<h1 align="center">CLI-lock</h1>
+
+Authors:
    [Aaron Wang](https://github.com/1aaronw) |
    [Bryce Hojo](https://github.com/Bryce7832) |
    [Jeff Tan](https://github.com/bttlfwtr) |
