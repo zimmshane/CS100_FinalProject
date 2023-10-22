@@ -18,7 +18,7 @@ Authors:
 ## Project Description
 
 ### General:
-CLI-lock is a lightweight Command Line Interface password manager program, jampacked under the hood with practical user features. The program is designed with minimizing footprints in mind, ensuring secure local file storage, while providing important user interactions as conveniently as possible.
+CLI-lock is a sleek and efficient Command Line Interface password management tool, thoughtfully packed with an array of practical features. This program is meticulously crafted to prioritize a minimalistic footprint, ensuring the utmost security for local file storage, all the while offering seamless and intuitive user interactions.
 
 ### Importance:
 This project is important to us because it relates to the creation of practical solutions to existing problems for members within the project group. For example, some of us are keeping passwords in plain text files, while some use full-fledged applications with user interfaces. We would like to enhance the security, while keeping the solution small upfront. This program does not have any outbound connections, nor does it use any kind of complex or robust databases. The name of the game here is: Simple, Practical, and Convenient. With some of the technologies that will be featured in our project, another importance is the opportunity to learn about computational cryptography techniques. Understanding what are and aren't real modern industry options, as well as classifying which options are suited for our solution's needs.
@@ -39,8 +39,7 @@ This project is important to us because it relates to the creation of practical 
 [Draw.io](https://www.drawio.com/) - App used to design our program's UML diagram and flowchart during planning phase.
 
 ### Ins and Outs:
-The primary inputs of the program will be the account's information, the domain in which the account belongs to, and some description to help the user remember what the account is used for. To access these stored passwords, the user must also login with a master account and key that are relevant to the vault they accessing to. Other types of input will be pre-configured by the user on initial-startup, stored in a config file the program will reference to. Another variation of input are substrings that aggregate informaton via pattern matching algorithms to domain names which then retrieves account(s) attached to the category/domain.
-
+The primary inputs of the program will be the account's information, the domain that the account belongs to, as well as some descriptions to help the user remember what the account is used for. To access these stored passwords, the user must also login with a master account and key that are relevant to the vault they accessing to. Other types of input will be pre-configured by the user on initial-startup, stored in a config file the program will reference to. Another variation of input are substrings that aggregate informaton via pattern matching algorithms to domain names which then retrieves account(s) attached to the category/domain.
 
 Outputs consist mostly of account information which the user has stored within their vault file that is encrypted upon input but decrypted for retrieval.
 
