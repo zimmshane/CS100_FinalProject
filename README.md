@@ -9,7 +9,7 @@ Authors:
 ## Project Description
 
 ### General:
-CLI-lock is a minimalistic efficient Command Line Interface password management tool, thoughtfully packed with an array of practical features. This program is made to prioritize a minimalistic footprint, ensuring secure local file storage, while offering seamless and intuitive user interactions.
+CLI-lock is a minimalistic efficient Command Line Interface password management tool, thoughtfully packed with an array of practical features. This program is made to prioritize a minimal footprint, ensuring secure local file storage, while offering seamless and intuitive user interactions.
 
 ### Importance:
 This project is important to us because it relates to the creation of practical solutions to existing problems for members within the project group. For example, some of us are keeping passwords in plain text files, while some use full-fledged applications with user interfaces. We would like to enhance the security, while keeping the solution small upfront. This program does not have any outbound connections, nor does it use any kind of complex or robust databases. The name of the game here is: Simple, Practical, and Feature Rich. With some of the technologies that will be featured in our project, another importance is the opportunity to learn about computational cryptography techniques. Understanding what are and aren't real modern industry options, as well as classifying which options are suited for our solution's needs.
