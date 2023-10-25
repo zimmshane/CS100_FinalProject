@@ -6,15 +6,6 @@ Authors:
    [Jeff Tan](https://github.com/bttlfwtr) |
    [Shane Zimmerman](https://github.com/zimmshane)
 
-> If you want to propose your own original idea, you will have to contact your instructor to discuss the project and obtain written permission before you submit your project proposal (Phase 1). specifically the use of a Scrum (Project) board, Sprints, and Scrum meetings.
-
-< ASK PROFESSOR ALI TO SEE IF PASSWORD MANAGER FALLS UNDER A LIBRARY SYSTEM, CREATE OUR OWN REPO TO HANDLE SETTINGS EASIER, OR DOES IT HAVE TO BE A CS100 MANAGED GROUP ON GITHUB? THE PROJECT PAGE LINKS TO ALL OF THE OTHER PROJECT BOARDS BY CS100, WHICH IS ANNOYING. \>
-
-## Expectations
-> * You can incorporate additional technologies/tools but they must be approved (in writing) by the instructor or the TA.
-
-< ASK ABOUT USING CRYPTO++ TO IMPLEMENT SHA3 HASHING ALGORITHMS AND AES ENCRYPTION. \>
-
 ## Project Description
 
 ### General:
