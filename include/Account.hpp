@@ -3,38 +3,29 @@
 
 #include <string>
 
-class Account
+struct Account
 {
-public:
    Account(const std::string& u, const std::string& p)
       : username(u), password(p) { }
-   std::string GetUsername() const { return username; }
-   std::string GetPassword() const { return password; }
 
-protected:
    std::string username;
    std::string password;
 };
 
-class MasterCredentials : public Account
+struct MasterCredentials : Account
 {
-public:
-   MasterCredentials(const std::string& user, const std::string& pass)
-      : Account(user, pass) { }
+   MasterCredentials(const std::string& u, const std::string& p)
+      : Account(u, p) { }
 
-private:
    std::string hashedUserName;
    std::string hashedPassWord;
-   std::string userDefinedKey;
 };
 
-class VaultItem : public Account
+struct VaultItem : Account
 {
-public:
-   VaultItem(const std::string& user, const std::string& pass, const std::string& d, const std::string& desc, const std::string& t)
-      : Account(user, pass), domain(d), description(desc), tag(t) { }
+   VaultItem(const std::string& u, const std::string& p, const std::string& d, const std::string& desc, const std::string& t)
+      : Account(u, p), domain(d), description(desc), tag(t) { }
 
-private:
    std::string domain;
    std::string description;
    std::string tag;
