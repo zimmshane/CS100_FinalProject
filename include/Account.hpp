@@ -3,11 +3,9 @@
 
 #include <string>
 
+// we can afford to use public interfaces because there won't be anymore changes to Account hierarchies.
 struct Account
 {
-   Account(const std::string& u, const std::string& p)
-      : username(u), password(p) { }
-
    std::string username;
    std::string password;
 };
@@ -15,20 +13,31 @@ struct Account
 struct MasterCredentials : Account
 {
    MasterCredentials(const std::string& u, const std::string& p)
-      : Account(u, p) { }
+      : Account{u, p} { }
 
-   std::string hashedUserName;
-   std::string hashedPassWord;
+   struct HashedCredentials
+   {
+      std::string hashedUserName;
+      std::string hashedPassWord;
+      std::string key;
+   };
+
+   HashedCredentials hashed;
 };
 
 struct VaultItem : Account
 {
    VaultItem(const std::string& u, const std::string& p, const std::string& d, const std::string& desc, const std::string& t)
-      : Account(u, p), domain(d), description(desc), tag(t) { }
+      : Account{u, p}, properties{d, desc, t} { }
 
-   std::string domain;
-   std::string description;
-   std::string tag;
+   struct ItemProperties
+   {
+      std::string domain;
+      std::string description;
+      std::string tag;
+   };
+
+   ItemProperties properties;
 };
 
 #endif // !ACCOUNT_HPP
