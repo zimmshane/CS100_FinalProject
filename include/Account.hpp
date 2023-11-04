@@ -14,9 +14,11 @@ struct Account
 struct MasterCredentials : Account
 {
    MasterCredentials(const std::string& user, const std::string& pass)
-      : Account(user, pass), hashedUserName(""), hashedPassWord("") { }
+      : Account(user, pass) { }
    std::string hashedUserName;
    std::string hashedPassWord;
+   std::string userDefinedKey;
+
 };
 
 struct VaultItem : Account
