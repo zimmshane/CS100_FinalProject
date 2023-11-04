@@ -3,40 +3,29 @@
 
 #include <string>
 
-class Account // maybe make it a struct instead
+struct Account
 {
-public:
-   Account(const std::string& user, const std::string& pass)
-      : username(user), password(pass) { }
-   virtual std::string GetUsername() const = 0;
-   virtual std::string GetPassword() const = 0;
-
-protected:
+   Account(const std::string& u, const std::string& p)
+      : username(u), password(p) { }
    std::string username;
    std::string password;
 };
 
-class MasterCredentials : public Account
+struct MasterCredentials : Account
 {
-public:
    MasterCredentials(const std::string& user, const std::string& pass)
       : Account(user, pass), hashedUserName(""), hashedPassWord("") { }
-   std::string GetUsername() const { return username; }
-   std::string GetPassword() const { return password; }
-
-private:
    std::string hashedUserName;
    std::string hashedPassWord;
 };
 
-class VaultItem : public Account
+struct VaultItem : Account
 {
-public:
-
-private:
-
+   VaultItem(const std::string& user, const std::string& pass, const std::string& d, const std::string& desc, const std::string& t)
+      : Account(user, pass), domain(d), description(desc), tag(t) { }
+   std::string domain;
+   std::string description;
+   std::string tag;
 };
-
-
 
 #endif // !ACCOUNT_HPP

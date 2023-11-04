@@ -1,1 +1,6 @@
 *.exe
+.vscode
+CMakeFiles
+Makefile
+*.cmake
+CMakeCache.txt
