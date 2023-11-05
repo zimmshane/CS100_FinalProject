@@ -30,21 +30,16 @@ struct MasterCredential : Account
 struct VaultItem : Account
 {
    VaultItem(const std::string& u, const std::string& p, const std::string& d, const std::string& desc, const std::string& t)
-      : Account(u, p), domain(d), description(desc), tag(t) { }
+      : Account(u, p), property{d, desc, t} { }
 
-   struct EncryptedItem
+   struct ItemProperty
    {
-      std::string encryptedUser;
-      std::string encryptedPass;
-      std::string encryptedDomain;
-      std::string encryptedDescription;
+      std::string domain;
+      std::string description;
       std::string tag;
    };
 
-   std::string domain;
-   std::string description;
-   std::string tag;
-   EncryptedItem encryptedCopy;
+   ItemProperty property;
 };
 
 #endif // !ACCOUNT_HPP
