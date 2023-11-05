@@ -51,7 +51,7 @@ The main features of this program will allow the user to store accounts with des
 ## User Interface Specification
 > Include a navigation diagram for your screens and the layout of each of those screens as desribed below. For all the layouts/diagrams, you can use any tool such as PowerPoint or a drawing program. (Specification requirement is adapted from [this template](https://redirect.cs.umbc.edu/~mgrass2/cmsc345/Template_UI.doc))
 
-### Navigation Diagram
+## Navigation Diagram
 ![PrettierMaybe3 drawio](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/80292594/fb7903dd-c64b-44f3-ba15-4debe58e2ab8)
 
 The above navigation diagram depicts the visual menu flow of the console program a user would see. Upon passing the Login menu, the Main Menu is where program's main flow of operation takes place. In the main menu, the user will have selections printed on the console, from container modifications to data management and logout. It is a much higher-level representation than that of the class diagram (UML) due to the practical user visuals output by the program. By contrast, the UML contains all of the specifics the program would be running under the hood.
@@ -61,7 +61,6 @@ The above navigation diagram depicts the visual menu flow of the console program
 
 ## Class Diagram
 ![cli_lock_uml drawio (5)](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/146924675/bd84f478-2bd9-45d2-91d2-e64b31f1641a)
-
 ### Primary Controller
 - **PasswordManager**:
   - **Singleton**: Ensures a single instance during client execution.
