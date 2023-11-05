@@ -60,7 +60,7 @@ The above navigation diagram depicts the visual menu flow of the console program
 > Include the layout of each of your screens. The layout should describe the screen’s major components such as menus and prompts for user inputs, expected output, and buttons (if applicable). Explain what is on the layout, and the purpose of each menu item, button, etc. If many screens share the same layout, start by describing the general layout and then list the screens that will be using that layout and the differences between each of them.
 
 ## Class Diagram
-![uml image](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/146924675/0ad3a41c-35b6-4aa2-95c8-ea01f4bd0120)
+![cli_lock_uml drawio (5)](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/146924675/bd84f478-2bd9-45d2-91d2-e64b31f1641a)
 
 Using a singleton pattern, there will only be a single instance of PasswordManager running on client execution, which oversees the two major containers, one vault of which contains accounts with unencrypted data, and the other being fully encrypted for every VaultItem’s properties. It also holds acts as the central access of the program, where the interface will always go back to the Run function within PasswordManager.
 UserInputValidationHandler is an input validation utility class, checking whether inputs from the menu of PasswordManager or password inputs are correct due to AES256 handling 256 bits of data, or 32 characters.
