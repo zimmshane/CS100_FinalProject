@@ -1,10 +1,10 @@
 <h1 align="center">CLI-lock</h1>
 
 Authors:
-   [Aaron Wang](https://github.com/1aaronw) |
-   [Bryce Hojo](https://github.com/Bryce7832) |
-   [Jeff Tan](https://github.com/bttlfwtr) |
-   [Shane Zimmerman](https://github.com/zimmshane)
+[Aaron Wang](https://github.com/1aaronw) |
+[Bryce Hojo](https://github.com/Bryce7832) |
+[Jeff Tan](https://github.com/bttlfwtr) |
+[Shane Zimmerman](https://github.com/zimmshane)
 
 ## Project Description
 
@@ -62,7 +62,20 @@ The above navigation diagram depicts the visual menu flow of the console program
 ## Class Diagram
 
 
-Using a singleton pattern, there will only be a single instance of PasswordManager running on client execution, which oversees the two major containers, one vault of which contains accounts with unencrypted data, and the other being fully encrypted for every VaultItem’s properties. It also holds acts as the central access of the program, where the interface will always go back to the Run function within PasswordManager. UserInputValidationHandler is an input validation utility class, checking whether inputs from the menu of PasswordManager or password inputs are correct due to AES256 handling 256 bits of data, or 32 characters. The Login class is used to instantiate the vaults by detecting hashed username of .vault files within running client directory, and registering for an account would the .vault files instead. UserConfig is a struct which holds configurations pulled from “config” file, and used for referencing values for operations within the program. Under the namespace of IOProcessor should be FileHandler and PrintHandler, which as the name suggests should do with all things related to File access or Console output. SearchHandler is mainly used to search for certain accounts with overloading signatures of “tag” std::string. CipherHandler contains functions which utilize implementations of SHA256 family of algorithms and AES256 encryption/decryption methods, used for constructing the encrypted Vault when writing to file. Vault class acts as a class which holds the primary container, as well as simple container operations to overall modify the vault of items. In relation of utility, the PasswordGenerator class is used to generate password according to user specified configs. To handle the quality of user passwords, PasswordQualityHandler class contains methods of determining password strength, or detecting repetition among a vault of passwords. Class Account acts as the base class of MasterCredential and VaultItem, and just like PasswordManager, only a singular MasterCredential should exist for the active logged in user to keep track of user specific vault access. VaultItem are the primary objects that are bundled under the vault container, holding individual accounts. Each of the subclasses have their relevant nested classes to encapsulate members.
+Using a singleton pattern, there will only be a single instance of PasswordManager running on client execution, which oversees the two major containers, one vault of which contains accounts with unencrypted data, and the other being fully encrypted for every VaultItem’s properties. It also holds acts as the central access of the program, where the interface will always go back to the Run function within PasswordManager.
+UserInputValidationHandler is an input validation utility class, checking whether inputs from the menu of PasswordManager or password inputs are correct due to AES256 handling 256 bits of data, or 32 characters.
+The Login class is used to instantiate the vaults by detecting hashed username of .vault files within running client directory, and registering for an account would the .vault files instead.
+UserConfig is a struct which holds configurations pulled from “config” file, and used for referencing values for operations within the program.
+Under the namespace of IOProcessor should be FileHandler and PrintHandler, which as the name suggests should do with all things related to File access or Console output.
+SearchHandler is mainly used to search for certain accounts with overloading signatures of “tag” std::string.
+CipherHandler contains functions which utilize implementations of SHA256 family of algorithms and AES256 encryption/decryption methods, used for constructing the encrypted Vault when writing to file.
+Vault acts as a class which holds the primary container, as well as simple container operations to overall modify the vault of items. In relation of utility, the PasswordGenerator class is used to generate password according to user specified configs, or from UserConfig struct.
+Class Account acts as the base class of MasterCredential and VaultItem, and just like PasswordManager, only a singular MasterCredential should exist for the active logged in user to keep track of user specific vault access. VaultItem are the primary objects that are bundled under the vault container, holding individual accounts. Each of the subclasses have their relevant nested classes to encapsulate members.
+To handle the quality of user passwords, PasswordQualityHandler class contains methods of determining password strength, or detecting repetition among a vault of passwords.
+
+
+
+
 
 > ## Phase III
 > You will need to schedule a check-in for the second scrum meeting with the same reader you had your first scrum meeting with (using Calendly). Your entire team must be present. This meeting will occur on Zoom and should be conducted by Wednesday of week 8.
