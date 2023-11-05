@@ -3,7 +3,7 @@
 
 #include <string>
 
-// we can afford to use public interfaces because there won't be anymore changes to Account hierarchies.
+// can afford to use public interfaces, no more changes to hierarchy
 struct Account
 {
    std::string username;
