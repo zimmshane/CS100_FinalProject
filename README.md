@@ -60,7 +60,7 @@ The above navigation diagram depicts the visual menu flow of the console program
 > Include the layout of each of your screens. The layout should describe the screen’s major components such as menus and prompts for user inputs, expected output, and buttons (if applicable). Explain what is on the layout, and the purpose of each menu item, button, etc. If many screens share the same layout, start by describing the general layout and then list the screens that will be using that layout and the differences between each of them.
 
 ## Class Diagram
-
+![uml image](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/146924675/0ad3a41c-35b6-4aa2-95c8-ea01f4bd0120)
 
 Using a singleton pattern, there will only be a single instance of PasswordManager running on client execution, which oversees the two major containers, one vault of which contains accounts with unencrypted data, and the other being fully encrypted for every VaultItem’s properties. It also holds acts as the central access of the program, where the interface will always go back to the Run function within PasswordManager.
 UserInputValidationHandler is an input validation utility class, checking whether inputs from the menu of PasswordManager or password inputs are correct due to AES256 handling 256 bits of data, or 32 characters.
@@ -72,10 +72,6 @@ CipherHandler contains functions which utilize implementations of SHA256 family 
 Vault acts as a class which holds the primary container, as well as simple container operations to overall modify the vault of items. In relation of utility, the PasswordGenerator class is used to generate password according to user specified configs, or from UserConfig struct.
 Class Account acts as the base class of MasterCredential and VaultItem, and just like PasswordManager, only a singular MasterCredential should exist for the active logged in user to keep track of user specific vault access. VaultItem are the primary objects that are bundled under the vault container, holding individual accounts. Each of the subclasses have their relevant nested classes to encapsulate members.
 To handle the quality of user passwords, PasswordQualityHandler class contains methods of determining password strength, or detecting repetition among a vault of passwords.
-
-
-
-
 
 > ## Phase III
 > You will need to schedule a check-in for the second scrum meeting with the same reader you had your first scrum meeting with (using Calendly). Your entire team must be present. This meeting will occur on Zoom and should be conducted by Wednesday of week 8.
