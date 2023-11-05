@@ -4,7 +4,7 @@
 
 int main()
 {
-   MasterCredentials loggedUser{"initialUser", "initialPass"};
+   MasterCredential loggedUser{"initialUser", "initialPass"};
 
 
    VaultItem item0("johndoe0", "doughy1231", "amazon", "this account has prime", "no tag under this one");
@@ -17,11 +17,11 @@ int main()
 
    Vault vault{ };
 
-   vault.vault[item0.properties.domain].push_back(item0);
-   vault.vault[item0.properties.domain].push_back(item1);
-   vault.vault[item0.properties.domain].push_back(item2);
-   vault.vault[item0.properties.domain].push_back(item3);
-   vault.vault[item0.properties.domain].push_back(item4);
+   vault.vault[item0.property.domain].push_back(item0);
+   vault.vault[item0.property.domain].push_back(item1);
+   vault.vault[item0.property.domain].push_back(item2);
+   vault.vault[item0.property.domain].push_back(item3);
+   vault.vault[item0.property.domain].push_back(item4);
 
 
    for (const auto& entry : vault.vault)
@@ -30,7 +30,7 @@ int main()
       {
          // honestly assign *it to its type so that it reduces  the amount of dereference calls.
          // should aim to reduce as many new gets as possible, include std::string::size() calls, just assign it to a variable for reference.
-         std::cout << (*it).username << " " << (*it).password << " " << (*it).properties.domain << " " << (*it).properties.description << " " << (*it).properties.tag << "\n";
+         std::cout << (*it).username << " " << (*it).password << " " << (*it).property.domain << " " << (*it).property.description << " " << (*it).property.tag << "\n";
       }
    }
 
