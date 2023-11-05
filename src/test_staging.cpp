@@ -7,11 +7,11 @@ int main()
    MasterCredentials loggedUser{"initialUser", "initialPass"};
 
 
-   VaultItem item0("johndoe0", "doughy1231", "amazon", "this account has prime", "empt string means no tag");
-   VaultItem item1("johndoe1", "doughy1232", "amazon", "this account has prime", "empt string means no tag");
-   VaultItem item2("johndoe2", "doughy1233", "amazon", "this account has prime", "empt string means no tag");
-   VaultItem item3("johndoe3", "doughy1234", "amazon", "this account has prime", "empt string means no tag");
-   VaultItem item4("johndoe4", "doughy1235", "amazon", "this account has prime", "empt string means no tag");
+   VaultItem item0("johndoe0", "doughy1231", "amazon", "this account has prime", "no tag under this one");
+   VaultItem item1("johndoe1", "doughy1232", "amazon", "this account has prime", "");
+   VaultItem item2("johndoe2", "doughy1233", "amazon", "this account has prime", "-p");
+   VaultItem item3("johndoe3", "doughy1234", "amazon", "this account has prime", "-w");
+   VaultItem item4("johndoe4", "doughy1235", "amazon", "this account has prime", "-s");
 
 
 
