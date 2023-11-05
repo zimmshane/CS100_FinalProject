@@ -62,16 +62,44 @@ The above navigation diagram depicts the visual menu flow of the console program
 ## Class Diagram
 ![cli_lock_uml drawio (5)](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/146924675/bd84f478-2bd9-45d2-91d2-e64b31f1641a)
 
-Using a singleton pattern, there will only be a single instance of PasswordManager running on client execution, which oversees the two major containers, one vault of which contains accounts with unencrypted data, and the other being fully encrypted for every VaultItem’s properties. It also holds acts as the central access of the program, where the interface will always go back to the Run function within PasswordManager.
-UserInputValidationHandler is an input validation utility class, checking whether inputs from the menu of PasswordManager or password inputs are correct due to AES256 handling 256 bits of data, or 32 characters.
-The Login class is used to instantiate the vaults by detecting hashed username of .vault files within running client directory, and registering for an account would the .vault files instead.
-UserConfig is a struct which holds configurations pulled from “config” file, and used for referencing values for operations within the program.
-Under the namespace of IOProcessor should be FileHandler and PrintHandler, which as the name suggests should do with all things related to File access or Console output.
-SearchHandler is mainly used to search for certain accounts with overloading signatures of “tag” std::string.
-CipherHandler contains functions which utilize implementations of SHA256 family of algorithms and AES256 encryption/decryption methods, used for constructing the encrypted Vault when writing to file.
-Vault acts as a class which holds the primary container, as well as simple container operations to overall modify the vault of items. In relation of utility, the PasswordGenerator class is used to generate password according to user specified configs, or from UserConfig struct.
-Class Account acts as the base class of MasterCredential and VaultItem, and just like PasswordManager, only a singular MasterCredential should exist for the active logged in user to keep track of user specific vault access. VaultItem are the primary objects that are bundled under the vault container, holding individual accounts. Each of the subclasses have their relevant nested classes to encapsulate members.
-To handle the quality of user passwords, PasswordQualityHandler class contains methods of determining password strength, or detecting repetition among a vault of passwords.
+### Primary Controller
+- **PasswordManager**:
+  - **Singleton**: Ensures a single instance during client execution.
+  - **Function**: Manages vault containers, one with unencrypted data (`UnencryptedVault`) and the other fully encrypted (`EncryptedVault`).
+  - **Central Access**: Contains the `Run` function as the main interface access point.
+
+### Utility Classes
+- **UserInputValidationHandler**:
+  - **Function**: Validates user inputs for menu navigation and password entries, ensuring compatibility with AES256's 32-character data blocks.
+- **PasswordGenerator**:
+  - **Function**: Generates passwords based on user specifications or `UserConfig` settings.
+- **Login**:
+  - **Function**: Handles vault instantiation by detecting `.vault` files, and account registration.
+- **UserConfig**:
+  - **Structure**: Holds configuration settings from a `config` file for program operations.
+
+### IOProcessor Namespace
+- **Components**:
+  - **FileHandler**: Manages file access and interactions.
+  - **PrintHandler**: Handles all console outputs.
+  
+### Handlers and Processing
+- **SearchHandler**:
+  - **Function**: Searches for accounts using overloading signatures of a "tag" (standard string).
+- **CipherHandler**:
+  - **Function**: Implements SHA256 and AES256 algorithms for encryption/decryption of the Vault when writing to files.
+- **PasswordQualityHandler**:
+  - **Function**: Assesses password strength and detects repetition among vault passwords.
+
+### Account Management
+- **Vault**:
+  - **Function**: Maintains the primary container and allows modifications to the vault items.
+- **Account**:
+  - **Base Class**: For `MasterCredential` and `VaultItem`.
+  - **Singular Instance**: A single `MasterCredential` tracks user-specific vault access.
+- **VaultItem**:
+  - **Function**: Represents individual account objects within the vault.
+  - **Encapsulation**: Includes relevant nested classes to encapsulate members.
 
 > ## Phase III
 > You will need to schedule a check-in for the second scrum meeting with the same reader you had your first scrum meeting with (using Calendly). Your entire team must be present. This meeting will occur on Zoom and should be conducted by Wednesday of week 8.
