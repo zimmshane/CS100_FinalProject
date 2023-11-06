@@ -51,27 +51,60 @@ The main features of this program will allow the user to store accounts with des
 ## User Interface Specification
 > Include a navigation diagram for your screens and the layout of each of those screens as desribed below. For all the layouts/diagrams, you can use any tool such as PowerPoint or a drawing program. (Specification requirement is adapted from [this template](https://redirect.cs.umbc.edu/~mgrass2/cmsc345/Template_UI.doc))
 
-### Navigation Diagram
-![PrettierMaybe2 drawio](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/80292594/b95a194d-4434-4114-86d0-5a8aab74a8ed)
+## Navigation Diagram
+![PrettierMaybe3 drawio](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/80292594/fb7903dd-c64b-44f3-ba15-4debe58e2ab8)
 
 The above navigation diagram depicts the visual menu flow of the console program a user would see. Upon passing the Login menu, the Main Menu is where program's main flow of operation takes place. In the main menu, the user will have selections printed on the console, from container modifications to writing of container data to files. It is a much higher-level representation than that of the class diagram (UML) due to the practical user visuals output by the program. By contrast, the UML contains all of the specifics the program would be running under the hood.
 
 ### Screen Layouts
 > Include the layout of each of your screens. The layout should describe the screen’s major components such as menus and prompts for user inputs, expected output, and buttons (if applicable). Explain what is on the layout, and the purpose of each menu item, button, etc. If many screens share the same layout, start by describing the general layout and then list the screens that will be using that layout and the differences between each of them.
+![Screen Layout Diagram](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/79764515/8a694e58-d081-4ed2-a63f-491ca735833a)
+![Screen Layout Diagram (1)](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/79764515/3276b44c-8ad3-41fa-b9ce-961dc8b45159)
+![Screen Layout Diagram (2)](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/79764515/829a1657-c104-4c00-aa91-0e177c1096fa)
+![Screen Layout Diagram (3)](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/79764515/7c76164e-7797-465b-b7cd-3d7c149410b4)
+![Screen Layout Diagram (4)](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/79764515/dec3f2ec-b4bd-45b9-8926-b0018b463eb8)
+![Screen Layout Diagram (5)](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/79764515/742161dc-5607-4897-beab-009fa66dc7d6)
 
 ## Class Diagram
 ![cli_lock_uml drawio (5)](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/146924675/bd84f478-2bd9-45d2-91d2-e64b31f1641a)
+### Primary Controller
+- **PasswordManager**:
+  - **Singleton**: Ensures a single instance during client execution.
+  - **Function**: Manages vault containers, one with unencrypted data (`UnencryptedVault`) and the other fully encrypted (`EncryptedVault`).
+  - **Central Access**: Contains the `Run` function as the main interface access point.
 
-Using a singleton pattern, there will only be a single instance of PasswordManager running on client execution, which oversees the two major containers, one vault of which contains accounts with unencrypted data, and the other being fully encrypted for every VaultItem’s properties. It also holds acts as the central access of the program, where the interface will always go back to the Run function within PasswordManager.
-UserInputValidationHandler is an input validation utility class, checking whether inputs from the menu of PasswordManager or password inputs are correct due to AES256 handling 256 bits of data, or 32 characters.
-The Login class is used to instantiate the vaults by detecting hashed username of .vault files within running client directory, and registering for an account would the .vault files instead.
-UserConfig is a struct which holds configurations pulled from “config” file, and used for referencing values for operations within the program.
-Under the namespace of IOProcessor should be FileHandler and PrintHandler, which as the name suggests should do with all things related to File access or Console output.
-SearchHandler is mainly used to search for certain accounts with overloading signatures of “tag” std::string.
-CipherHandler contains functions which utilize implementations of SHA256 family of algorithms and AES256 encryption/decryption methods, used for constructing the encrypted Vault when writing to file.
-Vault acts as a class which holds the primary container, as well as simple container operations to overall modify the vault of items. In relation of utility, the PasswordGenerator class is used to generate password according to user specified configs, or from UserConfig struct.
-Class Account acts as the base class of MasterCredential and VaultItem, and just like PasswordManager, only a singular MasterCredential should exist for the active logged in user to keep track of user specific vault access. VaultItem are the primary objects that are bundled under the vault container, holding individual accounts. Each of the subclasses have their relevant nested classes to encapsulate members.
-To handle the quality of user passwords, PasswordQualityHandler class contains methods of determining password strength, or detecting repetition among a vault of passwords.
+### Utility Classes
+- **UserInputValidationHandler**:
+  - **Function**: Validates user inputs for menu navigation and password entries, ensuring compatibility with AES256's 32-character data blocks.
+- **PasswordGenerator**:
+  - **Function**: Generates passwords based on user specifications or `UserConfig` settings.
+- **Login**:
+  - **Function**: Handles vault instantiation by detecting `.vault` files, and account registration.
+- **UserConfig**:
+  - **Structure**: Holds configuration settings from a `config` file for program operations.
+
+### IOProcessor Namespace
+- **Components**:
+  - **FileHandler**: Manages file access and interactions.
+  - **PrintHandler**: Handles all console outputs.
+  
+### Handlers and Processing
+- **SearchHandler**:
+  - **Function**: Searches for accounts using overloading signatures of a "tag" (standard string).
+- **CipherHandler**:
+  - **Function**: Implements SHA256 and AES256 algorithms for encryption/decryption of the Vault when writing to files.
+- **PasswordQualityHandler**:
+  - **Function**: Assesses password strength and detects repetition among vault passwords.
+
+### Account Management
+- **Vault**:
+  - **Function**: Maintains the primary container and allows modifications to the vault items.
+- **Account**:
+  - **Base Class**: For `MasterCredential` and `VaultItem`.
+  - **Singular Instance**: A single `MasterCredential` tracks user-specific vault access.
+- **VaultItem**:
+  - **Function**: Represents individual account objects within the vault.
+  - **Encapsulation**: Includes relevant nested classes to encapsulate members.
 
 > ## Phase III
 > You will need to schedule a check-in for the second scrum meeting with the same reader you had your first scrum meeting with (using Calendly). Your entire team must be present. This meeting will occur on Zoom and should be conducted by Wednesday of week 8.
