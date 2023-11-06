@@ -58,6 +58,12 @@ The above navigation diagram depicts the visual menu flow of the console program
 
 ### Screen Layouts
 > Include the layout of each of your screens. The layout should describe the screen’s major components such as menus and prompts for user inputs, expected output, and buttons (if applicable). Explain what is on the layout, and the purpose of each menu item, button, etc. If many screens share the same layout, start by describing the general layout and then list the screens that will be using that layout and the differences between each of them.
+![Screen Layout Diagram](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/79764515/8a694e58-d081-4ed2-a63f-491ca735833a)
+![Screen Layout Diagram (1)](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/79764515/3276b44c-8ad3-41fa-b9ce-961dc8b45159)
+![Screen Layout Diagram (2)](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/79764515/829a1657-c104-4c00-aa91-0e177c1096fa)
+![Screen Layout Diagram (3)](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/79764515/7c76164e-7797-465b-b7cd-3d7c149410b4)
+![Screen Layout Diagram (4)](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/79764515/dec3f2ec-b4bd-45b9-8926-b0018b463eb8)
+![Screen Layout Diagram (5)](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/79764515/742161dc-5607-4897-beab-009fa66dc7d6)
 
 ## Class Diagram
 ![cli_lock_uml drawio (5)](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/146924675/bd84f478-2bd9-45d2-91d2-e64b31f1641a)
