@@ -38,6 +38,7 @@ struct VaultItem : Account
       std::string description;
       std::string tag;
    };
+   ~VaultItem(){}
 
    ItemProperty property;
 };
