@@ -1,5 +1,6 @@
 #include <iostream>
 #include "../include/Vault.hpp"
+#include "../include/Account.hpp"
 
 
 int main()
