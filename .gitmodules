@@ -1,6 +1,7 @@
 [submodule "external/googletest"]
 	path = external/googletest
 	url = https://github.com/google/googletest
+	ignore = dirty
 [submodule "external/cryptopp"]
 	path = external/cryptopp
 	url = https://github.com/weidai11/cryptopp
