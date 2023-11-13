@@ -8,6 +8,7 @@ class Login
 {
 public:
    static void GetLoginInfo(MasterCredential& info);
+   static void RegisterVault(const std::string& username, std::string& newPass);
 };
 
 #endif // !LOGIN_HPP

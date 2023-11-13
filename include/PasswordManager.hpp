@@ -21,6 +21,7 @@ public:
 
       // [CURRENT] remembered credentials without logout
       Account rememberedUser;
+      std::string cipherKEY;
    };
 
    Config config;
