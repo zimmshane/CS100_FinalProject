@@ -10,5 +10,3 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin")
 
 # add_executable(a ./src/main.cpp) # prod build, make sure to change flags for this build
 add_executable(dev ./src/main.cpp) # dev build
-
-add

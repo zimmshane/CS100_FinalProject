@@ -1,6 +1,7 @@
 #include <iostream>
 #include "../include/Vault.hpp"
 #include <algorithm>
+#include ""
 
 
 int main()
@@ -18,8 +19,6 @@ int main()
    VaultItem item7("johndoe4", "doughy1235", "amazon", "test", "-w");
    VaultItem item8("twitter3", "tweeter4321", "twitter", "public account", "-p");
    VaultItem item9("Reallydumbemail@gmail.com", "Mygmailaccount123", "google", "my google account", "-s");
-
-
 
    Vault vault{ };
 
@@ -43,8 +42,8 @@ int main()
 
 
       // sort vector
-      std::sort(entry.second.begin(), entry.second.end(), [](const Account& acc1, const Account& acc2) {
-      return acc1.username < acc2.username; });
+      std::sort(entry.second.begin(), entry.second.end());
+         // [](const Account& acc1, const Account& acc2){ return acc1.username < acc2.username; });
 
       for (auto it = entry.second.begin(); it != entry.second.end(); ++it)
       {
@@ -55,14 +54,6 @@ int main()
    }
 
    std::cout << "\n\nBUCKETS: " << vault.vault.size();
-
-
-
-
-
-
-
-
 
    return 0;
 }
