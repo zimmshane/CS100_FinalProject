@@ -14,6 +14,10 @@ add_subdirectory(external/googletest/)
 add_executable(dev ./src/main.cpp) # dev build
 add_executable(dev_tests ./tests/Some_Test_Suite.cpp)
 
+# put your personal test files here, DO NOT PUSH YOUR PERSONAL TEST FILES
+add_executable(jeff ./tests/jeff.cpp)
+
+
 target_link_libraries(dev_tests gtest gtest_main)
 
 # custom command for invoking "make clean"
