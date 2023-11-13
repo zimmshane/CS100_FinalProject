@@ -13,6 +13,7 @@ bool Vault::addAccount(const VaultItem &vlt)
             }
         }
         this->vault[vlt.property.domain].push_back(vlt); //domain exists, but username is free
+        return true;
     }
     else
     {
