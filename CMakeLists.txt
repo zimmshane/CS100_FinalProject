@@ -15,14 +15,3 @@ add_executable(dev ./src/main.cpp) # dev build
 add_executable(dev_tests ./tests/Some_Test_Suite.cpp)
 
 target_link_libraries(dev_tests gtest gtest_main)
-
-# clean clean gtest artifacts
-add_custom_target(cleanbuild) # dummy target
-add_custom_command(
-    TARGET cleanbuild
-    COMMAND ${CMAKE_MAKE_PROGRAM} clean
-    WORKING_DIRECTORY ${CMAKE_BINARY_DIR} # CMakeFiles dir
-    COMMENT "Removing previous build artifacts."
-)
-
-add_dependencies(dev_tests cleanbuild)
