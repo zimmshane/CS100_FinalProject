@@ -1,11 +1,11 @@
 #ifndef VAULT_HPP
 #define VAULT_HPP
 
+#include "Account.hpp"
+#include <map>
 #include <string>
 #include <unordered_map>
 #include <vector>
-#include "Account.hpp"
-#include <map>
 
 class Vault
 {
