@@ -1,8 +1,12 @@
 #include <iostream>
 #include "../include/Vault.hpp"
 #include <algorithm>
-#include ""
+#include "../external/ChronoBenchmark.hpp"
 
+/**
+   lambda function for size comparison:
+   [](const Account& acc1, const Account& acc2){ return acc1.username < acc2.username };
+ */
 
 int main()
 {
@@ -10,9 +14,9 @@ int main()
 
 
    VaultItem item0("johndoe0", "doughy1231", "amazon", "this account has prime", "no tag under this one");
-   VaultItem item1("johndoe1", "doughy1232", "amazon", "this account has prime", "");
-   VaultItem item2("johndoe2", "doughy1233", "discord", "this account has prime", "-p");
-   VaultItem item3("johndoe3", "doughy1234", "discord", "this account has prime", "-w");
+   VaultItem item1("johndoe001", "doughy1232", "amazon", "this account has prime", "");
+   VaultItem item2("johndoe49", "doughy1233", "discord", "this account has prime", "-p");
+   VaultItem item3("johndoe23", "doughy1234", "discord", "this account has prime", "-w");
    VaultItem item4("johndoe4", "doughy1235", "amazon", "this account has prime", "-s");
    VaultItem item5("johndoe4", "doughy1235", "amazon", "this account has prime", "-s");
    VaultItem item6("twitter9", "twiter1234", "twitter", "shitposting", "-q");
@@ -34,6 +38,8 @@ int main()
    vault.vault[item9.property.domain].push_back(item9);
 
 
+   Timer timer{ };
+
    // use const for printing
    // non const for when sorting buckets on map<>
    for ( auto& entry : vault.vault)
@@ -43,7 +49,6 @@ int main()
 
       // sort vector
       std::sort(entry.second.begin(), entry.second.end());
-         // [](const Account& acc1, const Account& acc2){ return acc1.username < acc2.username; });
 
       for (auto it = entry.second.begin(); it != entry.second.end(); ++it)
       {
@@ -53,7 +58,9 @@ int main()
       }
    }
 
-   std::cout << "\n\nBUCKETS: " << vault.vault.size();
+   // std::cout << "\n\nBUCKETS: " << vault.vault.size();
+
+   // delete timer;
 
    return 0;
 }
