@@ -8,7 +8,7 @@ bool Vault::addAccount(const VaultItem &vlt)
         {
             if (it->username == vlt.username)
             {
-                std::cout << vlt.property.domain << "already has an account with same username\n"; // same domain and username exists
+                std::cout << vlt.property.domain << " already has an account with same username\n"; // same domain and username exists don't add
                 return false;
             }
         }
@@ -22,15 +22,49 @@ bool Vault::addAccount(const VaultItem &vlt)
     }
 }
 void Vault::deleteAccount(const std::string &acct)
-{
-    // VaultItem vlt = SearchHandler::ReturnReference(acct);
-    // PrintHandler::PrintAccount(vlt)
-    // Are you sure you want to delete?
-    // delete vlt
+{ 
+   std::string hold;
+   VaultItem *vlt = SearchHandler::ReturnReference(acct);
+   PrintHandler::PrintAccount(*vlt);
+   std::cout << "Are you sure you want to delete this account? (y/n) \n";
+   std::cin >> hold ;
+   if (hold == "y" || hold == "Y"){
+    //delete account correctly here
+   }
+    delete vlt
 }
 void Vault::modifyAccount(const std::string &acct)
 {
     VaultItem *vlt = SearchHandler::ReturnReference(acct);
+    VaultItem temp=*vlt;
     PrintHandler::PrintAccount(*vlt);
-    std::cout << ""
+
+    std::cout<<"Domain: ";
+    std::string hold;
+    std::cin >> hold;
+    if (hold != "" || hold != " "){
+        temp.property.domain = hold; // this will likely require deleteaccount() -> addaccount()
+    }
+   
+    std::cout<<"Username: ";
+    std::cin >> hold;
+    if(hold != "" || hold != " "){
+        vlt->username=hold;
+    }
+    std::cout<<"Password: ";
+    std::cin >> hold;
+    if(hold != "" || hold != " "){ //this doesnt use whatever password checker function yet
+        vlt->password=hold; 
+    }
+    std::cout<<"Description: ";
+    getline(std::cin,hold); 
+    if (hold != "" || hold != " "){
+        vlt->property.description = hold;
+    }
+    std::cout<<"Tags: ";
+    getline(std::cin,hold); 
+    if (hold != "" || hold != " "){
+        vlt->property.tag = hold;
+    }
+    delete vlt;
 }
