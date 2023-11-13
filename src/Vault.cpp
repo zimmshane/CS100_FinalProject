@@ -31,7 +31,7 @@ void Vault::deleteAccount(const std::string &acct)
    if (hold == "y" || hold == "Y"){
     //delete account correctly here
    }
-    delete vlt
+    delete vlt;
 }
 void Vault::modifyAccount(const std::string &acct)
 {
