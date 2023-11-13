@@ -8,5 +8,8 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin")
 
+add_subdirectory(./external/googletest/)
+
 # add_executable(a ./src/main.cpp) # prod build, make sure to change flags for this build
 add_executable(dev ./src/main.cpp) # dev build
+add_executable(test ./tests/Some_Test_Suite.cpp)
