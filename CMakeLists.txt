@@ -32,5 +32,5 @@ add_custom_command(
     COMMENT "Removing previous build artifacts."
 )
 
-add_dependencies(dev_tests cleanbuild)
+# add_dependencies(dev_tests cleanbuild)
 add_dependencies(gtest cleanbuild)
