@@ -24,13 +24,14 @@ void FileHandler::CreateVaultFile(const std::string& vaultName, const std::strin
 {
    std::ofstream oFS{vaultName}; // generates .vault file via ofstream
 
-   if (!oFS.is_open())
+   if (oFS.is_open())
    {
-      std::cout << "><>bad file, try a difference username\n";
+      oFS << password; // first line is vault password
+      std::cout << "><>vault sucessfully registered\n";
       return;
    }
 
-   oFS << password; // first line is vault password
+   std::cout << "><>bad file, try a different username\n";
 
    return;
 }

@@ -9,7 +9,7 @@ void Login::GetLoginInfo(MasterCredential& master)
    while (true)
    {
       std::cout << "username: ";
-      std::getline(std::cin, master.username);
+      std::getline(std::cin, master.username); // verify no bad windows characters, make sure no period before .vault -> ..vault
 
       if (!(FileHandler::DoesUserVaultExist(master.username))) // if dne, register the vault
       {
@@ -39,12 +39,10 @@ void Login::RegisterVault(const std::string& username, std::string& registerPass
    std::cout << "password: ";
    std::getline(std::cin, registerPassword);
 
-   if (registerPassword.empty()) // prevent CTRL+C exit midway of empty password str
+   if (!(registerPassword == "")) // prevent CTRL+C exit midway of empty password str
    {
       FileHandler::CreateVaultFile(username + ".vault", registerPassword);
    }
-
-   std::cout << "><>vault sucessfully registered\n";
 
    return;
 }
