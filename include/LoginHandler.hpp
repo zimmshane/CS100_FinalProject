@@ -3,8 +3,9 @@
 
 #include "../include/Account.hpp"
 #include <iostream>
+#include "UserInputHandler.hpp"
 
-class Login
+class LoginHandler
 {
 public:
    static void GetLoginInfo(MasterCredential& info);

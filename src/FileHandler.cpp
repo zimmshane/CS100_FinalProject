@@ -1,8 +1,8 @@
 #include "../include/FileHandler.hpp"
 
-bool FileHandler::DoesUserVaultExist(const std::string& user)
+bool FileHandler::DoesUserVaultExist(const std::string& username)
 {
-   std::string fileName{user + ".vault"};
+   std::string fileName{username + ".vault"};
 
    std::ifstream iFS{fileName};
 
@@ -28,6 +28,7 @@ void FileHandler::CreateVaultFile(const std::string& vaultName, const std::strin
    {
       oFS << password; // first line is vault password
       std::cout << "><>vault sucessfully registered\n";
+
       return;
    }
 
