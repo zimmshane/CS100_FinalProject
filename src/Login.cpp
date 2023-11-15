@@ -13,17 +13,17 @@ void Login::GetLoginInfo(MasterCredential& master)
 
       if (!(FileHandler::DoesUserVaultExist(master.username))) // if dne, register the vault
       {
-         std::cout << "register " << master.username << " vault (y/n)? : ";
-         std::cin >> input;
+         std::cout << "register: \"" << master.username << "\"? (Y/y): ";
+         std::cin >> input; // make sure input doesn't carry over to next buffer
          std::cin.ignore();
 
-         if (input == 'y' || input == 'Y')
+         if (input == 'Y' || input == 'y')
          {
             RegisterVault(master.username, master.password);
-            // add break here when register vault is imlpemented
+            // break; // if no break, dont pass password to force relogin after register
          }
       }
-      else
+      else // vault exists
       {
          std::cout << "password: ";
          std::getline(std::cin, master.password);
@@ -31,14 +31,20 @@ void Login::GetLoginInfo(MasterCredential& master)
       }
    }
 
-   // move to PrintHandler later for debug prints
-   std::cout << "==" << master.username << "\n==" << master.password << "\n";
-
    return;
 }
 
-void Login::RegisterVault(const std::string& username, std::string& newPassword)
+void Login::RegisterVault(const std::string& username, std::string& registerPassword)
 {
+   std::cout << "password: ";
+   std::getline(std::cin, registerPassword);
+
+   if (registerPassword.empty()) // prevent CTRL+C exit midway of empty password str
+   {
+      FileHandler::CreateVaultFile(username + ".vault", registerPassword);
+   }
+
+   std::cout << "><>vault sucessfully registered\n";
 
    return;
 }

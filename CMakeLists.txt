@@ -15,7 +15,13 @@ add_subdirectory(./external/googletest/)
 include_directories(./include/)
 
 # add_executable(a ./src/main.cpp) # prod build, make sure to change flags for this build
-add_executable(dev ./src/main.cpp) # dev build
+add_executable(dev
+    ./src/main.cpp
+    ./src/Login.cpp
+    ./src/PasswordManager.cpp
+    ./src/FileHandler.cpp
+) # dev build
+
 add_executable(dev_tests
     ./tests/Some_Test_Suite.cpp
     ./src/FileHandler.cpp

@@ -1,6 +1,7 @@
 #ifndef PASSWORDMANAGER_HPP
 #define PASSWORDMANAGER_HPP
 
+#include <iostream>
 #include "Vault.hpp"
 
 class PasswordManager
@@ -8,7 +9,7 @@ class PasswordManager
 public:
    PasswordManager() { }
    ~PasswordManager() { }
-   void Run_CLI_lock();
+   void Run_CLI_lock(int argc, char* argv[]);
 
    MasterCredential currentUser;
    Vault userVault;
@@ -25,6 +26,10 @@ public:
    };
 
    Config config;
+
+   // debug functions
+   inline void PrintMasterCredentials() { std::cout << "><>"
+      << currentUser.username << " | " << currentUser.password << "\n"; }
 };
 
 #endif // !PASSWORDMANAGER_HPP
