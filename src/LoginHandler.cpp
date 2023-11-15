@@ -4,7 +4,7 @@
 void LoginHandler::GetLoginInfo(MasterCredential& master)
 {
    // TODO: check config file for credentials under [CURRENT]
-   master = UserInputHandler::GetMasterInfo();
+   UserInputHandler::GetMasterInfo(master);
 
 
 

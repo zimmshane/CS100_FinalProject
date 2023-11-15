@@ -1,9 +1,17 @@
 #include "../include/UserInputHandler.hpp"
 
-MasterCredential UserInputHandler::GetMasterInfo()
+void UserInputHandler::GetMasterInfo(MasterCredential& master)
 {
-   std::cout << "><>username: ";
+   for (;;)
+   {
+      std::cout << "><>username: ";
+      std::getline(std::cin, master.username);
 
+      if (InputValidationHandler::IsUsernameBad(master.username))
+      {
+         std::cout << "><>username: ";
+         std::getline(std::cin, master.username);
+      }
 
-
+   }
 }

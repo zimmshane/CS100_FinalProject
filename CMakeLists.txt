@@ -17,9 +17,11 @@ include_directories(./include/)
 # add_executable(a ./src/main.cpp) # prod build, make sure to change flags for this build
 add_executable(dev
     ./src/main.cpp
-    ./src/Login.cpp
+    ./src/LoginHandler.cpp
     ./src/PasswordManager.cpp
     ./src/FileHandler.cpp
+    ./src/UserInputHandler.cpp
+    ./src/InputValidationHandler.cpp
 ) # dev build
 
 add_executable(dev_tests

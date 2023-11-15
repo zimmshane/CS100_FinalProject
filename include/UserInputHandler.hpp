@@ -4,11 +4,12 @@
 #include "Account.hpp"
 #include <iostream>
 #include <sstream>
+#include "InputValidationHandler.hpp"
 
 class UserInputHandler
 {
 public:
-   static MasterCredential GetMasterInfo();
+   static void GetMasterInfo(MasterCredential& master);
 };
 
 #endif // !USERINPUTHANDLER_HPP
