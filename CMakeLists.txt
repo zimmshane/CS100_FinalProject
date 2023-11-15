@@ -12,14 +12,17 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin")
 
 add_subdirectory(./external/googletest/)
+include_directories(./include/)
 
 # add_executable(a ./src/main.cpp) # prod build, make sure to change flags for this build
 add_executable(dev ./src/main.cpp) # dev build
-add_executable(dev_tests ./tests/Some_Test_Suite.cpp)
+add_executable(dev_tests
+    ./tests/Some_Test_Suite.cpp
+    ./src/FileHandler.cpp
+)
 
 # put your personal test files here, DO NOT PUSH YOUR PERSONAL TEST FILES
-add_executable(jeff ./tests/jeff.cpp ./src/Login.cpp ./src/FileHandler.cpp)
-
+# add_executable(jeff ./tests/jeff.cpp ./src/Login.cpp ./src/FileHandler.cpp)
 
 target_link_libraries(dev_tests gtest gtest_main)
 

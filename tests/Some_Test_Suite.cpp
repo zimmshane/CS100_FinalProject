@@ -1,5 +1,7 @@
 #include "../external/googletest/googletest/include/gtest/gtest.h"
 #include "../include/Vault.hpp"
+#include "../include/FileHandler.hpp"
+
 
 TEST(ItemContainerTests, VerifyValues)
 {
@@ -21,4 +23,9 @@ TEST(ItemContainerTests, VerifySpecialValues)
    EXPECT_EQ(item.property.domain, "discord");
    EXPECT_EQ(item.property.description, "for school use");
    EXPECT_EQ(item.property.tag, "-p");
+}
+
+TEST(VaultEntityTests, FindVault)
+{
+   EXPECT_FALSE(FileHandler::DoesUserVaultExist("someuservault.vault"));
 }
