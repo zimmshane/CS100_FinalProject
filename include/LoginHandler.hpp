@@ -9,7 +9,7 @@ class LoginHandler
 {
 public:
    static bool GetLoginInfo(MasterCredential& info);
-   static void RegisterVault(const std::string& username, std::string& newPass);
+   static void RegisterVault(const MasterCredential& master);
 };
 
 #endif // !LOGIN_HPP

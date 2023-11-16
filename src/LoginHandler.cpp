@@ -17,7 +17,7 @@ bool LoginHandler::GetLoginInfo(MasterCredential& master)
 
          if (input == 'Y' || input == 'y')
          {
-            RegisterVault(master.username, master.password);
+            RegisterVault(master);
          }
       }
 
@@ -31,13 +31,13 @@ bool LoginHandler::GetLoginInfo(MasterCredential& master)
    return false;
 }
 
-void LoginHandler::RegisterVault(const std::string& username, std::string& registerPassword)
+void LoginHandler::RegisterVault(const MasterCredential& master)
 {
-   if ((username.empty()) &&(registerPassword.empty())) // prevent CTRL+C exit midway of empty password str
+   if (!((master.username.empty()) && (master.password.empty()))) // prevent CTRL+C exit midway of empty password str
    {
-      FileHandler::CreateVaultFile(username + ".vault", registerPassword);
+      FileHandler::CreateVaultFile(master);
 
-      std::cout << "generated \"" << username << ".vault\n";
+      std::cout << "generated \"" << master.username << ".vault\n";
    }
 
    return;

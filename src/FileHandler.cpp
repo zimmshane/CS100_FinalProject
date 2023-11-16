@@ -20,13 +20,13 @@ bool FileHandler::IsUserVaultExist(const std::string& username)
    return false;
 }
 
-void FileHandler::CreateVaultFile(const std::string& vaultName, const std::string& password)
+void FileHandler::CreateVaultFile(const MasterCredential& master)
 {
-   std::ofstream oFS{vaultName}; // generates .vault file via ofstream
+   std::ofstream oFS{master.username + ".vault"}; // generates .vault file via ofstream
 
    if (oFS.is_open())
    {
-      oFS << password << "\n"; // first line is vault password
+      oFS << master.password << "\n"; // first line is vault password
       oFS << "username,password,domain,description,tag";
       std::cout << "><>vault sucessfully registered\n";
    }
@@ -34,16 +34,16 @@ void FileHandler::CreateVaultFile(const std::string& vaultName, const std::strin
    return;
 }
 
-bool IsVaultPasswordMatch(const std::string& username, const std::string& userPassword)
+bool FileHandler::IsVaultPasswordMatch(const MasterCredential& master)
 {
-   std::ifstream iFS{username + ".vault"};
+   std::ifstream iFS{master.username + ".vault"};
    std::string buffer;
 
    if (iFS.is_open())
    {
       std::getline(iFS, buffer);
 
-      if (buffer == userPassword)
+      if (buffer == master.password)
       {
          std::cout << "good vault password match\n";
          return true;
