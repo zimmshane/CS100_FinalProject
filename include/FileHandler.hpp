@@ -7,8 +7,9 @@
 class FileHandler
 {
 public:
-   static bool DoesUserVaultExist(const std::string& user);
+   static bool IsUserVaultExist(const std::string& username);
    static void CreateVaultFile(const std::string& vaultName, const std::string& password);
+   static bool IsVaultPasswordMatch(const MasterCredential master);
 };
 
 #endif // !FILEHANDLER_HPP

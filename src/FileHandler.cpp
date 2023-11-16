@@ -1,6 +1,6 @@
 #include "../include/FileHandler.hpp"
 
-bool FileHandler::DoesUserVaultExist(const std::string& username)
+bool FileHandler::IsUserVaultExist(const std::string& username)
 {
    std::string fileName{username + ".vault"};
 
@@ -26,13 +26,31 @@ void FileHandler::CreateVaultFile(const std::string& vaultName, const std::strin
 
    if (oFS.is_open())
    {
-      oFS << password; // first line is vault password
+      oFS << password << "\n"; // first line is vault password
+      oFS << "username,password,domain,description,tag";
       std::cout << "><>vault sucessfully registered\n";
-
-      return;
    }
 
-   std::cout << "><>bad file, try a different username\n";
-
    return;
+}
+
+bool IsVaultPasswordMatch(const std::string& username, const std::string& userPassword)
+{
+   std::ifstream iFS{username + ".vault"};
+   std::string buffer;
+
+   if (iFS.is_open())
+   {
+      std::getline(iFS, buffer);
+
+      if (buffer == userPassword)
+      {
+         std::cout << "good vault password match\n";
+         return true;
+      }
+   }
+
+   std::cout << "bad vault password match\n";
+
+   return false;
 }

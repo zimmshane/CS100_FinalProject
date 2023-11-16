@@ -3,7 +3,8 @@
 
 void PasswordManager::Run_CLI_lock(int argc, char* argv[])
 {
-   LoginHandler::GetLoginInfo(currentUser);
-
-         PrintMasterCredentials();
+   if(LoginHandler::GetLoginInfo(currentUser))
+   {
+      PasswordManager::PrintMasterCredentials();
+   }
 }

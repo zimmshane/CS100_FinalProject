@@ -8,7 +8,7 @@
 class LoginHandler
 {
 public:
-   static void GetLoginInfo(MasterCredential& info);
+   static bool GetLoginInfo(MasterCredential& info);
    static void RegisterVault(const std::string& username, std::string& newPass);
 };
 

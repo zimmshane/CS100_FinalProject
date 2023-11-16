@@ -27,5 +27,5 @@ TEST(ItemContainerTests, VerifySpecialValues)
 
 TEST(VaultEntityTests, FindVault)
 {
-   EXPECT_FALSE(FileHandler::DoesUserVaultExist("someuservault.vault"));
+   EXPECT_FALSE(FileHandler::IsUserVaultExist("someuservault.vault"));
 }
