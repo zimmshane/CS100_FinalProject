@@ -8,12 +8,12 @@ bool FileHandler::IsUserVaultExist(const std::string& username)
 
    if (iFS.good())
    {
-      std::cout << "><>found: " << fileName << "\n";
+      std::cout << "found: " << fileName << "\n";
       return true;
    }
    else
    {
-      std::cout << "><>not found: " << fileName << "\n";
+      std::cout << "not found: " << fileName << "\n";
       return false;
    }
 
@@ -28,7 +28,7 @@ void FileHandler::CreateVaultFile(const MasterCredential& master)
    {
       oFS << master.password << "\n"; // first line is vault password
       oFS << "username,password,domain,description,tag";
-      std::cout << "><>vault sucessfully registered\n";
+      std::cout << "vault sucessfully registered\n";
    }
 
    return;
