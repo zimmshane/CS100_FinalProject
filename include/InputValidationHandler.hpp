@@ -7,7 +7,8 @@
 class InputValidationHandler
 {
 public:
-   static bool IsUsernameBad(const std::string& username);
+   static bool IsMasterUsernameBad(const std::string& username);
+   static bool IsMasterPasswordBad(const std::string& password);
 
 };
 

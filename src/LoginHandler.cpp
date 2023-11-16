@@ -3,47 +3,35 @@
 
 void LoginHandler::GetLoginInfo(MasterCredential& master)
 {
+   char input;
+
    // TODO: check config file for credentials under [CURRENT]
-   UserInputHandler::GetMasterInfo(master);
+   for (;;)
+   {
+      UserInputHandler::GetMasterInfo(master);
 
+      if (!(FileHandler::DoesUserVaultExist(master.username)))
+      {
+         std::cout << "register: \"" << master.username << "\"? (Y/y): ";
+         UserInputHandler::GetSingleChar(input);
 
-
-   // while (true)
-   // {
-   //    std::cout << "username: ";
-   //    std::getline(std::cin, master.username); // verify no bad windows characters, make sure no period before .vault -> ..vault
-
-   //    if (!(FileHandler::DoesUserVaultExist(master.username))) // if dne, register the vault
-   //    {
-   //       std::cout << "register: \"" << master.username << "\"? (Y/y): ";
-   //       std::cin >> input; // make sure input doesn't carry over to next buffer
-   //       std::cin.ignore();
-
-   //       if (input == 'Y' || input == 'y')
-   //       {
-   //          RegisterVault(master.username, master.password);
-   //          // break; // if no break, dont pass password to force relogin after register
-   //       }
-   //    }
-   //    else // vault exists
-   //    {
-   //       std::cout << "password: ";
-   //       std::getline(std::cin, master.password);
-   //       break;
-   //    }
-   // }
+         if (input == 'Y' || input == 'y')
+         {
+            RegisterVault(master.username, master.password);
+         }
+      }
+   }
 
    return;
 }
 
 void LoginHandler::RegisterVault(const std::string& username, std::string& registerPassword)
 {
-   std::cout << "password: ";
-   std::getline(std::cin, registerPassword);
-
-   if (!(registerPassword == "")) // prevent CTRL+C exit midway of empty password str
+   if (registerPassword.size() != 0) // prevent CTRL+C exit midway of empty password str
    {
       FileHandler::CreateVaultFile(username + ".vault", registerPassword);
+
+      std::cout << "created" << username << ".vault\n";
    }
 
    return;

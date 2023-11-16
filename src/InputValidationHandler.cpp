@@ -1,15 +1,31 @@
 #include "../include/InputValidationHandler.hpp"
 
 
-bool InputValidationHandler::IsUsernameBad(const std::string& username)
+bool InputValidationHandler::IsMasterUsernameBad(const std::string& username)
 {
+   std::size_t illegalCharPos;
+
    if ((username.front() == ' ') || (username.back()) == ' ')
    {
       std::cerr << "username contains leading or trailing whitespace\n";
       return true;
    }
-   else if (username.find('#'))
+   else if ((illegalCharPos = username.find_first_of("`!@#$%^&*()+=[]{}\\|;:'\",<>?/")) != std::string::npos)
    {
-      std::cout << username[username.find('#')];
+      std::cerr << "username contains illegal character '" << username[illegalCharPos] << "'\n";
+      return true;
    }
+
+   return false;
+}
+
+bool InputValidationHandler::IsMasterPasswordBad(const std::string& password)
+{
+   if ((password.front() == ' ') || (password.back()) == ' ')
+   {
+      std::cerr << "password contains leading or trailing whitespace\n";
+      return true;
+   }
+
+   return false;
 }
