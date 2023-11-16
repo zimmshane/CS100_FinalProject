@@ -1,6 +1,10 @@
 #include "../external/googletest/googletest/include/gtest/gtest.h"
-#include "../include/Vault.hpp"
 #include "../include/FileHandler.hpp"
+#include "../include/InputValidationHandler.hpp"
+#include "../include/LoginHandler.hpp"
+#include "../include/PasswordManager.hpp"
+#include "../include/UserInputHandler.hpp"
+#include "../include/Vault.hpp"
 
 
 TEST(ItemContainerTests, VerifyValues)
@@ -14,7 +18,7 @@ TEST(ItemContainerTests, VerifyValues)
    EXPECT_EQ(item.property.tag, "-p");
 }
 
-TEST(ItemContainerTests, VerifySpecialValues)
+TEST(ItemContainerTests, VerifySpecialValues) // constructor can take anything, but the user inputs shouldn't
 {
    VaultItem item("^&^JohnDoe0", "Choco%/late#Fudge!@1911", "discord", "for school use", "-p");
 

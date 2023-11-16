@@ -1,7 +1,6 @@
 #ifndef INPUTVALIDATIONHANDLER_HPP
 #define INPUTVALIDATIONHANDLER_HPP
 
-#include <string>
 #include <iostream>
 
 class InputValidationHandler

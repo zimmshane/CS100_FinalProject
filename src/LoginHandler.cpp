@@ -1,5 +1,4 @@
 #include "../include/LoginHandler.hpp"
-#include "../include/FileHandler.hpp"
 
 bool LoginHandler::GetLoginInfo(MasterCredential& master)
 {

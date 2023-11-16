@@ -1,9 +1,8 @@
 #ifndef LOGIN_HPP
 #define LOGIN_HPP
 
-#include "../include/Account.hpp"
-#include <iostream>
 #include "UserInputHandler.hpp"
+#include "FileHandler.hpp"
 
 class LoginHandler
 {

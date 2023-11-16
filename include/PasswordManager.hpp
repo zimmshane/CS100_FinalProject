@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Vault.hpp"
+#include "LoginHandler.hpp"
 
 class PasswordManager
 {
