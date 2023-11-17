@@ -17,6 +17,7 @@ include_directories(./include/)
 # add_executable(a ./src/main.cpp) # prod build, make sure to change flags for this build
 add_executable(dev
     ./src/main.cpp
+    ./src/PasswordQualityHandler.hpp
     ./src/PasswordQualityHandler.cpp
 ) # dev build
 

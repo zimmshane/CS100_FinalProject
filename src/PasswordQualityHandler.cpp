@@ -28,5 +28,6 @@ bool PasswordQualityHandler::StrengthChecker(const std::string& pass) {
     return true;
 }
 bool PasswordQualityHandler::RepeatChecker(const std::string& pass) {
-
+    //uses SearchHandler to search 
+    return false;
 }
