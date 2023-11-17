@@ -8,7 +8,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fno-inline -Wall -Wextra -Wpedan
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20 -Ofast -Wall -Wextra -flto -s -Wl,-s,--as-needed")
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")s
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin")
 
 add_subdirectory(./external/googletest/)
@@ -17,20 +17,22 @@ include_directories(./include/)
 # add_executable(a ./src/main.cpp) # prod build, make sure to change flags for this build
 add_executable(dev
     ./src/main.cpp
+    ./src/FileHandler.cpp
+    ./src/InputValidationHandler.cpp
     ./src/LoginHandler.cpp
     ./src/PasswordManager.cpp
-    ./src/FileHandler.cpp
+    ./src/PrintHandler.cpp
     ./src/UserInputHandler.cpp
-    ./src/InputValidationHandler.cpp
 ) # dev build
 
 add_executable(dev_tests
     ./tests/Some_Test_Suite.cpp
+    ./src/FileHandler.cpp
+    ./src/InputValidationHandler.cpp
     ./src/LoginHandler.cpp
     ./src/PasswordManager.cpp
-    ./src/FileHandler.cpp
+    ./src/PrintHandler.cpp
     ./src/UserInputHandler.cpp
-    ./src/InputValidationHandler.cpp
 )
 
 # put your personal test files here, DO NOT PUSH YOUR PERSONAL TEST FILES
