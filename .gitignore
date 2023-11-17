@@ -1,6 +1,9 @@
 *.cmake
 *.exe
 .vscode
+/CMakeFiles/
+/bin/
+/lib/
 CMakeCache.txt
-CMakeFiles
 Makefile
+jeff.cpp

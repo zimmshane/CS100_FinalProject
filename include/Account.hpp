@@ -4,18 +4,23 @@
 #include <string>
 
 // can afford to use public interfaces, no more changes to hierarchy
-struct Account
+class Account
 {
+public:
+   Account() { }
    Account(const std::string& u, const std::string& p) : username(u), password(p) { }
+   ~Account() { }
 
    std::string username;
    std::string password;
 };
 
-struct MasterCredential : Account
+class MasterCredential : public Account
 {
-   MasterCredential(const std::string& u, const std::string& p)
-      : Account(u, p) { }
+public:
+   MasterCredential() { }
+   MasterCredential(const std::string& u, const std::string& p) : Account(u, p) { }
+   ~MasterCredential() { }
 
    struct HashedCredential
    {
@@ -27,10 +32,19 @@ struct MasterCredential : Account
    HashedCredential hashed;
 };
 
-struct VaultItem : Account
+class VaultItem : public Account
 {
+public:
+   VaultItem() { }
    VaultItem(const std::string& u, const std::string& p, const std::string& d, const std::string& desc, const std::string& t)
       : Account(u, p), property{d, desc, t} { }
+   ~VaultItem() { }
+
+   // comparative overloading for Account object username comparison for std::sort
+   bool operator<(const Account& right) const
+   {
+      return (username < right.username);
+   }
 
    struct ItemProperty
    {
