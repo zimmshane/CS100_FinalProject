@@ -1,8 +1,11 @@
 *.cmake
 *.exe
 .vscode
+/CMakeFiles/
+/bin/
+/lib/
 CMakeCache.txt
-CMakeFiles
 Makefile
 bin/dev
 bin/dev_tests
+jeff.cpp
