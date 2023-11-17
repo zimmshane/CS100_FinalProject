@@ -7,7 +7,7 @@
 class LoginHandler
 {
 public:
-   static bool GetLoginInfo(MasterCredential& master);
+   static bool IsLoginInfoMatchingVault(MasterCredential& master);
    static void RegisterVault(const MasterCredential& master);
 };
 

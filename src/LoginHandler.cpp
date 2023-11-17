@@ -1,6 +1,6 @@
 #include "../include/LoginHandler.hpp"
 
-bool LoginHandler::GetLoginInfo(MasterCredential& master)
+bool LoginHandler::IsLoginInfoMatchingVault(MasterCredential& master)
 {
    char input;
 

@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.5)
 project(CLI-lock)
 
 set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fno-inline -Wall -Wextra -Wpedantic -Wconversion -Wcast-align -Wold-style-cast -Wpointer-arith -Wcast-qual -Wunused -Wshadow -Wno-missing-braces")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fno-inline -Wall -Wextra -Wpedantic -Wconversion -Wcast-align -Wold-style-cast -Wpointer-arith -Wcast-qual -Wunused -Wshadow")
 
 # prod build flags
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20 -Ofast -Wall -Wextra -flto -s -Wl,-s,--as-needed")
@@ -26,7 +26,11 @@ add_executable(dev
 
 add_executable(dev_tests
     ./tests/Some_Test_Suite.cpp
+    ./src/LoginHandler.cpp
+    ./src/PasswordManager.cpp
     ./src/FileHandler.cpp
+    ./src/UserInputHandler.cpp
+    ./src/InputValidationHandler.cpp
 )
 
 # put your personal test files here, DO NOT PUSH YOUR PERSONAL TEST FILES

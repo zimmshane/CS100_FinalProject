@@ -6,7 +6,6 @@
 #include "../include/UserInputHandler.hpp"
 #include "../include/Vault.hpp"
 
-
 TEST(ItemContainerTests, VerifyValues)
 {
    VaultItem item("JohnDoe832", "Doughy$1332", "amazon", "this account has prime", "-p");
@@ -32,4 +31,30 @@ TEST(ItemContainerTests, VerifySpecialValues) // constructor can take anything, 
 TEST(VaultEntityTests, FindVault)
 {
    EXPECT_FALSE(FileHandler::IsUserVaultExist("someuservault.vault"));
+}
+
+TEST(IllegalUsernameTests, LeadingSpaces)
+{
+   EXPECT_FALSE(InputValidationHandler::IsMasterUsernameGood("    this string has leading space"));
+}
+
+TEST(IllegalUsernameTests, TrailingSpaces)
+{
+   EXPECT_FALSE(InputValidationHandler::IsMasterUsernameGood("this string has a trailing space "));
+}
+
+TEST(IllegalUsernameTests, SpecialCharacters)
+{
+   EXPECT_FALSE(InputValidationHandler::IsMasterUsernameGood("this character has !some special character"));
+}
+
+TEST(IllegalPasswordTests, LeadingSpace)
+{
+   EXPECT_FALSE(InputValidationHandler::IsMasterPasswordGood(" this string has a leading space"));
+
+}
+
+TEST(IllegalPasswordTests, TrailingSpace)
+{
+   EXPECT_FALSE(InputValidationHandler::IsMasterPasswordGood("this string has a leading space   has many !! ##!@# trailing spaces     "));
 }
