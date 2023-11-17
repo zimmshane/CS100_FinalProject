@@ -26,9 +26,9 @@ void UserInputHandler::GetMasterInfo(MasterCredential& master)
    return;
 }
 
-void UserInputHandler::GetSingleChar(char& inputVariable)
+void UserInputHandler::GetSingleChar(char& input)
 {
-   std::cin >> inputVariable;
+   std::cin >> input;
    std::cin.ignore();
 
    return;

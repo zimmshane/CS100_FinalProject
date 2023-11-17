@@ -11,6 +11,7 @@ bool LoginHandler::GetLoginInfo(MasterCredential& master)
 
       if (!(FileHandler::IsUserVaultExist(master.username)))
       {
+         std::cout << master.username.size() << "\n\n";
          std::cout << "register: \"" << master.username << "\"? (Y/y): ";
          UserInputHandler::GetSingleChar(input);
 
