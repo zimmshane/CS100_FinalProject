@@ -1,7 +1,8 @@
 #ifndef VAULT_HPP
 #define VAULT_HPP
 
-#include <string>
+#include "Account.hpp"
+// #include <map>
 #include <unordered_map>
 #include <vector>
 #include <iostream>
