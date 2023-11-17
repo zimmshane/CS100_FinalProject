@@ -2,6 +2,7 @@
 *.exe
 .vscode
 /CMakeFiles/
+/bin/
 /lib/
 CMakeCache.txt
 Makefile

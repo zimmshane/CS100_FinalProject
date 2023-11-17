@@ -33,6 +33,11 @@ void FileHandler::CreateVaultFile(const MasterCredential& master)
 
 bool FileHandler::IsVaultPasswordMatch(const MasterCredential& master)
 {
+   if (master.password.size() == 0)
+   {
+      return false;
+   }
+
    std::ifstream iFS{master.username + ".vault"};
    std::string buffer;
 

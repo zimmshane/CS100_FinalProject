@@ -5,6 +5,8 @@ bool LoginHandler::GetLoginInfo(MasterCredential& master)
    char input;
 
    // TODO: check config file for credentials under [CURRENT]
+   // force relogin after register to ensure user input the right information they wanted
+
    for (;;)
    {
       UserInputHandler::GetMasterInfo(master);
