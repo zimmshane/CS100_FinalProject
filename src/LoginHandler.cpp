@@ -13,8 +13,7 @@ bool LoginHandler::GetLoginInfo(MasterCredential& master)
 
       if (!(FileHandler::IsUserVaultExist(master.username)))
       {
-         std::cout << master.username.size() << "\n\n";
-         std::cout << "register: \"" << master.username << "\"? (Y/y): ";
+         std::cout << "><>register: \"" << master.username << "\"? (Y/y): ";
          UserInputHandler::GetSingleChar(input);
 
          if (input == 'Y' || input == 'y')
@@ -22,12 +21,11 @@ bool LoginHandler::GetLoginInfo(MasterCredential& master)
             RegisterVault(master);
          }
       }
-
-      // check first line of .vault to match password, register naturally falls here, no need to relogin
-      if (FileHandler::IsVaultPasswordMatch(master))
+      else if (FileHandler::IsVaultPasswordMatch(master))
       {
          return true;
       }
+
    }
 
    return false;
