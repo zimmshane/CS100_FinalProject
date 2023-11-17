@@ -7,14 +7,14 @@ void UserInputHandler::GetMasterInfo(MasterCredential& master)
       std::cout << "><>username: ";
       std::getline(std::cin, master.username);
 
-      if (!(InputValidationHandler::IsMasterUsernameBad(master.username)))
+      if (InputValidationHandler::IsMasterUsernameGood(master.username))
       {
          for (;;)
          {
             std::cout << "><>password: ";
             std::getline(std::cin, master.password);
 
-            if (!(InputValidationHandler::IsMasterPasswordBad(master.password)))
+            if (InputValidationHandler::IsMasterPasswordGood(master.password))
             {
                return;
             }

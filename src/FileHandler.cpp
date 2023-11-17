@@ -11,11 +11,8 @@ bool FileHandler::IsUserVaultExist(const std::string& username)
       std::cout << "found: " << fileName << "\n";
       return true;
    }
-   else
-   {
-      std::cout << "not found: " << fileName << "\n";
-      return false;
-   }
+
+   std::cout << "not found: " << fileName << "\n";
 
    return false;
 }

@@ -12,9 +12,6 @@ public:
    Vault() { }
    ~Vault() { }
 
-   // put this inside PasswordManager class later
-   // std::unordered_map<std::string, std::vector<VaultItem>> GetVault() { return vault; }
-
    std::unordered_map<std::string, std::vector<VaultItem>> vault;
 };
 

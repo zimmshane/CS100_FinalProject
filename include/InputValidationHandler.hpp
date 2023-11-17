@@ -6,9 +6,8 @@
 class InputValidationHandler
 {
 public:
-   static bool IsMasterUsernameBad(const std::string& username);
-   static bool IsMasterPasswordBad(const std::string& password);
-
+   static bool IsMasterUsernameGood(const std::string& username);
+   static bool IsMasterPasswordGood(const std::string& password);
 };
 
 #endif // !INPUTVALIDATIONHANDLER_HPP
