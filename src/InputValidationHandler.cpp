@@ -30,7 +30,7 @@ bool InputValidationHandler::IsMasterPasswordGood(const std::string& password)
       std::cout << "password is empty\n";
       return false;
    }
-   else if ((password.front() == ' ') || (password.back()) == ' ')
+   else if ((password.front() == ' ') || (password.back() == ' '))
    {
       std::cout << "password contains leading or trailing whitespace\n";
       return false;
