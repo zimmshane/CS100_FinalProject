@@ -26,6 +26,7 @@ void UserInputHandler::GetMasterInfo(MasterCredential& master)
    return;
 }
 
+// reusable for later main menu inputs
 void UserInputHandler::GetSingleChar(char& input)
 {
    std::cin >> input;

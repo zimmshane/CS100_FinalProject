@@ -25,7 +25,6 @@ bool LoginHandler::GetLoginInfo(MasterCredential& master)
       {
          return true;
       }
-
    }
 
    return false;
