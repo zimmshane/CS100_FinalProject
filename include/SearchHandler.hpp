@@ -11,7 +11,7 @@
 class SearchHandler{
 
 public:
-std::vector<VaultItem> returnAll(std::string &search);
+static std::vector<VaultItem> returnAll(const std::string &search);
 
 
 };
