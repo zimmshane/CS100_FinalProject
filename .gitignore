@@ -4,6 +4,10 @@
 /CMakeFiles/
 /bin/
 /lib/
+lib/libgtest_main.a
+lib/libgtest.a
 CMakeCache.txt
 Makefile
+bin/dev
+bin/dev_tests
 jeff.cpp

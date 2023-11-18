@@ -1,3 +1,4 @@
+#include "../include/PasswordQualityHandler.hpp"
 #include "../external/googletest/googletest/include/gtest/gtest.h"
 #include "../include/FileHandler.hpp"
 #include "../include/InputValidationHandler.hpp"
@@ -57,4 +58,20 @@ TEST(IllegalPasswordTests, LeadingSpace)
 TEST(IllegalPasswordTests, TrailingSpace)
 {
    EXPECT_FALSE(InputValidationHandler::IsMasterPasswordGood("this string has a leading space   has many !! ##!@# trailing spaces     "));
+}
+
+TEST(PasswordQualityTests, invalidPasswords)
+{
+   EXPECT_FALSE(PasswordQualityHandler::StrengthChecker("2short"));
+   EXPECT_FALSE(PasswordQualityHandler::StrengthChecker("notacceptablecuzalllower"));
+   EXPECT_FALSE(PasswordQualityHandler::StrengthChecker("NOTACCEPTABLECUZALLUPPER"));
+   EXPECT_FALSE(PasswordQualityHandler::StrengthChecker("!@#$%^&****"));
+   EXPECT_FALSE(PasswordQualityHandler::StrengthChecker("DoesnthaveSymbol1"));
+
+}
+
+TEST(PasswordQualityTests, verifyValidPasswords)
+{
+   EXPECT_TRUE(PasswordQualityHandler::StrengthChecker("H3LLoT4ere!"));
+   EXPECT_TRUE(PasswordQualityHandler::StrengthChecker("#Th1sworks"));
 }
