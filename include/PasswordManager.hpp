@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Vault.hpp"
 #include "LoginHandler.hpp"
+#include "SearchHandler.hpp"
 
 class PasswordManager
 {
