@@ -28,9 +28,11 @@ public:
    };
 
    Config config;
-
+   void Logout();
+   void Exit();
    // debug functions
    inline void PrintMasterCredentials() { std::cout << currentUser.username << " | " << currentUser.password << "\n"; }
+
 };
 
 #endif // !PASSWORDMANAGER_HPP

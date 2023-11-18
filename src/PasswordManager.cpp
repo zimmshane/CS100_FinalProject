@@ -11,6 +11,12 @@ void PasswordManager::Menu_Statement(){
    std::cout << "l - logout(must sign in again)\n";
    std::cout << "e - exit(auto login will be saved)\n";
 }
+void PasswordManager::Logout(){
+   std::cout << "testing logout\n";
+}
+void PasswordManager::Exit(){
+   std::cout << "testing exit\n";
+}
 void PasswordManager::Run_CLI_lock()
 {
    if(LoginHandler::IsLoginInfoMatchingVault(currentUser))
@@ -40,6 +46,12 @@ void PasswordManager::Run_CLI_lock()
                std::cout << std::endl;
                input = std::tolower(userInput, std::locale());
          }
+      }
+      if(input == 'l'){ //tests logout
+         Logout();
+      }
+      if(input == 'e'){ //tests exit
+         Exit();
       }
    }
 }

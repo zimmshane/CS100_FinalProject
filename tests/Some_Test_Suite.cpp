@@ -76,10 +76,10 @@ TEST(PasswordQualityTests, verifyValidPasswords)
    EXPECT_TRUE(PasswordQualityHandler::StrengthChecker("#Th1sworks"));
 }
 
-TEST(MainMenuTests, verifyValidInput){
+TEST(MainMenuTests, verifyValidInput_A){
 
 }
 
-TEST(MainMenuTests, verifyInvalidInput){
+TEST(MainMenuTests, verifyInvalidInput_S){
    
 }
