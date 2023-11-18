@@ -8,6 +8,7 @@ class PrintHandler
 {
 public:
    static void PrintVault(const Vault& vault);
+   static void printVector(const std::vector<VaultItem> list);
 };
 
 #endif // !PRINTHANDLER_HPP
