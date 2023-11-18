@@ -1,9 +1,9 @@
 #include "../include/PasswordManager.hpp"
 
-int main(int argc, char* argv[])
+int main()
 {
    PasswordManager pwmg;
-   pwmg.Run_CLI_lock(argc, argv);
+   pwmg.Run_CLI_lock();
 
    return 0;
 }

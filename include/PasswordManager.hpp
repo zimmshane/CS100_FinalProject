@@ -10,7 +10,8 @@ class PasswordManager
 public:
    PasswordManager() { }
    ~PasswordManager() { }
-   void Run_CLI_lock(int argc, char* argv[]);
+   void Run_CLI_lock();
+   void Menu_Statement();
 
    MasterCredential currentUser;
    Vault userVault;
