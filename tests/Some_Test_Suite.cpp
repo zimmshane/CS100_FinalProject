@@ -91,14 +91,14 @@ Vault v1;
 v1.addAccount(i1);
 v1.addAccount(i2);
 EXPECT_TRUE(v1.vault[i1.property.domain].size()==2);
-v1.deleteAccount(i1.usename);
+v1.deleteAccount(i1.username);
 EXPECT_TRUE(v1.vault[i1.property.domain].size()==1);
 }
 
 TEST(VaultTests, canExitDelete){
 VaultItem i1("jimmy22","LongJohnSilverLUVR","ClubPenguin","Fun game","-f");
 Vault v1;
-std::stringstream input("n")
+std::stringstream input("n");
 v1.addAccount(i1); //will require function to take string stream input
 v1.deleteAccount(i1.username,input); //non functional
 }
@@ -108,10 +108,10 @@ VaultItem i1("jimmy22","LongJohnSilverLUVR","ClubPenguin","Fun game","-f");
 std::stringstream input("n");
 Vault v1;
 v1.addAccount(i1); //non functional
-v2.modifyAccount() //will require function to take string stream input
+v1.modifyAccount(); //will require function to take string stream input
 }
 
 TEST(VaultTests, canModifyDomain){
 VaultItem i1("jimmy22","LongJohnSilverLUVR","ClubPenguin","Fun game","-f");
 Vault v1; //non functional
-v1.addAccount(i1)//will require function to take string stream input
+v1.addAccount(i1);  //will require function to take string stream input
