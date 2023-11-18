@@ -4,6 +4,7 @@
 /CMakeFiles/
 /bin/
 /lib/
+/build/
 CMakeCache.txt
 Makefile
 jeff.cpp
