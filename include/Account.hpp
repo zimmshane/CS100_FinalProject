@@ -39,7 +39,6 @@ public:
    VaultItem() { }
    VaultItem(const std::string& u, const std::string& p, const std::string& d, const std::string& desc, const std::string& t)
       : Account(u, p), property{d, desc, t} { }
-   ~VaultItem() { }
 
    // comparative overloading for Account object username comparison for std::sort
    bool operator<(const Account& right) const
