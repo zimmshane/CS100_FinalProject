@@ -16,3 +16,6 @@ void PrintHandler::PrintVault(const Vault& vault)
       }
    }
 }
+void printVector(const std::vector<VaultItem> list){
+   //this NEED PRINT WHOLE VECTOR W/ INDEXES
+}
