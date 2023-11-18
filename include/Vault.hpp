@@ -8,6 +8,8 @@
 #include <iostream>
 #include <string>
 #include "Account.hpp"
+#include "PrintHandler.hpp"
+#include "SearchHandler.hpp"
 
 class Vault
 {
