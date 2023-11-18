@@ -2,7 +2,6 @@
 #define ACCOUNT_HPP
 
 #include <string>
-#include <iostream>
 
 // can afford to use public interfaces, no more changes to hierarchy
 class Account
@@ -53,7 +52,6 @@ public:
       std::string description;
       std::string tag;
    };
-   ~VaultItem(){}
 
    ItemProperty property;
 };
