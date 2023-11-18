@@ -2,7 +2,7 @@
 
 bool Vault::addAccount(const VaultItem &vlt)
 {
-    if (SearchHandler::SearchDuplicate(vlt.property.domain))
+    if (SearchHandler::returnAll(vlt.property.domain))
     { // I'm sure this wont be sufficent to find duplicates
         for (auto it = this->vault[vlt.property.domain].begin(); it != this->vault[vlt.property.domain].end(); ++it)
         {
@@ -24,7 +24,7 @@ bool Vault::addAccount(const VaultItem &vlt)
 void Vault::deleteAccount(const std::string &acct)
 { 
    std::string hold;
-   VaultItem vlt = SearchHandler::ReturnReference(acct);
+   VaultItem vlt = SearchHandler::returnAll(acct);
    PrintHandler::PrintAccount(vlt);
    std::cout << "Are you sure you want to delete this account? (y/n)\n";
    std::cin >> hold;
@@ -41,8 +41,7 @@ void Vault::deleteAccount(const std::string &acct)
 }
 void Vault::modifyAccount(const std::string &acct)
 {
-    VaultItem vlt = SearchHandler::ReturnReference(acct);
-    VaultItem temp=vlt;
+    std::vector<VaultItem> vlt = SearchHandler::returnAll(acct);
     PrintHandler::PrintAccount(vlt);
 
     std::cout<<"Domain: ";
