@@ -1,5 +1,5 @@
 #include "../include/SearchHandler.hpp"
-
-std::vector<VaultItem> SearchHandler::returnAll(std::string &search){
+ 
+std::vector<VaultItem> SearchHandler::returnAll(const std::string &search){
     
 }
