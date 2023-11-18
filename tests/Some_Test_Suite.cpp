@@ -1,5 +1,4 @@
 #include "../include/PasswordQualityHandler.hpp"
-// #include "../src/PasswordQualityHandler.cpp"
 #include "../external/googletest/googletest/include/gtest/gtest.h"
 #include "../include/FileHandler.hpp"
 #include "../include/InputValidationHandler.hpp"
