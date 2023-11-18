@@ -1,5 +1,4 @@
 #include "../include/PasswordManager.hpp"
-#include <string>
 
 void PasswordManager::Menu_Statement(){
    std::cout<< "Welecome, " << currentUser.username << "\n";
@@ -14,12 +13,28 @@ void PasswordManager::Run_CLI_lock()
 {
    if(LoginHandler::IsLoginInfoMatchingVault(currentUser))
    {  
-   PasswordManager::PrintMasterCredentials();
-   //start loading information from vault here
-  // char userInput;
-  // std::cout<< "Welecome, " << currentUser.username << endl;
+      PasswordManager::PrintMasterCredentials();
+      //start loading information from vault here
+      char userInput;
+      Menu_Statement();
+      std::cin >> userInput;
+      std::cout << "\n";
+      char input = std::tolower(userInput, std::locale());
+      while(input != 'l' || input != 'e'){
+         if(input == 'a'){ //add item from vault
 
-   
+         }else if(input == 's'){ //search item from vault
 
+         }else if(input == 'd'){ //delete item from vault
+
+         }else if(input == 'm'){ //modify item from vault
+
+         }else{   //test case if user input an invalid instruction
+               std::cout << "Input not recognized, type in a new input: ";
+               std::cin >> userInput;
+               std::cout << std::endl;
+               input = std::tolower(userInput, std::locale());
+            }
+      }
    }
 }
