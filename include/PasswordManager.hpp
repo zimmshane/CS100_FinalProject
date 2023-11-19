@@ -4,13 +4,16 @@
 #include <iostream>
 #include "Vault.hpp"
 #include "LoginHandler.hpp"
+#include "SearchHandler.hpp"
+#include "UserInputHandler.hpp"
+#include "PrintHandler.hpp"
 
 class PasswordManager
 {
 public:
    PasswordManager() { }
    ~PasswordManager() { }
-   void Run_CLI_lock(int argc, char* argv[]);
+   void Run_CLI_lock(int argc , char* argv[]);
 
    MasterCredential currentUser;
    Vault userVault;
@@ -26,9 +29,11 @@ public:
    };
 
    Config config;
-
+   void Logout();
+   void Exit();
    // debug functions
    inline void PrintMasterCredentials() { std::cout << currentUser.username << " | " << currentUser.password << "\n"; }
+
 };
 
 #endif // !PASSWORDMANAGER_HPP
