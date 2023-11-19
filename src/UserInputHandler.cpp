@@ -1,3 +1,4 @@
+
 #include "../include/UserInputHandler.hpp"
 
 void UserInputHandler::GetMasterInfo(MasterCredential& master)
@@ -34,3 +35,9 @@ void UserInputHandler::GetSingleChar(char& input)
 
    return;
 }
+void UserInputHandler::getStringInput(const std::string& msg, std::string& input){
+   std::cout << msg;
+   getline(std::cin,input); 
+   //TODO input validation
+}
+
