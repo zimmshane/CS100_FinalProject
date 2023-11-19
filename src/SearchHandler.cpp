@@ -20,3 +20,9 @@ std::vector<VaultItem> SearchHandler::returnAll(const std::string &search, const
     }
     return results;
 }
+
+void SearchHandler::Search(const std:: string&)
+{
+
+    return;
+}

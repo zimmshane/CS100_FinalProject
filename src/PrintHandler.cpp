@@ -27,4 +27,16 @@ void PrintHandler::printVector(const std::vector<VaultItem>& list){
 }
 void PrintHandler::printVaultItem(const VaultItem& vitem){
    std::cout << std::endl << vitem.property.domain << " , " << vitem.username << " , " << vitem.password << " , "<< vitem.property.description << " , " << vitem.property.tag << std::endl;
+
+void PrintHandler::PrintMainMenu()
+{
+   std::cout << "(A)dd\n"
+      << "(S)earch \n"
+      << "(D)elete\n"
+      << "(M)odify\n"
+      << "(L)ogout\n"
+      << "(E)xit\n"
+      << "><>choice: ";
+
+   return;
 }

@@ -1,4 +1,4 @@
-#include "../include/Account.hpp"
+#include "../include/PasswordQualityHandler.hpp"
 #include "../external/googletest/googletest/include/gtest/gtest.h"
 #include "../include/FileHandler.hpp"
 #include "../include/InputValidationHandler.hpp"
@@ -118,3 +118,18 @@ TEST(VaultTests, canModifyDomain){
 VaultItem i1("jimmy22","LongJohnSilverLUVR","ClubPenguin","Fun game","-f");
 Vault v1; //non functional
 v1.addAccount(i1);  //will require function to take string stream input */
+TEST(PasswordQualityTests, invalidPasswords)
+{
+   EXPECT_FALSE(PasswordQualityHandler::StrengthChecker("2short"));
+   EXPECT_FALSE(PasswordQualityHandler::StrengthChecker("notacceptablecuzalllower"));
+   EXPECT_FALSE(PasswordQualityHandler::StrengthChecker("NOTACCEPTABLECUZALLUPPER"));
+   EXPECT_FALSE(PasswordQualityHandler::StrengthChecker("!@#$%^&****"));
+   EXPECT_FALSE(PasswordQualityHandler::StrengthChecker("DoesnthaveSymbol1"));
+
+}
+
+TEST(PasswordQualityTests, verifyValidPasswords)
+{
+   EXPECT_TRUE(PasswordQualityHandler::StrengthChecker("H3LLoT4ere!"));
+   EXPECT_TRUE(PasswordQualityHandler::StrengthChecker("#Th1sworks"));
+}

@@ -12,6 +12,7 @@ public:
    static void GetMasterInfo(MasterCredential& master);
    static void GetSingleChar(char& inputVariable);
    static void getStringInput(const std::string& message,std::string& input);
+   static void GetUpperChar(char& input);
 };
 
 #endif // !USERINPUTHANDLER_HPP

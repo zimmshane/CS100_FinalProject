@@ -4,8 +4,12 @@
 /CMakeFiles/
 /bin/
 /lib/
-/build/
+lib/libgtest_main.a
+lib/libgtest.a
 CMakeCache.txt
+/build/
 Makefile
+bin/dev
+bin/dev_tests
 jeff.cpp
 src/shane.cpp
