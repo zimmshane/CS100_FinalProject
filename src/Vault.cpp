@@ -1,6 +1,7 @@
 #include "../include/Vault.hpp"
 
 bool Vault::addAccount(const VaultItem&){
+    std::cout << "Testing add\n";
     return true;
 }
 

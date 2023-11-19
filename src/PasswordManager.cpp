@@ -25,33 +25,43 @@ void PasswordManager::Run_CLI_lock()
       //start loading information from vault here
       char userInput;
       Menu_Statement();
-      std::cin >> userInput;
-      std::cout << "\n";
+      UserInputHandler::GetSingleChar(userInput);
       char input = std::tolower(userInput, std::locale());
       //example code
       VaultItem item = VaultItem("username" , "password", "domain", "description", "tag");
       SearchHandler search;
       while(input != 'l' || input != 'e'){ 
          if(input == 'a'){ //add item from vault
-            userVault.addAccount(item);
+            userVault.addAccount(item); 
+            Menu_Statement();
+            UserInputHandler::GetSingleChar(input);
          }else if(input == 's'){ //search item from vault
             search.Search("hello");
+            Menu_Statement();
+            UserInputHandler::GetSingleChar(input);
          }else if(input == 'd'){ //delete item from vault
             userVault.deleteAccount("hello");
+            Menu_Statement();
+            UserInputHandler::GetSingleChar(input);
          }else if(input == 'm'){ //modify item from vault
             userVault.modifyAccount("hello");
+            Menu_Statement();
+            UserInputHandler::GetSingleChar(input);
+         }else if(input == 'l' || input == 'e'){
+            break;
          }else{   //test case if user input an invalid instruction
                std::cout << "Input not recognized, type in a new input: ";
-               std::cin >> userInput;
-               std::cout << std::endl;
-               input = std::tolower(userInput, std::locale());
+               UserInputHandler::GetSingleChar(input);
+               input = std::tolower(input, std::locale());
          }
       }
       if(input == 'l'){ //tests logout
          Logout();
+         return;
       }
       if(input == 'e'){ //tests exit
          Exit();
+         return;
       }
    }
 }

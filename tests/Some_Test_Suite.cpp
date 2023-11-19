@@ -75,11 +75,3 @@ TEST(PasswordQualityTests, verifyValidPasswords)
    EXPECT_TRUE(PasswordQualityHandler::StrengthChecker("H3LLoT4ere!"));
    EXPECT_TRUE(PasswordQualityHandler::StrengthChecker("#Th1sworks"));
 }
-
-TEST(MainMenuTests, verifyValidInput_A){
-
-}
-
-TEST(MainMenuTests, verifyInvalidInput_S){
-   
-}

@@ -5,6 +5,7 @@
 #include "Vault.hpp"
 #include "LoginHandler.hpp"
 #include "SearchHandler.hpp"
+#include "UserInputHandler.hpp"
 
 class PasswordManager
 {
