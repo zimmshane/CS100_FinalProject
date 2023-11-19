@@ -16,3 +16,16 @@ void PrintHandler::PrintVault(const Vault& vault)
       }
    }
 }
+
+void PrintHandler::PrintMainMenu()
+{
+   std::cout << "(A)dd\n"
+      << "(S)earch \n"
+      << "(D)elete\n"
+      << "(M)odify\n"
+      << "(L)ogout\n"
+      << "(E)xit\n"
+      << "><>choice: ";
+
+   return;
+}

@@ -9,7 +9,7 @@ class UserInputHandler
 {
 public:
    static void GetMasterInfo(MasterCredential& master);
-   static void GetSingleChar(char& inputVariable);
+   static void GetUpperChar(char& input);
 };
 
 #endif // !USERINPUTHANDLER_HPP

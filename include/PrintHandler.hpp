@@ -8,6 +8,7 @@ class PrintHandler
 {
 public:
    static void PrintVault(const Vault& vault);
+   static void PrintMainMenu();
 };
 
 #endif // !PRINTHANDLER_HPP

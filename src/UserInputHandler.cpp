@@ -26,10 +26,13 @@ void UserInputHandler::GetMasterInfo(MasterCredential& master)
    return;
 }
 
-// reusable for later main menu inputs
-void UserInputHandler::GetSingleChar(char& input)
+// reusable for later main menu inputs, ignores case sensitivty normalized with toupper
+void UserInputHandler::GetUpperChar(char& input)
 {
    std::cin >> input;
+   input = static_cast<char>(toupper(input));
+
+   // ignore remaining buffered input
    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
    return;
