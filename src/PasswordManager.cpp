@@ -32,7 +32,7 @@ void PasswordManager::Run_CLI_lock(int argc , char* argv[])
             std::cout << "ADDED ITEM\n\n" << std::flush;
             break;
          case 'S':
-            std::cout << "SEARCHED ITEM\n\n";
+            std::cout << "SEARCHED ITEM\n\n"; // get line, parse arguments, different overload based on # of arguments
             break;
          case 'M':
             std::cout << "MODIFIED ITEM\n\n";
@@ -46,6 +46,10 @@ void PasswordManager::Run_CLI_lock(int argc , char* argv[])
          case 'L':
             std::cout << "LOGGED OUT\n\n";
             return;
+         case 'P':
+            std::cout << "PRINTED VAULT\n\n";
+            PrintHandler::PrintVault(userVault);
+            break;
          default:
             std::cout << "INVALID INPUT\n\n";
             break;
