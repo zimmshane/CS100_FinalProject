@@ -1,6 +1,17 @@
 #include "../include/PasswordManager.hpp"
+#include "../src/Vault.cpp"
+#include "../src/SearchHandler.cpp"
 
-void PasswordManager::Run_CLI_lock(int argc, char* argv[])
+void PasswordManager::Logout(){
+   std::cout << "testing logout\n";
+   exit(1);
+}
+void PasswordManager::Exit(){
+   std::cout << "testing exit\n";
+   exit(1);
+}
+
+void PasswordManager::Run_CLI_lock(int argc , char* argv[])
 {
    if(LoginHandler::IsLoginInfoMatchingVault(currentUser))
    { // start loading information from vault here

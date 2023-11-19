@@ -1,7 +1,7 @@
 #ifndef SEARCHHANDLER_HPP
 #define SEARCHHANDLER_HPP
 #include "Account.hpp"
-
+#include <iostream>
 class SearchHandler {
     public:
         void Search(const std:: string&);
