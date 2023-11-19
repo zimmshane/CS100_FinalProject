@@ -20,19 +20,15 @@ void PasswordManager::Run_CLI_lock(int argc, char* argv[])
          case 'S':
             std::cout << "SEARCHED ITEM\n";
             break;
-
          case 'D':
             std::cout << "DELETED ITEM\n";
             break;
-
          case 'E':
             std::cout << "EXITED VAULT\n";
             break;
-
          case 'L':
             std::cout << "LOGGED OUT\n";
             break;
-
 
          // default:
          //    break;
