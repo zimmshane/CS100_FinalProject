@@ -1,7 +1,5 @@
 #include "../include/PasswordManager.hpp"
-#include "../src/Vault.cpp"
-#include "../src/SearchHandler.cpp"
-#include "../src/PrintHandler.cpp"
+#include "../include/Vault.hpp"
 
 void PasswordManager::Logout()
 {

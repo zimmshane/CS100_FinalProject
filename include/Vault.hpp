@@ -6,12 +6,9 @@
 #include <vector>
 #include <iostream>
 #include <string>
-
-class Account;
-class SearchHandler;
-class VaultItem;
-class PasswordManager;
-class MasterCredential;
+#include "Account.hpp"
+#include "PrintHandler.hpp"
+#include "SearchHandler.hpp"
 
 
 class Vault

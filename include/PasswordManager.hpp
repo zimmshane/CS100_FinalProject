@@ -2,14 +2,12 @@
 #define PASSWORDMANAGER_HPP
 
 #include <iostream>
-#include "LoginHandler.hpp"
+#include "Vault.hpp"
 #include "Account.hpp"
+#include "LoginHandler.hpp"
+#include "PrintHandler.hpp"
 
-class PrintHandler;
 class Vault;
-class LoginHandler;
-class Account;
-class VaultItem;
 
 class PasswordManager
 {

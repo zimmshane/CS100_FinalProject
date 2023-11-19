@@ -3,11 +3,10 @@
 
 #include <iostream>
 #include <vector>
+#include "Account.hpp"
+#include "PasswordManager.hpp"
 
 class Vault;
-class PasswordManager;
-class VaultItem;
-class Account;
 
 class PrintHandler {
 public:

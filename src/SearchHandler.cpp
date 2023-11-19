@@ -1,7 +1,5 @@
 #include "../include/SearchHandler.hpp"
-#include "../include/Vault.hpp"
-#include "../include/Account.hpp"
- 
+
 std::vector<VaultItem> SearchHandler::returnAll(const std::string &search, const Vault &vlt){
     std::vector<VaultItem> results;
     for (auto& entry : vlt.vault){

@@ -1,6 +1,4 @@
 #include "../include/PrintHandler.hpp"
-#include "../include/Vault.hpp"
-#include "../include/Account.hpp"
 
 void PrintHandler::PrintVault(const Vault& vault)
 {
@@ -27,7 +25,7 @@ void PrintHandler::printVector(const std::vector<VaultItem>& list){
 }
 void PrintHandler::printVaultItem(const VaultItem& vitem){
    std::cout << std::endl << vitem.property.domain << " , " << vitem.username << " , " << vitem.password << " , "<< vitem.property.description << " , " << vitem.property.tag << std::endl;
-
+}
 void PrintHandler::PrintMainMenu()
 {
    std::cout << "(A)dd\n"

@@ -29,8 +29,6 @@ add_executable(dev
 
 
 add_executable(dev_tests
-    ./tests/Some_Test_Suite.cpp
-
     ./src/FileHandler.cpp
     ./src/InputValidationHandler.cpp
     ./src/LoginHandler.cpp
@@ -40,6 +38,8 @@ add_executable(dev_tests
     ./src/UserInputHandler.cpp
     ./src/Vault.cpp
     ./src/SearchHandler.cpp
+
+    ./tests/Some_Test_Suite.cpp
 )
 
 

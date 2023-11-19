@@ -1,8 +1,4 @@
 #include "../include/Vault.hpp"
-#include "../include/SearchHandler.hpp"
-#include "../include/PrintHandler.hpp"
-#include "../include/Account.hpp"
-#include "../include/UserInputHandler.hpp"
 
 bool Vault::addAccount(const VaultItem &vlt)
 {
@@ -47,7 +43,7 @@ if (this->vault[target.property.domain].size()==0){
      return;
     }
     else {
-     `auto it = Vault::getPositionedItr(target);
+     std::vector<VaultItem>::iterator it = Vault::getPositionedItr(target);
      this->vault[target.property.domain].erase(it);} // delete spectific vector pos
    
 }

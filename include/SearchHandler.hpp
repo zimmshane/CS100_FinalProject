@@ -4,11 +4,9 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include "Account.hpp"
 
 class Vault;
-class Account;
-class PasswordManager;
-class VaultItem;
 
 class SearchHandler{
 public:
