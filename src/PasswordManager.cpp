@@ -10,27 +10,31 @@ void PasswordManager::Run_CLI_lock(int argc, char* argv[])
          PrintHandler::PrintMainMenu();
          UserInputHandler::GetUpperChar(mainMenuInput);
 
+         // system("CLS"); // clear screen after receiving input;
+
          switch (mainMenuInput)
          {
          case 'A':
             /* code */
-            std::cout << "ADDED ITEM\n";
+            std::cout << "ADDED ITEM\n\n" << std::flush;
             break;
          case 'S':
-            std::cout << "SEARCHED ITEM\n";
+            std::cout << "SEARCHED ITEM\n\n";
+            break;
+         case 'M':
+            std::cout << "MODIFIED ITEM\n\n";
             break;
          case 'D':
-            std::cout << "DELETED ITEM\n";
+            std::cout << "DELETED ITEM\n\n";
             break;
          case 'E':
-            std::cout << "EXITED VAULT\n";
-            break;
+            std::cout << "EXITED VAULT\n\n";
+            return;
          case 'L':
-            std::cout << "LOGGED OUT\n";
-            break;
-
+            std::cout << "LOGGED OUT\n\n";
+            return;
          default:
-            std::cout << "INVALID INPUT\n";
+            std::cout << "INVALID INPUT\n\n";
             break;
          }
 

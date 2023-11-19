@@ -19,6 +19,7 @@ void PrintHandler::PrintVault(const Vault& vault)
 
 void PrintHandler::PrintMainMenu()
 {
+
    std::cout << "(A)dd\n"
       << "(S)earch \n"
       << "(D)elete\n"
