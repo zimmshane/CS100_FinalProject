@@ -1,9 +1,13 @@
-#include "../include/vault.hpp"
+#include "../include/Vault.hpp"
+#include "../include/SearchHandler.hpp"
+#include "../include/PrintHandler.hpp"
+#include "../include/Account.hpp"
+#include "../include/UserInputHandler.hpp"
 
 bool Vault::addAccount(const VaultItem &vlt)
 {
-    if (SearchHandler::returnAll(vlt.property.domain))
-    { // I'm sure this wont be sufficent to find duplicates
+    if (SearchHandler::returnAll(vlt.property.domain,*this).size()==0) // domain not in list
+    {
         for (auto it = this->vault[vlt.property.domain].begin(); it != this->vault[vlt.property.domain].end(); ++it)
         {
             if (it->username == vlt.username)
@@ -16,59 +20,83 @@ bool Vault::addAccount(const VaultItem &vlt)
         return true;
     }
     else
-    {
-        this->vault.emplace(std::make_pair(vlt.property.domain, vlt)); // domain and username free
+    {   
+        this->vault[vlt.property.domain].push_back(vlt); // domain and username free
         return true;
     }
 }
 void Vault::deleteAccount(const std::string &acct)
 { 
-   std::string hold;
-   VaultItem vlt = SearchHandler::returnAll(acct);
-   PrintHandler::PrintAccount(vlt);
-   std::cout << "Are you sure you want to delete this account? (y/n)\n";
-   std::cin >> hold;
-   if (hold == "y" || hold == "Y"){
-    if (this->vault[vlt.property.domain].size() == 1){
-        this->vault.erase(vlt.property.domain); //if only one username in domain --> delete entire domain
+    VaultItem target = Vault::findFromSearch(acct);
+
+    std::string input;
+    UserInputHandler::getStringInput("Are you sure you want to delete this account? (y/n)\n",input);
+   if (input == "y" || input == "Y"){
+    std::cout<<"Account Deleted.\n";
+    if (this->vault[target.property.domain].size() == 1){
+        this->vault.erase(target.property.domain); //if only one username in domain --> delete entire domain
     } 
     else {
-        for (auto itr =vault[vlt.property.domain].begin(); itr != vault[vlt.property.domain].end(); itr++ )
-            if (itr->username == vlt.username){ // find usernames pos in vector
-             this->vault[vlt.property.domain].erase(itr);} // delete spectific vector pos
-    }
+        auto it = Vault::getPositionedItr(target);
+        this->vault[target.property.domain].erase(it);} // delete spectific vector pos
    }
+    else{
+        std::cout << "Account Deletion Aborted.\n";
+    }
+
 }
+
+
 void Vault::modifyAccount(const std::string &acct)
 {
-    std::vector<VaultItem> vlt = SearchHandler::returnAll(acct);
-    PrintHandler::PrintAccount(vlt);
+    VaultItem target = Vault::findFromSearch(acct);
+    std::vector<VaultItem>::iterator it = Vault::getPositionedItr(target);
 
-    std::cout<<"Domain: ";
-    std::string hold;
-    std::cin >> hold;
-    if (hold != "" || hold != " "){
-        temp.property.domain = hold; // this will likely require deleteaccount() -> addaccount()
+    std::string input;
+    UserInputHandler::getStringInput("Domain: ",input);
+    if (input != "\0" || input != " "){
+        it->property.domain = input; // this will likely require deleteaccount() -> addaccount()
+
     }
-   
-    std::cout<<"Username: ";
-    std::cin >> hold;
-    if(hold != "" || hold != " "){
-        vlt.username=hold;
+    UserInputHandler::getStringInput("Username: ",input);
+    if(input != "\0" || input != " "){
+        it->username=input;
     }
-    std::cout<<"Password: ";
-    std::cin >> hold;
-    if(hold != "" || hold != " "){ //this doesnt use whatever password checker function yet
-        vlt.password=hold; 
+
+    UserInputHandler::getStringInput("Password: ",input);
+    if(input != "\0" || input != " "){ //this doesnt use whatever password checker function yet
+        it->password=input; 
     }
-    std::cout<<"Description: ";
-    getline(std::cin,hold); 
-    if (hold != "" || hold != " "){
-        vlt.property.description = hold;
+
+    UserInputHandler::getStringInput("Description: ",input);
+    if (input != "\0" || input != " "){
+        it->property.description = input;
     }
-    std::cout<<"Tags: ";
-    getline(std::cin,hold); 
-    if (hold != "" || hold != " "){
-        vlt.property.tag = hold;
+    UserInputHandler::getStringInput("Tags: ",input);
+    if (input != "\0" || input != " "){
+        it->property.tag = input;
     }
+    
+    PrintHandler::printVaultItem(*it);
 }
+
+VaultItem Vault::findFromSearch(const std::string& search){
+
+   std::vector<VaultItem> vltlist = SearchHandler::returnAll(search,*this);
+   PrintHandler::printVector(vltlist);
+
+   std::cout << "Input the number for the you're interested in: " ;
+   int indexin = 0;
+   std::cin >> indexin; //TODO: Validate this input
+   VaultItem target = vltlist.at(indexin-1);
+   PrintHandler::printVaultItem(target);
+   return target;
+}
+std::vector<VaultItem>::iterator Vault::getPositionedItr(const VaultItem& target){
+    auto it = this->vault[target.property.domain].begin();
+    for (it; it != this->vault[target.property.domain].end(); ++it){
+        if (it->username == target.username) break;
+    }
+    return it;
+}
+
