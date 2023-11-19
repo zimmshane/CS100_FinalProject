@@ -4,52 +4,50 @@
 
 void PasswordManager::Logout(){
    std::cout << "testing logout\n";
+   exit(1);
 }
 void PasswordManager::Exit(){
    std::cout << "testing exit\n";
+   exit(1);
 }
 
-void PasswordManager::Run_CLI_lock()
+void PasswordManager::Run_CLI_lock(int argc , char* argv[])
 {
    if(LoginHandler::IsLoginInfoMatchingVault(currentUser))
    {  
       PasswordManager::PrintMasterCredentials();
-      //start loading information from vault here
+      char userInput;
+      char input;
       PrintHandler Menu_Statement;
       SearchHandler search;
-      char input;
-      //example code
-      VaultItem item = VaultItem("username" , "password", "domain", "description", "tag");
-      std::cout<< "Welecome, " << currentUser.username << "\n";
-      do{
-         char userInput;
+      bool runUntilQuit = true;
+      while(runUntilQuit){
          Menu_Statement.PrintMenu();
          UserInputHandler::GetSingleChar(userInput);
          input = std::tolower(userInput, std::locale());
-         if(input == 'a'){ //add item from vault
-            userVault.addAccount(item); 
-         }else if(input == 's'){ //search item from vault
-            search.Search("hello");
-         }else if(input == 'd'){ //delete item from vault
-            userVault.deleteAccount("hello");
-         }else if(input == 'm'){ //modify item from vault
-            userVault.modifyAccount("hello");
-         }else if(input == 'l' || input == 'e'){
-            break;
-         }else{   //test case if user input an invalid instruction
-               std::cout << "Input not recognized, type in a new input: ";
-               UserInputHandler::GetSingleChar(userInput);
-               input = std::tolower(userInput, std::locale());
+         switch(input){
+            case 'a':
+               std::cout << "Added item\n";
+               break;
+            case 's':
+               search.Search("hello");
+               break;
+           case 'd':
+               userVault.deleteAccount("hello");
+               break;
+            case 'm':
+               userVault.modifyAccount("hello");
+               break;
+            case 'e':
+               Exit();
+               break;
+            case 'l':
+               Logout();
+               break;
+            default:
+               std::cout<<"Invalud Input\n";
+               break;
          }
-      }while(input != 'l' || input != 'e');
-
-      if(input == 'l'){ //tests logout
-         Logout();
-         return;
-      }
-      if(input == 'e'){ //tests exit
-         Exit();
-         return;
       }
    }
 }
