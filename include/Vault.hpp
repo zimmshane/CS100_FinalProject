@@ -23,6 +23,7 @@ public:
    ~Vault() { }
    bool addAccount(const VaultItem&);
    void deleteAccount(const std::string&);
+   void forceDeleteAccount(const VaultItem&);
    void modifyAccount(const std::string&);
    VaultItem findFromSearch(const std::string&);
    std::vector<VaultItem>::iterator getPositionedItr(const VaultItem& target); //returns a vector iterator at the location of a specific vault item

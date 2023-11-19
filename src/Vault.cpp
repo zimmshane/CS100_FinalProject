@@ -32,18 +32,24 @@ void Vault::deleteAccount(const std::string &acct)
     std::string input;
     UserInputHandler::getStringInput("Are you sure you want to delete this account? (y/n)\n",input);
    if (input == "y" || input == "Y"){
-    std::cout<<"Account Deleted.\n";
-    if (this->vault[target.property.domain].size() == 1){
-        this->vault.erase(target.property.domain); //if only one username in domain --> delete entire domain
-    } 
-    else {
-        auto it = Vault::getPositionedItr(target);
-        this->vault[target.property.domain].erase(it);} // delete spectific vector pos
-   }
+        std::cout<<"Account Deleted.\n";
+        forceDeleteAccount(target);}
     else{
         std::cout << "Account Deletion Aborted.\n";
     }
-
+}
+void Vault::forceDeleteAccount(const VaultItem& target) {
+if (this->vault[target.property.domain].size() == 1){
+        this->vault.erase(target.property.domain); //if only one username in domain --> delete entire domain
+    } 
+    else if (this->vault[target.property.domain].size()==0){
+        std::cout << "Account Deletion Failed\n";
+        return;
+    }
+    else {
+        auto it = Vault::getPositionedItr(target);
+        this->vault[target.property.domain].erase(it);} // delete spectific vector pos
+   
 }
 
 
@@ -55,9 +61,12 @@ void Vault::modifyAccount(const std::string &acct)
     std::string input;
     UserInputHandler::getStringInput("Domain: ",input);
     if (input != "\0" || input != " "){
-        it->property.domain = input; // this will likely require deleteaccount() -> addaccount()
-
+        forceDeleteAccount(target);
+        target.property.domain=input;
+        this->vault[input].push_back(target);
+        it = Vault::getPositionedItr(target);
     }
+    
     UserInputHandler::getStringInput("Username: ",input);
     if(input != "\0" || input != " "){
         it->username=input;
@@ -76,7 +85,7 @@ void Vault::modifyAccount(const std::string &acct)
     if (input != "\0" || input != " "){
         it->property.tag = input;
     }
-    
+
     PrintHandler::printVaultItem(*it);
 }
 
