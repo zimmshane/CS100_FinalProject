@@ -16,3 +16,11 @@ void PrintHandler::PrintVault(const Vault& vault)
       }
    }
 }
+void PrintHandler::PrintMenu(){
+   std::cout << "a - Add an item to vault\n";
+   std::cout << "s - Search item from vault\n";
+   std::cout << "d - Delete item from vault\n";
+   std::cout << "m - Modify item from vault\n";
+   std::cout << "l - logout(must sign in again)\n";
+   std::cout << "e - exit(auto login will be saved)\n";
+}

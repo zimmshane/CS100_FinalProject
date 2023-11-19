@@ -6,6 +6,7 @@
 #include "LoginHandler.hpp"
 #include "SearchHandler.hpp"
 #include "UserInputHandler.hpp"
+#include "PrintHandler.hpp"
 
 class PasswordManager
 {
@@ -13,7 +14,6 @@ public:
    PasswordManager() { }
    ~PasswordManager() { }
    void Run_CLI_lock();
-   void Menu_Statement();
 
    MasterCredential currentUser;
    Vault userVault;
