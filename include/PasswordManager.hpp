@@ -4,6 +4,11 @@
 #include <iostream>
 #include "Vault.hpp"
 #include "LoginHandler.hpp"
+#include "Account.hpp"
+class Vault;
+class LoginHandler;
+class Account;
+class VaultItem;
 
 class PasswordManager
 {
