@@ -4,7 +4,6 @@ void PasswordManager::Run_CLI_lock(int argc, char* argv[])
 {
    if(LoginHandler::IsLoginInfoMatchingVault(currentUser))
    { // start loading information from vault here
-
       char mainMenuInput;
       for (;;)
       {
@@ -30,11 +29,14 @@ void PasswordManager::Run_CLI_lock(int argc, char* argv[])
             std::cout << "LOGGED OUT\n";
             break;
 
-         // default:
-         //    break;
+         default:
+            std::cout << "INVALID INPUT\n";
+            break;
          }
 
-
       }
+
    }
+
+   return;
 }
