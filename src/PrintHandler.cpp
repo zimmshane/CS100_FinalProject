@@ -1,4 +1,6 @@
 #include "../include/PrintHandler.hpp"
+#include "../include/Vault.hpp"
+#include "../include/Account.hpp"
 
 void PrintHandler::PrintVault(const Vault& vault)
 {
@@ -16,6 +18,13 @@ void PrintHandler::PrintVault(const Vault& vault)
       }
    }
 }
-void printVector(const std::vector<VaultItem> list){
-   //this NEED PRINT WHOLE VECTOR W/ INDEXES
+void PrintHandler::printVector(const std::vector<VaultItem>& list){
+   int count = 1;
+   for (auto it = list.begin(); it != list.end(); ++it){
+      std::cout << count << ". " << (*it).property.domain << " , " <<  (*it).username << " \n"; //prints items in vector w/ index count
+      ++count;
+   }
+}
+void PrintHandler::printVaultItem(const VaultItem& vitem){
+   std::cout << std::endl << vitem.property.domain << " , " << vitem.username << " , " << vitem.password << " , "<< vitem.property.description << " , " << vitem.property.tag << std::endl;
 }
