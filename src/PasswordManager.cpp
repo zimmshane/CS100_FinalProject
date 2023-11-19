@@ -2,13 +2,15 @@
 #include "../src/Vault.cpp"
 #include "../src/SearchHandler.cpp"
 
-void PasswordManager::Logout(){
-   std::cout << "testing logout\n";
-   exit(1);
+void PasswordManager::Logout()
+{
+
+   return;
 }
-void PasswordManager::Exit(){
-   std::cout << "testing exit\n";
-   exit(1);
+void PasswordManager::Exit()
+{
+
+   return;
 }
 
 void PasswordManager::Run_CLI_lock(int argc , char* argv[])

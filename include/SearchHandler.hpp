@@ -1,14 +1,16 @@
 #ifndef SEARCHHANDLER_HPP
 #define SEARCHHANDLER_HPP
-#include "Account.hpp"
+
 #include <iostream>
-class SearchHandler {
-    public:
-        void Search(const std:: string&);
-        void Search(const std:: string&, const std::string&);
-        bool SearchDuplicate(const std:: string&);
-        int SearchSubstring(const std::string&, int);
-        VaultItem& ReturnReference(const std::string&);
+#include "Account.hpp"
+
+class SearchHandler
+{
+public:
+    static void Search(const std::string& domain, const std::string& username); // domain specific username search
+    static void Search(const std::string& username); // wild card thorough vault search
+    static bool SearchDuplicatePassword(const std::string& password); // take a password and run through every key domain
+    static VaultItem& ReturnReference(const std::string& username); // returns item reference for modification
 };
 
 #endif // !SEARCHHANDLER_HPP

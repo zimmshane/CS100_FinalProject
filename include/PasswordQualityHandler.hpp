@@ -3,7 +3,8 @@
 
 #include "Account.hpp"
 
-class PasswordQualityHandler {
+class PasswordQualityHandler
+{
 public:
     static bool StrengthChecker(const std::string& pass);
     static bool RepeatChecker(const std::string& pass);
