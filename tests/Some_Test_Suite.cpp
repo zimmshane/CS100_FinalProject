@@ -59,6 +59,7 @@ TEST(IllegalPasswordTests, TrailingSpace)
 {
    EXPECT_FALSE(InputValidationHandler::IsMasterPasswordGood("this string has a leading space   has many !! ##!@# trailing spaces     "));
 }
+
 TEST(VaultTests, canAddAccount){
 VaultItem i1("jimmy22","LongJohnSilverLUVR","ClubPenguin","Fun game","-f");
 Vault v1;
@@ -72,17 +73,19 @@ VaultItem i2("jimmy22","LongJohnSilverHATER","ClubPenguin","Fun game","-f");
 Vault v1;
 v1.addAccount(i1);
 v1.addAccount(i2);
-EXPECT_TRUE(v1.vault[i1.property.domain].at(1).username,i2.username)
+EXPECT_EQ(v1.vault[i1.property.domain].at(1).username,i2.username);
 }
 
 TEST(VaultTests, canNOTAddDuplicateAccount){
 VaultItem i1("jimmy22","LongJohnSilverLUVR","ClubPenguin","Fun game","-f");
 Vault v1;
 v1.addAccount(i1);
-EXPECT_FALSE(v1.addAccount(v1));
+EXPECT_FALSE(v1.addAccount(i1));
 EXPECT_TRUE(v1.vault[i1.property.domain].size()==1);
 }
 
+//THESE NEED USER INPUT WORKAROUND
+/* 
 TEST(VaultTests, canDeleteAccount){
 VaultItem i1("jimmy22","LongJohnSilverLUVR","ClubPenguin","Fun game","-f");
 VaultItem i2("jimmy22","LongJohnSilverHATER","ClubPenguin","Fun game","-f");
@@ -114,4 +117,4 @@ v1.modifyAccount(); //will require function to take string stream input
 TEST(VaultTests, canModifyDomain){
 VaultItem i1("jimmy22","LongJohnSilverLUVR","ClubPenguin","Fun game","-f");
 Vault v1; //non functional
-v1.addAccount(i1);  //will require function to take string stream input
+v1.addAccount(i1);  //will require function to take string stream input */
