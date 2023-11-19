@@ -40,15 +40,15 @@ void Vault::deleteAccount(const std::string &acct)
 }
 void Vault::forceDeleteAccount(const VaultItem& target) {
 if (this->vault[target.property.domain].size() == 1){
-        this->vault.erase(target.property.domain); //if only one username in domain --> delete entire domain
+    this->vault.erase(target.property.domain); //if only one username in domain --> delete entire domain
     } 
-    else if (this->vault[target.property.domain].size()==0){
-        std::cout << "Account Deletion Failed\n";
-        return;
+if (this->vault[target.property.domain].size()==0){
+     std::cout << "Account Deletion Failed\n";
+     return;
     }
     else {
-        auto it = Vault::getPositionedItr(target);
-        this->vault[target.property.domain].erase(it);} // delete spectific vector pos
+     `auto it = Vault::getPositionedItr(target);
+     this->vault[target.property.domain].erase(it);} // delete spectific vector pos
    
 }
 
@@ -60,7 +60,7 @@ void Vault::modifyAccount(const std::string &acct)
 
     std::string input;
     UserInputHandler::getStringInput("Domain: ",input);
-    if (input != "\0" || input != " "){
+    if (!input.empty() && input != " "){
         forceDeleteAccount(target);
         target.property.domain=input;
         this->vault[input].push_back(target);
@@ -68,21 +68,21 @@ void Vault::modifyAccount(const std::string &acct)
     }
     
     UserInputHandler::getStringInput("Username: ",input);
-    if(input != "\0" || input != " "){
+    if(!input.empty() && input != " "){
         it->username=input;
     }
 
     UserInputHandler::getStringInput("Password: ",input);
-    if(input != "\0" || input != " "){ //this doesnt use whatever password checker function yet
+    if(!input.empty() && input != " "){ //this doesnt use whatever password checker function yet
         it->password=input; 
     }
 
     UserInputHandler::getStringInput("Description: ",input);
-    if (input != "\0" || input != " "){
+    if (!input.empty() && input != " "){
         it->property.description = input;
     }
     UserInputHandler::getStringInput("Tags: ",input);
-    if (input != "\0" || input != " "){
+    if (!input.empty() && input != " "){
         it->property.tag = input;
     }
 
