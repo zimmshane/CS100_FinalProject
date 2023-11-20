@@ -27,20 +27,23 @@ void PasswordManager::Run_CLI_lock(int argc , char* argv[])
          switch (mainMenuInput)
          {
          case 'A':
-            //Vault::addAccount()
+            //TODO: addAccount takes a VaultItem input, how do we we want to get this info?
+            //userVault->addAccount(VAULTITEM)
             std::cout << "ADDED ITEM\n\n" << std::flush;
             break;
          case 'S':
             std::cout << "SEARCHED ITEM\n\n";
             break;
          case 'M':
-            //std::string input;
-            //UserInputHandler::getStringInput("Enter an domain or account: ",input);
-           // Vault::modifyAccount(input);
+            std::string input;
+            UserInputHandler::getStringInput("Enter an domain or account: ",input);
+            userVault->modifyAccount(input);
             std::cout << "MODIFIED ITEM\n\n";
             break;
          case 'D':
-            //Vault::deleteAccount()
+            std::string input;
+            UserInputHandler::getStringInput("Enter an domain or account: ",input);
+            userVault->deleteAccount(input);
             std::cout << "DELETED ITEM\n\n";
             break;
          case 'E':
