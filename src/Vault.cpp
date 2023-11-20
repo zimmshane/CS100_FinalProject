@@ -26,10 +26,10 @@ void Vault::deleteAccount(const std::string &acct)
     VaultItem target = Vault::findFromSearch(acct);
 
     std::string input;
-    UserInputHandler::getStringInput("Are you sure you want to delete this account? (y/n)\n",input);
+    UserInputHandler::getStringInput("Are you sure you want to delete this account? (y/n)\n", input);
    if (input == "y" || input == "Y"){
-        std::cout<<"Account Deleted.\n";
-        forceDeleteAccount(target);}
+        forceDeleteAccount(target);
+        std::cout<<"Account Deleted.\n";}
     else{
         std::cout << "Account Deletion Aborted.\n";
     }
