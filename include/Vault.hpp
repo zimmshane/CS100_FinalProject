@@ -7,8 +7,13 @@
 #include <iostream>
 #include <string>
 #include "Account.hpp"
-#include "PrintHandler.hpp"
+#include "UserInputHandler.hpp"
 #include "SearchHandler.hpp"
+#include "PrintHandler.hpp"
+
+class SearchHandler;
+class PrintHandler;
+class UserInputHandler;
 
 
 class Vault
