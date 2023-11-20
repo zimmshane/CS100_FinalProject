@@ -1,5 +1,5 @@
 #include "../include/PasswordManager.hpp"
-#include "../include/Vault.hpp"
+
 
 void PasswordManager::Logout()
 {
@@ -27,16 +27,20 @@ void PasswordManager::Run_CLI_lock(int argc , char* argv[])
          switch (mainMenuInput)
          {
          case 'A':
-            /* code */
+            //Vault::addAccount()
             std::cout << "ADDED ITEM\n\n" << std::flush;
             break;
          case 'S':
             std::cout << "SEARCHED ITEM\n\n";
             break;
          case 'M':
+            //std::string input;
+            //UserInputHandler::getStringInput("Enter an domain or account: ",input);
+           // Vault::modifyAccount(input);
             std::cout << "MODIFIED ITEM\n\n";
             break;
          case 'D':
+            //Vault::deleteAccount()
             std::cout << "DELETED ITEM\n\n";
             break;
          case 'E':
