@@ -11,8 +11,9 @@ class UserInputHandler
 public:
    static void GetMasterInfo(MasterCredential& master);
    static void GetSingleChar(char& inputVariable);
-   static void getStringInput(const std::string& message,std::string& input);
+   static std::string getStringInput(const std::string& message);
    static void GetUpperChar(char& input);
+   static VaultItem GetItemInput();
 };
 
 #endif // !USERINPUTHANDLER_HPP
