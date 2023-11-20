@@ -5,8 +5,10 @@
 #include <vector>
 #include <string>
 #include "Account.hpp"
+#include "Vault.hpp"
 
 class Vault;
+class VaultItem;
 
 class SearchHandler{
 public:
