@@ -12,7 +12,11 @@ void PrintHandler::PrintVault(const Vault& vault)
       {
          // honestly assign *it to its type so that it reduces  the amount of dereference calls.
          // should aim to reduce as many new gets as possible, include std::string::size() calls, just assign it to a variable for reference.
-         std::cout << (*it).username << " " << (*it).password << " " << (*it).property.domain << " " << (*it).property.description << " " << (*it).property.tag << "\n";
+         std::cout << "domain: " << (*it).property.domain << "\n"
+                  << "username: " << (*it).username << "\n"
+                  << "password: " << (*it).password << "\n"
+                  << "description: " << (*it).property.description << "\n"
+                  << "tag: " << (*it).property.tag << "\n";
       }
    }
 }

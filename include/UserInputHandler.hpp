@@ -10,6 +10,7 @@ class UserInputHandler
 public:
    static void GetMasterInfo(MasterCredential& master);
    static void GetUpperChar(char& input);
+   static VaultItem GetItemInput();
 };
 
 #endif // !USERINPUTHANDLER_HPP

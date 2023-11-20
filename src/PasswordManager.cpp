@@ -29,7 +29,8 @@ void PasswordManager::Run_CLI_lock(int argc , char* argv[])
          {
          case 'A':
             /* code */
-            std::cout << "ADDED ITEM\n\n" << std::flush;
+            std::cout << "ADDED ITEM\n\n";
+            userVault.AddAccount(UserInputHandler::GetItemInput());
             break;
          case 'S':
             std::cout << "SEARCHED ITEM\n\n"; // get line, parse arguments, different overload based on # of arguments
