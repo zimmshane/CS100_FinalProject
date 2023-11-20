@@ -2,7 +2,13 @@
 
 bool Vault::AddAccount(const VaultItem& item)
 {
-   vault[item.property.domain].push_back(item);
+   if (!(SearchHandler::IsUsernameExistInDomainVector(item.username, vault[item.property.domain]))) // pass in vault at specified domain key value to get vector
+   {
+      vault[item.property.domain].push_back(item);
+      return true;
+   }
 
-   return true;
+   std::cout << "account already exists in domain\n";
+
+   return false;
 }
