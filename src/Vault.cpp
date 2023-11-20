@@ -24,9 +24,8 @@ bool Vault::addAccount(const VaultItem &vlt)
 void Vault::deleteAccount(const std::string &acct)
 { 
     VaultItem target = Vault::findFromSearch(acct);
-
-    std::string input;
-    UserInputHandler::getStringInput("Are you sure you want to delete this account? (y/n)\n", input);
+    std::string input = "";
+    input = UserInputHandler::getStringInput("Are you sure you want to delete this account? (y/n) ");
    if (input == "y" || input == "Y"){
         forceDeleteAccount(target);
         std::cout<<"Account Deleted.\n";}
@@ -51,11 +50,12 @@ if (this->vault[target.property.domain].size()==0){
 
 void Vault::modifyAccount(const std::string &acct)
 {
-    VaultItem target = Vault::findFromSearch(acct);
+
+    VaultItem target = Vault::findFromSearch(acct); //
     std::vector<VaultItem>::iterator it = Vault::getPositionedItr(target);
 
     std::string input;
-    UserInputHandler::getStringInput("Domain: ",input);
+    input=UserInputHandler::getStringInput("Domain: ");
     if (!input.empty() && input != " "){
         forceDeleteAccount(target);
         target.property.domain=input;
@@ -63,21 +63,21 @@ void Vault::modifyAccount(const std::string &acct)
         it = Vault::getPositionedItr(target);
     }
     
-    UserInputHandler::getStringInput("Username: ",input);
+    input= UserInputHandler::getStringInput("Username: ");
     if(!input.empty() && input != " "){
         it->username=input;
     }
 
-    UserInputHandler::getStringInput("Password: ",input);
+    input= UserInputHandler::getStringInput("Password: ");
     if(!input.empty() && input != " "){ //this doesnt use whatever password checker function yet
         it->password=input; 
     }
 
-    UserInputHandler::getStringInput("Description: ",input);
+    input = UserInputHandler::getStringInput("Description: ");
     if (!input.empty() && input != " "){
         it->property.description = input;
     }
-    UserInputHandler::getStringInput("Tags: ",input);
+    input =UserInputHandler::getStringInput("Tags: ");
     if (!input.empty() && input != " "){
         it->property.tag = input;
     }
@@ -90,7 +90,7 @@ VaultItem Vault::findFromSearch(const std::string& search){
    std::vector<VaultItem> vltlist = SearchHandler::returnAll(search,*this);
    PrintHandler::printVector(vltlist);
 
-   std::cout << "Input the number for the you're interested in: " ;
+   std::cout << "Input the number for the item you're interested in: " ;
    int indexin = 0;
    std::cin >> indexin; //TODO: Validate this input
    VaultItem target = vltlist.at(indexin-1);
