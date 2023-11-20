@@ -30,6 +30,7 @@ void UserInputHandler::GetMasterInfo(MasterCredential& master)
 // reusable for later main menu inputs, ignores case sensitivty normalized with toupper
 void UserInputHandler::GetUpperChar(char& input)
 {
+   std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
    std::cin >> input;
    input = static_cast<char>(toupper(input));
 
@@ -39,8 +40,9 @@ void UserInputHandler::GetUpperChar(char& input)
    return;
 }
 void UserInputHandler::getStringInput(const std::string& msg, std::string& input){
+   std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
    std::cout << msg;
    getline(std::cin,input); 
-   //TODO input validation
+   //TODO: input validation
 }
 
