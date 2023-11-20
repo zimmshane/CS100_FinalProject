@@ -25,6 +25,8 @@ add_executable(dev
     ./src/PasswordQualityHandler.cpp
     ./src/PrintHandler.cpp
     ./src/UserInputHandler.cpp
+    ./src/Vault.cpp
+    ./src/SearchHandler.cpp
 ) # dev build
 
 
@@ -46,7 +48,7 @@ add_executable(dev_tests
 # put your personal test files here, DO NOT PUSH YOUR PERSONAL TEST FILES
 # add_executable(jeff ./tests/jeff.cpp ./src/Login.cpp ./src/FileHandler.cpp)
 
-# add_executable(shane ./src/shane.cpp  ./src/FileHandler.cpp ./src/InputValidationHandler.cpp ./src/LoginHandler.cpp ./src/PasswordManager.cpp ./src/PrintHandler.cpp ./src/UserInputHandler.cpp ./src/Vault.cpp ./src/SearchHandler.cpp)
+#add_executable(shane ./src/shane.cpp  ./src/FileHandler.cpp ./src/InputValidationHandler.cpp ./src/LoginHandler.cpp ./src/PasswordManager.cpp ./src/PrintHandler.cpp ./src/UserInputHandler.cpp ./src/Vault.cpp ./src/SearchHandler.cpp)
 
 target_link_libraries(dev_tests gtest gtest_main)
 
