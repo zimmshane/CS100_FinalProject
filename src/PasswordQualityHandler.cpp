@@ -4,7 +4,7 @@
     8-32 characters
     contains at least one special symbol, uppercase, and number
 */
-bool PasswordQualityHandler::StrengthChecker(const std::string& pass) {
+bool PasswordQualityHandler::IsPasswordStrong(const std::string& pass) {
     bool containsSymbol = false;
     bool containsUpper = false;
     bool containsNumber = false;
@@ -27,7 +27,7 @@ bool PasswordQualityHandler::StrengthChecker(const std::string& pass) {
     }
     return true;
 }
-bool PasswordQualityHandler::RepeatChecker(const std::string& pass) {
+bool PasswordQualityHandler::IsPasswordRepeating(const std::string& pass) {
     //uses SearchHandler to search 
     return false;
 }
