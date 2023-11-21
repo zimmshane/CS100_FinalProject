@@ -1,6 +1,7 @@
+<h1 align="center">
+  CLI-lock
 [![cli-lock-ci](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/actions/workflows/main.yml)
-
-<h1 align="center">CLI-lock</h1>
+</h1>
 
 Authors:
 [Aaron Wang](https://github.com/1aaronw) |
