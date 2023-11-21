@@ -42,20 +42,11 @@ VaultItem UserInputHandler::GetItemInput()
 {
    VaultItem newItem;
 
-   std::cout << "><>domain: ";
-   GetExcludeWhiteSpaceInput(newItem.property.domain);
-
-   std::cout << "><>username: ";
-   GetExcludeWhiteSpaceInput(newItem.username);
-
-   std::cout << "><>password: ";
+   GetGenericInput("><>domain: ", newItem.property.domain);
+   GetGenericInput("><>username: ", newItem.username);
    GetItemPassword(newItem.password);
-
-   std::cout << "><>description: ";
-   GetExcludeWhiteSpaceInput(newItem.property.description);
-
-   std::cout << "><>tag: ";
-   GetExcludeWhiteSpaceInput(newItem.property.tag);
+   GetGenericInput("><>description: ", newItem.property.description);
+   GetGenericInput("><>tag: ", newItem.property.tag);
 
    return newItem;
 }
@@ -64,6 +55,7 @@ void UserInputHandler::GetItemPassword(std::string& itemPassword)
 {
    for (;;)
    {
+      std::cout << "><>password: ";
       std::getline(std::cin, itemPassword);
 
       if (!(InputValidationHandler::IsEndsWhiteSpace(itemPassword)) && !(itemPassword.size() == 0) && PasswordQualityHandler::StrengthChecker(itemPassword))
@@ -71,22 +63,22 @@ void UserInputHandler::GetItemPassword(std::string& itemPassword)
          return;
       }
 
-      std::cout << "invalid, check for white space on ends, or quality of password\n";
+      std::cout << "invalid password input\n";
    }
 }
 
-void UserInputHandler::GetExcludeWhiteSpaceInput(std::string& itemField)
+void UserInputHandler::GetGenericInput(const std::string& msg, std::string& inputStrField)
 {
    for (;;)
    {
-      std::cout << "><>: ";
-      std::getline(std::cin, itemField);
+      std::cout << msg;
+      std::getline(std::cin, inputStrField);
 
-      if (!(InputValidationHandler::IsEndsWhiteSpace(itemField)) && !(itemField.size() == 0))
+      if (!(InputValidationHandler::IsEndsWhiteSpace(inputStrField)) && !(inputStrField.size() == 0))
       {
          return;
       }
 
-      std::cout << "contains leading or trailing whitespace\n";
+      std::cout << "invalid field input\n";
    }
 }

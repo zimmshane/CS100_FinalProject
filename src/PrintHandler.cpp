@@ -17,7 +17,7 @@ void PrintHandler::PrintVault(const Vault& vault)
                   << "username: " << (*it).username << "\n"
                   << "password: " << (*it).password << "\n"
                   << "description: " << (*it).property.description << "\n"
-                  << "tag: " << (*it).property.tag << "\n\n";
+                  << "tag: " << (*it).property.tag << "\n\n\n";
       }
    }
 }

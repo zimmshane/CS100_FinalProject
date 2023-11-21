@@ -19,7 +19,7 @@ public:
    static void GetItemPassword(std::string& itemPassword); // validate password down to 32
    static void GetItemDescription(std::string& itemDescription); // no other constraints
    static void GetItemTag(std::string& itemTag); // no between spaces
-   static void GetExcludeWhiteSpaceInput(std::string& itemField);
+   static void GetGenericInput(const std::string& msg, std::string& field);
 };
 
 #endif // !USERINPUTHANDLER_HPP

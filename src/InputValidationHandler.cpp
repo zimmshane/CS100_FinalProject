@@ -14,7 +14,7 @@ bool InputValidationHandler::IsMasterUsernameGood(const std::string& username)
       std::cout << "username contains leading or trailing whitespace\n";
       return false;
    }
-   else if ((illegalCharPos = username.find_first_of("`!@#$%^&*()+=[]{}\\|;:'\",<>?/")) != std::string::npos)
+   else if ((illegalCharPos = username.find_first_of("`!@#$%^&*()+=[]{}\\|;:'\",<>?/\t")) != std::string::npos)
    {
       std::cout << "username contains illegal character '" << username[illegalCharPos] << "'\n";
       return false;
