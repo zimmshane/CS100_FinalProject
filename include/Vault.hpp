@@ -16,9 +16,9 @@ class Vault
 public:
    Vault() { }
    ~Vault() { }
-   bool AddAccount(const VaultItem& item);
-   void DeleteAccount(const std::string& username);
-   void ModifyAccount(const std::string& username);
+   bool AddItem(const VaultItem& item);
+   void DeleteItem(const std::string& username);
+   void ModifyItem(const std::string& username);
 
    // put this inside PasswordManager class later
    // std::unordered_map<std::string, std::vector<VaultItem>> GetVault() { return vault; }

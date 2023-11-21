@@ -43,15 +43,50 @@ VaultItem UserInputHandler::GetItemInput()
    VaultItem newItem;
 
    std::cout << "><>domain: ";
-   std::getline(std::cin, newItem.property.domain);
+   GetExcludeWhiteSpaceInput(newItem.property.domain);
+
    std::cout << "><>username: ";
-   std::getline(std::cin, newItem.username);
+   GetExcludeWhiteSpaceInput(newItem.username);
+
    std::cout << "><>password: ";
-   std::getline(std::cin, newItem.password);
+   GetItemPassword(newItem.password);
+
    std::cout << "><>description: ";
-   std::getline(std::cin, newItem.property.description);
+   GetExcludeWhiteSpaceInput(newItem.property.description);
+
    std::cout << "><>tag: ";
-   std::getline(std::cin, newItem.property.tag);
+   GetExcludeWhiteSpaceInput(newItem.property.tag);
 
    return newItem;
+}
+
+void UserInputHandler::GetItemPassword(std::string& itemPassword)
+{
+   for (;;)
+   {
+      std::getline(std::cin, itemPassword);
+
+      if (!(InputValidationHandler::IsEndsWhiteSpace(itemPassword)) && !(itemPassword.size() == 0) && PasswordQualityHandler::StrengthChecker(itemPassword))
+      {
+         return;
+      }
+
+      std::cout << "invalid, check for white space on ends, or quality of password\n";
+   }
+}
+
+void UserInputHandler::GetExcludeWhiteSpaceInput(std::string& itemField)
+{
+   for (;;)
+   {
+      std::cout << "><>: ";
+      std::getline(std::cin, itemField);
+
+      if (!(InputValidationHandler::IsEndsWhiteSpace(itemField)) && !(itemField.size() == 0))
+      {
+         return;
+      }
+
+      std::cout << "contains leading or trailing whitespace\n";
+   }
 }

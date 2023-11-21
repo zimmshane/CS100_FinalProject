@@ -10,6 +10,7 @@ public:
    static bool IsMasterPasswordGood(const std::string& password);
    static bool IsItemUsernameGood(const std::string& username);
    static bool IsItemUsernamePassword(const std::string& username);
+   static bool IsEndsWhiteSpace(const std::string& string);
 };
 
 #endif // !INPUTVALIDATIONHANDLER_HPP
