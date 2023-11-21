@@ -1,14 +1,14 @@
 #include "../include/Vault.hpp"
 
-bool Vault::addAccount(const VaultItem&){
-    std::cout << "Testing add\n";
-    return true;
-}
+bool Vault::AddAccount(const VaultItem& item)
+{
+   if (!(SearchHandler::IsUsernameExistInDomainVector(item.username, vault[item.property.domain]))) // pass in vault at specified domain key value to get vector
+   {
+      vault[item.property.domain].push_back(item);
+      return true;
+   }
 
-void Vault::deleteAccount(const std::string&){
-    std::cout << "Testing delete\n";
-}
+   std::cout << "account already exists in domain\n";
 
-void Vault::modifyAccount(const std::string&){
-    std::cout << "Testing modify\n";
+   return false;
 }

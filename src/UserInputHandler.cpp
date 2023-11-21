@@ -37,3 +37,21 @@ void UserInputHandler::GetUpperChar(char& input)
 
    return;
 }
+
+VaultItem UserInputHandler::GetItemInput()
+{
+   VaultItem newItem;
+
+   std::cout << "><>domain: ";
+   std::getline(std::cin, newItem.property.domain);
+   std::cout << "><>username: ";
+   std::getline(std::cin, newItem.username);
+   std::cout << "><>password: ";
+   std::getline(std::cin, newItem.password);
+   std::cout << "><>description: ";
+   std::getline(std::cin, newItem.property.description);
+   std::cout << "><>tag: ";
+   std::getline(std::cin, newItem.property.tag);
+
+   return newItem;
+}

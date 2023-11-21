@@ -13,6 +13,10 @@ public:
    ~PasswordManager() { }
    void Run_CLI_lock(int argc , char* argv[]);
 
+   // config cache
+   void Logout(); // empty [CURRENT]
+   void Exit(); // save under [CURRENT]
+
    MasterCredential currentUser;
    Vault userVault;
    Vault encryptedVault;
@@ -27,8 +31,8 @@ public:
    };
 
    Config config;
-   void Logout();
-   void Exit();
+
+
    // debug functions
    inline void PrintMasterCredentials() { std::cout << currentUser.username << " | " << currentUser.password << "\n"; }
 
