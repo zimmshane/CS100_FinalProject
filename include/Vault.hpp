@@ -24,6 +24,8 @@ public:
    // std::unordered_map<std::string, std::vector<VaultItem>> GetVault() { return vault; }
 
    std::unordered_map<std::string, std::vector<VaultItem>> vault;
+
+   // std::unordered_map<std::string, std::unordered_map<std::string, VaultItem>> keyDomainKeyUsername;
 };
 
 #endif // !VAULT_HPP
