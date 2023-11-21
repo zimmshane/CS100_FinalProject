@@ -36,7 +36,7 @@ void LoginHandler::RegisterVault(const MasterCredential& master)
    {
       FileHandler::CreateVaultFile(master);
 
-      std::cout << "generated \"" << master.username << ".vault\n";
+      std::cout << "\tgenerated \"" << master.username << ".vault\n";
    }
 
    return;

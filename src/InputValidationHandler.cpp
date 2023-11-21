@@ -9,7 +9,7 @@ bool InputValidationHandler::IsMasterUsernameGood(const std::string& username)
       std::cout << "username is empty\n";
       return false;
    }
-   else if (IsEndsWhiteSpace(username))
+   else if (IsContainWhiteSpaceEnds(username))
    {
       std::cout << "username contains leading or trailing whitespace\n";
       return false;
@@ -30,7 +30,7 @@ bool InputValidationHandler::IsMasterPasswordGood(const std::string& password)
       std::cout << "password is empty\n";
       return false;
    }
-   else if (IsEndsWhiteSpace(password))
+   else if (IsContainWhiteSpaceEnds(password))
    {
       std::cout << "password contains leading or trailing whitespace\n";
       return false;
@@ -39,10 +39,11 @@ bool InputValidationHandler::IsMasterPasswordGood(const std::string& password)
    return true;
 }
 
-bool InputValidationHandler::IsEndsWhiteSpace(const std::string& checkStr)
+bool InputValidationHandler::IsContainWhiteSpaceEnds(const std::string& checkStr)
 {
    if (checkStr.front() == ' ' || checkStr.back() == ' ')
    {
+      std::cout << "field contains leading or trailing whitespace\n";
       return true;
    }
 
