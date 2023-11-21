@@ -39,6 +39,7 @@ bool InputValidationHandler::IsMasterPasswordGood(const std::string& password)
    return true;
 }
 
+// maybe unneeded, create string whitespace trimmer left and right
 bool InputValidationHandler::IsContainWhiteSpaceEnds(const std::string& checkStr)
 {
    if (checkStr.front() == ' ' || checkStr.back() == ' ')

@@ -16,7 +16,12 @@ void PasswordManager::Exit()
 void PasswordManager::Run_CLI_lock(int argc , char* argv[])
 {
    if(LoginHandler::IsLoginInfoMatchingVault(currentUser))
-   { // start loading information from vault here
+   {
+      // start loading information from vault here
+
+      FileHandler::LoadVaultFile(currentUser.username, userVault);
+
+
       char mainMenuInput;
 
 

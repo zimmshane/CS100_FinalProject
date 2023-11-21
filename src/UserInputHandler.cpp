@@ -44,7 +44,9 @@ VaultItem UserInputHandler::GetItemInput()
 
    GetGenericInput("><>domain: ", newItem.property.domain);
    GetGenericInput("><>username: ", newItem.username);
+
    GetItemPassword(newItem.password);
+
    GetGenericInput("><>description: ", newItem.property.description);
    GetGenericInput("><>tag: ", newItem.property.tag);
 
