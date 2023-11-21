@@ -15,13 +15,12 @@ bool LoginHandler::IsLoginInfoMatchingVault(MasterCredential& master)
       {
          std::cout << "><>register: \"" << master.username << "\"? (Y/y): ";
          UserInputHandler::GetUpperChar(registerInput);
-
          if (registerInput == 'Y')
          {
             RegisterVault(master);
          }
       }
-      else if (FileHandler::IsVaultPasswordMatch(master))
+      if (FileHandler::IsVaultPasswordMatch(master))
       {
          return true;
       }
@@ -34,9 +33,10 @@ void LoginHandler::RegisterVault(const MasterCredential& master)
 {
    if (!((master.username.empty()) && (master.password.empty()))) // prevent CTRL+C exit midway of empty password str
    {
+  
       FileHandler::CreateVaultFile(master);
 
-      std::cout << "generated \"" << master.username << ".vault\n";
+      std::cout << "generated \"" << master.username << ".vault\"\n";
    }
 
    return;

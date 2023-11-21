@@ -2,6 +2,7 @@
 
 std::vector<VaultItem> SearchHandler::returnAll(const std::string &search, const Vault &vlt){
     std::vector<VaultItem> results;
+    std::cout << "In returnall";
     for (auto& entry : vlt.vault){
         if (entry.first == search){ // if domain matches search, add all accounts to result
             for (auto it = entry.second.begin(); it != entry.second.end(); ++it){

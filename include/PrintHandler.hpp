@@ -5,6 +5,7 @@
 #include <vector>
 #include "Account.hpp"
 #include "PasswordManager.hpp"
+#include "Vault.hpp"
 
 class Vault;
 

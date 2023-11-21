@@ -7,7 +7,6 @@
 #include "LoginHandler.hpp"
 #include "PrintHandler.hpp"
 
-class Vault;
 class PasswordManager
 {
 public:
@@ -16,8 +15,8 @@ public:
    void Run_CLI_lock(int argc , char* argv[]);
 
    MasterCredential currentUser;
-   Vault* userVault;
-   Vault* encryptedVault;
+   Vault userVault;   
+   Vault encryptedVault;
 
    struct Config
    {

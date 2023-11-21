@@ -17,15 +17,14 @@ include_directories(./include/)
 # add_executable(a ./src/main.cpp) # prod build, make sure to change flags for this build
 add_executable(dev
     ./src/main.cpp
-
+    ./src/Vault.cpp
+    ./src/PasswordManager.cpp
     ./src/FileHandler.cpp
     ./src/InputValidationHandler.cpp
     ./src/LoginHandler.cpp
-    ./src/PasswordManager.cpp
     ./src/PasswordQualityHandler.cpp
     ./src/PrintHandler.cpp
     ./src/UserInputHandler.cpp
-    ./src/Vault.cpp
     ./src/SearchHandler.cpp
 ) # dev build
 

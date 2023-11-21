@@ -20,7 +20,6 @@ bool FileHandler::IsUserVaultExist(const std::string& username)
 void FileHandler::CreateVaultFile(const MasterCredential& master)
 {
    std::ofstream oFS{master.username + ".vault"}; // generates .vault file via ofstream
-
    if (oFS.is_open())
    {
       oFS << master.password << "\n"; // first line is vault password

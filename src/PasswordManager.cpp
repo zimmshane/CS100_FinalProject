@@ -17,7 +17,7 @@ void PasswordManager::Run_CLI_lock(int argc , char* argv[])
    if(LoginHandler::IsLoginInfoMatchingVault(currentUser))
    { // start loading information from vault here
       char mainMenuInput;
-      for (;;)
+      while(true)
       {
          PrintHandler::PrintMainMenu();
          UserInputHandler::GetUpperChar(mainMenuInput);
@@ -27,18 +27,18 @@ void PasswordManager::Run_CLI_lock(int argc , char* argv[])
          switch (mainMenuInput)
          {
          case 'A':
-            userVault->addAccount(UserInputHandler::GetItemInput()); //thanks jeff!
+            userVault.addAccount(UserInputHandler::GetItemInput()); //thanks jeff!
             std::cout << "ADDED ITEM\n\n" << std::flush;
             break;
          case 'S':
             std::cout << "SEARCHED ITEM\n\n";
             break;
          case 'M':
-            userVault->modifyAccount(UserInputHandler::getStringInput("Search for an account: "));
+            userVault.modifyAccount("amazon");
             std::cout << "MODIFIED ITEM\n\n";
             break;
          case 'D':
-            userVault->deleteAccount(UserInputHandler::getStringInput("Search for an account: "));
+           userVault.deleteAccount(UserInputHandler::getStringInput("Search for an account: "));
             std::cout << "DELETED ITEM\n\n";
             break;
          case 'E':
@@ -55,6 +55,6 @@ void PasswordManager::Run_CLI_lock(int argc , char* argv[])
       }
 
    }
-
+   std::cout << "Missed the IF statement";
    return;
 }

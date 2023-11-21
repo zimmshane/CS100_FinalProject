@@ -8,7 +8,6 @@
 #include "Vault.hpp"
 
 class Vault;
-class VaultItem;
 
 class SearchHandler{
 public:
