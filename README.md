@@ -53,7 +53,7 @@ The above navigation diagram depicts the visual menu flow of the console program
 ![Screen Layout Diagram (5)](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/79764515/742161dc-5607-4897-beab-009fa66dc7d6)
 
 ## Class Diagram
-![cli_lock_uml drawio (5)](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/146924675/bd84f478-2bd9-45d2-91d2-e64b31f1641a)
+![cli_lock_uml drawio](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/146924675/03be0d40-c740-4509-bf24-bc65c93a3e8c)
 ### Primary Controller
 - **PasswordManager**:
   - **Singleton**: Ensures a single instance during client execution.
