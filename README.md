@@ -61,20 +61,21 @@ The above navigation diagram depicts the visual menu flow of the console program
   - **Central Access**: Contains the `Run` function as the main interface access point.
 
 ### Utility Classes
-- **UserInputValidationHandler**:
+- **InputValidationHandler**:
   - **Function**: Validates user inputs for menu navigation and password entries, ensuring compatibility with AES256's 32-character data blocks.
 - **PasswordGenerator**:
-  - **Function**: Generates passwords based on user specifications or `UserConfig` settings.
-- **Login**:
+  - **Function**: Generates passwords based on user specifications or `UserConfig` attribute settings.
+- **LoginHandler**:
   - **Function**: Handles vault instantiation by detecting `.vault` files, and account registration.
-- **UserConfig**:
+- **Config**:
   - **Structure**: Holds configuration settings from a `config` file for program operations.
 
 ### IOProcessor Namespace
 - **Components**:
+  - **UserInputHandler**: Manages file access and interactions.
   - **FileHandler**: Manages file access and interactions.
   - **PrintHandler**: Handles all console outputs.
-  
+
 ### Handlers and Processing
 - **SearchHandler**:
   - **Function**: Searches for accounts using overloading signatures of a "tag" (standard string).
