@@ -21,9 +21,7 @@ void PasswordManager::Run_CLI_lock(int argc , char* argv[])
 
       FileHandler::LoadVaultFile(currentUser.username, userVault);
 
-
       char mainMenuInput;
-
 
       for (;;)
       {

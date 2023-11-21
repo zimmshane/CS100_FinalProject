@@ -11,8 +11,13 @@
 bool SearchHandler::IsUsernameExistInDomainVector(const std::string username, const std::vector<VaultItem>& itemVector)
 {
    for (const auto& iter : itemVector)
+   {
       if (iter.username == username)
+      {
          return true;
+      }
+
+   }
 
    return false;
 }
