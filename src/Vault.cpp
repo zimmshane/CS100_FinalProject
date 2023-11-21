@@ -2,7 +2,6 @@
 
 bool Vault::addAccount(const VaultItem &vlt)
 {
-    std::cout<<"Inside addaccount";
     if (SearchHandler::returnAll(vlt.property.domain,*this).size()==0) // domain not in list
     { 
         for (auto it = this->vault[vlt.property.domain].begin(); it != this->vault[vlt.property.domain].end(); ++it)

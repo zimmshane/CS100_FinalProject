@@ -4,14 +4,12 @@
 #include <iostream>
 #include <vector>
 #include "Account.hpp"
-#include "PasswordManager.hpp"
-#include "Vault.hpp"
 
 class Vault;
 
 class PrintHandler {
 public:
-   static void PrintVault(const Vault &vault);
+   static void PrintVault(const Vault* vault);
    static void printVector(const std::vector<VaultItem>& list);
    static void printVaultItem(const VaultItem& vitem);
    static void PrintMainMenu();

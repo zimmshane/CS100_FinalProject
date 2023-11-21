@@ -2,8 +2,8 @@
 #define PASSWORDMANAGER_HPP
 
 #include <iostream>
-#include "Vault.hpp"
 #include "Account.hpp"
+#include "Vault.hpp"
 #include "LoginHandler.hpp"
 #include "PrintHandler.hpp"
 

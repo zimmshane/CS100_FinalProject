@@ -17,7 +17,7 @@ void PasswordManager::Run_CLI_lock(int argc , char* argv[])
    if(LoginHandler::IsLoginInfoMatchingVault(currentUser))
    { // start loading information from vault here
       char mainMenuInput;
-      while(true)
+      for(;;)
       {
          PrintHandler::PrintMainMenu();
          UserInputHandler::GetUpperChar(mainMenuInput);
@@ -31,10 +31,11 @@ void PasswordManager::Run_CLI_lock(int argc , char* argv[])
             std::cout << "ADDED ITEM\n\n" << std::flush;
             break;
          case 'S':
+            PrintHandler::PrintVault(&userVault); // mostly for testing. IK it isnt search
             std::cout << "SEARCHED ITEM\n\n";
             break;
          case 'M':
-            userVault.modifyAccount("amazon");
+            userVault.modifyAccount(UserInputHandler::getStringInput("Search for an account: "));
             std::cout << "MODIFIED ITEM\n\n";
             break;
          case 'D':

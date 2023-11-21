@@ -1,8 +1,9 @@
 #include "../include/PrintHandler.hpp"
+#include "../include/Vault.hpp"
 
-void PrintHandler::PrintVault(const Vault& vault)
+void PrintHandler::PrintVault(const Vault* vault)
 {
-   for (auto& entry : vault.vault)
+   for (auto& entry : vault->vault)
    {
       std::cout << "========" << entry.first << "========\n";
       // sort vector
