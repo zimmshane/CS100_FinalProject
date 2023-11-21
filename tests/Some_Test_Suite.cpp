@@ -62,16 +62,16 @@ TEST(IllegalPasswordTests, TrailingSpace)
 
 TEST(PasswordQualityTests, invalidPasswords)
 {
-   EXPECT_FALSE(PasswordQualityHandler::StrengthChecker("2short"));
-   EXPECT_FALSE(PasswordQualityHandler::StrengthChecker("notacceptablecuzalllower"));
-   EXPECT_FALSE(PasswordQualityHandler::StrengthChecker("NOTACCEPTABLECUZALLUPPER"));
-   EXPECT_FALSE(PasswordQualityHandler::StrengthChecker("!@#$%^&****"));
-   EXPECT_FALSE(PasswordQualityHandler::StrengthChecker("DoesnthaveSymbol1"));
+   EXPECT_FALSE(PasswordQualityHandler::IsPasswordStrong("2short"));
+   EXPECT_FALSE(PasswordQualityHandler::IsPasswordStrong("notacceptablecuzalllower"));
+   EXPECT_FALSE(PasswordQualityHandler::IsPasswordStrong("NOTACCEPTABLECUZALLUPPER"));
+   EXPECT_FALSE(PasswordQualityHandler::IsPasswordStrong("!@#$%^&****"));
+   EXPECT_FALSE(PasswordQualityHandler::IsPasswordStrong("DoesnthaveSymbol1"));
 
 }
 
 TEST(PasswordQualityTests, verifyValidPasswords)
 {
-   EXPECT_TRUE(PasswordQualityHandler::StrengthChecker("H3LLoT4ere!"));
-   EXPECT_TRUE(PasswordQualityHandler::StrengthChecker("#Th1sworks"));
+   EXPECT_TRUE(PasswordQualityHandler::IsPasswordStrong("H3LLoT4ere!"));
+   EXPECT_TRUE(PasswordQualityHandler::IsPasswordStrong("#Th1sworks"));
 }
