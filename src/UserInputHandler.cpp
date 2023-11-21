@@ -39,7 +39,7 @@ void UserInputHandler::GetUpperChar(char& input)
 }
 std::string UserInputHandler::getStringInput(const std::string& msg)
 {
-   std::string input="";
+   std::string input;
    std::cout << msg;
    getline(std::cin,input); 
    //TODO: input validation

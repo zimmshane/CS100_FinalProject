@@ -19,7 +19,11 @@ bool Vault::addAccount(const VaultItem &vlt)
 void Vault::deleteAccount(const std::string &acct)
 { 
     VaultItem target = Vault::findFromSearch(acct);
+    if (target.username=="THIS OPERATION FAILED"){ //dummy return to signal nothing found
+        return;
+    }
     std::string input = "";
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     input = UserInputHandler::getStringInput("Are you sure you want to delete this account? (y/n) ");
    if (input == "y" || input == "Y"){
         forceDeleteAccount(target);
@@ -32,11 +36,7 @@ void Vault::forceDeleteAccount(const VaultItem& target) {
 if (this->vault[target.property.domain].size() == 1){
     this->vault.erase(target.property.domain); //if only one username in domain --> delete entire domain
     } 
-if (this->vault[target.property.domain].size()==0){
-     std::cout << "Account Deletion Failed\n";
-     return;
-    }
-    else {
+else {
      std::vector<VaultItem>::iterator it = Vault::getPositionedItr(target);
      this->vault[target.property.domain].erase(it);} // delete spectific vector pos
    
@@ -45,11 +45,15 @@ if (this->vault[target.property.domain].size()==0){
 
 void Vault::modifyAccount(const std::string &acct)
 {
+    VaultItem target = Vault::findFromSearch(acct); 
 
-    VaultItem target = Vault::findFromSearch(acct); //
+    if (target.username=="THIS OPERATION FAILED"){ //dummy return to signal nothing found
+        return;
+    }
     std::vector<VaultItem>::iterator it = Vault::getPositionedItr(target);
 
     std::string input;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
     input=UserInputHandler::getStringInput("Domain: ");
     if (!input.empty() && input != " "){
         forceDeleteAccount(target);
@@ -83,10 +87,16 @@ void Vault::modifyAccount(const std::string &acct)
 VaultItem Vault::findFromSearch(const std::string& search){
 
    std::vector<VaultItem> vltlist = SearchHandler::returnAll(search,*this);
+   if (vltlist.size()==0){
+    std::cout<< "Nothing found\n2";
+    VaultItem dummy;
+    dummy.username= "THIS OPERATION FAILED";
+    return dummy;
+   }
    PrintHandler::printVector(vltlist);
 
    std::cout << "Input the number for the item you're interested in: " ;
-   int indexin = 0;
+   int indexin;
    std::cin >> indexin; //TODO: Validate this input
    VaultItem target = vltlist.at(indexin-1);
    PrintHandler::printVaultItem(target);
