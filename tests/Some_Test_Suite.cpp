@@ -75,3 +75,15 @@ TEST(PasswordQualityTests, verifyValidPasswords)
    EXPECT_TRUE(PasswordQualityHandler::StrengthChecker("H3LLoT4ere!"));
    EXPECT_TRUE(PasswordQualityHandler::StrengthChecker("#Th1sworks"));
 }
+
+TEST(StringContainsComma, validStringInput)
+{
+   EXPECT_TRUE(InputValidationHandler::IsContainComma(",Hello1234"));
+   EXPECT_TRUE(InputValidationHandler::IsContainComma("Hiii,000,"));
+}
+
+TEST(StringContainsComma, invalidStringInput)
+{
+   EXPECT_FALSE(InputValidationHandler::IsContainComma("Hello1234"));
+   EXPECT_FALSE(InputValidationHandler::IsContainComma("JoeDoe 689"));
+}

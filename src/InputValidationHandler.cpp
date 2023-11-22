@@ -53,8 +53,8 @@ bool InputValidationHandler::IsContainWhiteSpaceEnds(const std::string& checkStr
 
 bool InputValidationHandler::IsContainComma(const std::string& checkStr){
    if(checkStr.find_first_of(",") == std::string::npos){
-      return true;
-   }else{
       return false;
+   }else{
+      return true;
    }
 }
