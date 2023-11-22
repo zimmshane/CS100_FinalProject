@@ -1,4 +1,7 @@
 #include "../include/PasswordQualityHandler.hpp"
+#include "../include/Account.hpp"
+#include "../include/Vault.hpp"
+#include "../include/SearchHandler.hpp"
 /*
     Password Criteria:
     8-32 characters
@@ -27,7 +30,12 @@ bool PasswordQualityHandler::IsPasswordStrong(const std::string& pass) {
     }
     return true;
 }
-bool PasswordQualityHandler::IsPasswordRepeating(const std::string& pass) {
-    //uses SearchHandler to search 
+
+//gets percentage of repetitions
+bool PasswordQualityHandler::IsPasswordRepeating(const std::string pass, const Vault& vault) {
+    //uses SearchHandler to search
+    while(){
+        
+    }
     return false;
 }
