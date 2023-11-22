@@ -87,7 +87,7 @@ void FileHandler::LoadVaultFile(const std::string vaultName, Vault& vault)
       std::getline(iSS, description, ',');
       std::getline(iSS, tag, ',');
 
-      vault.vault[domain].push_back(VaultItem(username, password, domain, description, tag));
+      vault.vaultContainer[domain].push_back(VaultItem(username, password, domain, description, tag));
    }
 
    return;

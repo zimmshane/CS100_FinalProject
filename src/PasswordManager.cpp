@@ -22,6 +22,7 @@ void PasswordManager::Run_CLI_lock(int argc , char* argv[])
       FileHandler::LoadVaultFile(currentUser.username, userVault);
 
       char mainMenuInput;
+      std::string menuStringInput;
 
       for (;;)
       {
@@ -44,6 +45,8 @@ void PasswordManager::Run_CLI_lock(int argc , char* argv[])
             std::cout << "\n\nMODIFIED ITEM\n\n";
             break;
          case 'D':
+            UserInputHandler::GetGenericInput("><>username: ", menuStringInput);
+            userVault.DeleteItem(menuStringInput);
             std::cout << "\n\nDELETED ITEM\n\n";
             break;
          case 'E':

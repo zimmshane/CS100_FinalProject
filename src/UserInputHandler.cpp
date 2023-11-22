@@ -38,6 +38,15 @@ void UserInputHandler::GetUpperChar(char& input)
    return;
 }
 
+void UserInputHandler::GetIndex(size_t& input)
+{
+   std::cin >> input;
+
+   std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+   return;
+}
+
 VaultItem UserInputHandler::GetItemInput()
 {
    VaultItem newItem;
