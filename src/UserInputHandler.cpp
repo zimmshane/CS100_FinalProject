@@ -75,7 +75,7 @@ void UserInputHandler::GetGenericInput(const std::string& msg, std::string& inpu
       std::cout << msg;
       std::getline(std::cin, inputStrField);
 
-      if (!(InputValidationHandler::IsContainWhiteSpaceEnds(inputStrField)) && !(inputStrField.size() == 0) && !(InputValidationHandler::IsContainComma(itemPassword)))
+      if (!(InputValidationHandler::IsContainWhiteSpaceEnds(inputStrField)) && !(inputStrField.size() == 0) && !(InputValidationHandler::IsContainComma(inputStrField)))
       {
          return;
       }
