@@ -18,8 +18,8 @@ public:
    Vault() { }
    ~Vault() { }
    bool AddItem(const VaultItem& item);
-   void DeleteItem(const std::string& username);
-   void ModifyItem(const std::string& username);
+   void DeleteItem(const std::string& usernameForDeletion);
+   void ModifyItem(const std::string& usernameForModification);
 
    // put this inside PasswordManager class later
    // std::unordered_map<std::string, std::vector<VaultItem>> GetVault() { return vault; }
