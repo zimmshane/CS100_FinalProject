@@ -1,6 +1,6 @@
 #include "../include/Vault.hpp"
 
-bool Vault::AddAccount(const VaultItem& item)
+bool Vault::AddItem(const VaultItem& item)
 {
    if (!(SearchHandler::IsUsernameExistInDomainVector(item.username, vault[item.property.domain]))) // pass in vault at specified domain key value to get vector
    {

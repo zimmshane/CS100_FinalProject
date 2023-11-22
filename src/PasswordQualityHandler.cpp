@@ -11,7 +11,9 @@ bool PasswordQualityHandler::IsPasswordStrong(const std::string& pass) {
     bool containsSymbol = false;
     bool containsUpper = false;
     bool containsNumber = false;
+
     if(pass.length() > 32 || pass.length() < 8){
+        std::cout << "\tpassword length must be [8, 32]\n";
         return false;
     }
     for(unsigned int i = 0; i < pass.length(); i++){
@@ -26,8 +28,10 @@ bool PasswordQualityHandler::IsPasswordStrong(const std::string& pass) {
         }
     }
     if(containsSymbol == false || containsUpper == false || containsNumber == false){
+        std::cout << "\tpassword needs symbol, uppercase, and digits.\n";
         return false;
     }
+
     return true;
 }
 

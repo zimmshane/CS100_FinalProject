@@ -16,8 +16,13 @@ void PasswordManager::Exit()
 void PasswordManager::Run_CLI_lock(int argc , char* argv[])
 {
    if(LoginHandler::IsLoginInfoMatchingVault(currentUser))
-   { // start loading information from vault here
+   {
+      // start loading information from vault here
+
+      FileHandler::LoadVaultFile(currentUser.username, userVault);
+
       char mainMenuInput;
+
       for (;;)
       {
          PrintHandler::PrintMainMenu();
@@ -29,30 +34,30 @@ void PasswordManager::Run_CLI_lock(int argc , char* argv[])
          {
          case 'A':
             /* code */
+            userVault.AddItem(UserInputHandler::GetItemInput());
             std::cout << "ADDED ITEM\n\n";
-            userVault.AddAccount(UserInputHandler::GetItemInput());
             break;
          case 'S':
-            std::cout << "SEARCHED ITEM\n\n"; // get line, parse arguments, different overload based on # of arguments
+            std::cout << "\n\nSEARCHED ITEM\n\n"; // get line, parse arguments, different overload based on # of arguments
             break;
          case 'M':
-            std::cout << "MODIFIED ITEM\n\n";
+            std::cout << "\n\nMODIFIED ITEM\n\n";
             break;
          case 'D':
-            std::cout << "DELETED ITEM\n\n";
+            std::cout << "\n\nDELETED ITEM\n\n";
             break;
          case 'E':
-            std::cout << "EXITED VAULT\n\n";
+            std::cout << "\n\nEXITED VAULT\n\n";
             return;
          case 'L':
-            std::cout << "LOGGED OUT\n\n";
+            std::cout << "\n\nLOGGED OUT\n\n";
             return;
          case 'P':
-            std::cout << "PRINTED VAULT\n\n";
             PrintHandler::PrintVault(userVault);
+            std::cout << "\n\nPRINTED VAULT\n\n";
             break;
          default:
-            std::cout << "INVALID INPUT\n\n";
+            std::cout << "\n\nINVALID INPUT\n\n";
             break;
          }
 

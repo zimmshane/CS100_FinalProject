@@ -1,0 +1,21 @@
+name: cli-lock-ci
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test_build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: update submodules
+        run: git submodule update --init --recursive
+      - name: invoke cmake
+        run: cmake --fresh .
+      - name: make test modules
+        run: make dev_tests
+      - name: invoke gtest modules
+        run: ./bin/dev_tests
