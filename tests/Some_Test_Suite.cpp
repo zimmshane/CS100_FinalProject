@@ -39,6 +39,16 @@ TEST(IllegalUsernameTests, LeadingSpaces)
    EXPECT_FALSE(InputValidationHandler::IsUsernameGood("    this string has leading space"));
 }
 
+TEST(IllegalUsernameTests, ContainingCommas)
+{
+   EXPECT_FALSE(InputValidationHandler::IsUsernameGood("    this,, string includes commas,,"));
+}
+
+TEST(IllegalUsernameTests, BigUsernameSize)
+{
+   EXPECT_FALSE(InputValidationHandler::IsUsernameGood("thisusernameisover 25 characters long"));
+}
+
 TEST(IllegalUsernameTests, TrailingSpaces)
 {
    EXPECT_FALSE(InputValidationHandler::IsUsernameGood("this string has a trailing space "));
@@ -52,6 +62,18 @@ TEST(IllegalUsernameTests, SpecialCharacters)
 TEST(IllegalPasswordTests, LeadingSpace)
 {
    EXPECT_FALSE(InputValidationHandler::IsPasswordGood(" this string has a leading space"));
+
+}
+
+TEST(IllegalPasswordTests, BigPasswordSize)
+{
+   EXPECT_FALSE(InputValidationHandler::IsPasswordGood(" thisstringisover25characterslong"));
+
+}
+
+TEST(IllegalPasswordTests, ContainingCommas)
+{
+   EXPECT_FALSE(InputValidationHandler::IsPasswordGood(" this,, string,, has a comma"));
 
 }
 

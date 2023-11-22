@@ -33,8 +33,12 @@ bool InputValidationHandler::IsUsernameGood(const std::string& username)
 bool InputValidationHandler::IsPasswordGood(const std::string& password)
 {
    if (password.size() == 0)
-   { // do we really care about an empty password thhough?
+   {
       std::cout << "password is empty\n";
+      return false;
+   }
+   else if(password.size() > 25){
+      std::cout << "password exceeds the limit of 25 characters\n";
       return false;
    }
    else if (IsContainWhiteSpaceEnds(password))
