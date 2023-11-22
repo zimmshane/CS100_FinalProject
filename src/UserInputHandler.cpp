@@ -42,16 +42,43 @@ VaultItem UserInputHandler::GetItemInput()
 {
    VaultItem newItem;
 
-   std::cout << "><>domain: ";
-   std::getline(std::cin, newItem.property.domain);
-   std::cout << "><>username: ";
-   std::getline(std::cin, newItem.username);
-   std::cout << "><>password: ";
-   std::getline(std::cin, newItem.password);
-   std::cout << "><>description: ";
-   std::getline(std::cin, newItem.property.description);
-   std::cout << "><>tag: ";
-   std::getline(std::cin, newItem.property.tag);
+   GetGenericInput("><>domain: ", newItem.property.domain);
+   GetGenericInput("><>username: ", newItem.username);
+
+   GetItemPassword(newItem.password);
+
+   GetGenericInput("><>description: ", newItem.property.description);
+   GetGenericInput("><>tag: ", newItem.property.tag);
 
    return newItem;
+}
+
+void UserInputHandler::GetItemPassword(std::string& itemPassword)
+{
+   for (;;)
+   {
+      std::cout << "><>password: ";
+      std::getline(std::cin, itemPassword);
+
+      if (!(InputValidationHandler::IsContainWhiteSpaceEnds(itemPassword)) && (itemPassword.size() != 0) && PasswordQualityHandler::StrengthChecker(itemPassword))
+      {
+         return;
+      }
+
+   }
+}
+
+void UserInputHandler::GetGenericInput(const std::string& msg, std::string& inputStrField)
+{
+   for (;;)
+   {
+      std::cout << msg;
+      std::getline(std::cin, inputStrField);
+
+      if (!(InputValidationHandler::IsContainWhiteSpaceEnds(inputStrField)) && !(inputStrField.size() == 0))
+      {
+         return;
+      }
+
+   }
 }

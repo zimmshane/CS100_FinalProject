@@ -1,6 +1,7 @@
 #ifndef PASSWORDQUALITYHANDLER_HPP
 #define PASSWORDQUALITYHANDLER_HPP
 
+#include <iostream>
 #include "Account.hpp"
 
 class PasswordQualityHandler

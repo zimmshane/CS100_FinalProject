@@ -8,11 +8,11 @@ bool FileHandler::IsUserVaultExist(const std::string& username)
 
    if (iFS.good())
    {
-      std::cout << "found: " << fileName << "\n";
+      std::cout << "\tfound: " << fileName << "\n";
       return true;
    }
 
-   std::cout << "not found: " << fileName << "\n";
+   std::cout << "\tnot found: " << fileName << "\n";
 
    return false;
 }
@@ -25,7 +25,8 @@ void FileHandler::CreateVaultFile(const MasterCredential& master)
    {
       oFS << master.password << "\n"; // first line is vault password
       oFS << "username,password,domain,description,tag";
-      std::cout << "vault sucessfully registered\n";
+
+      std::cout << "\tvault sucessfully registered\n";
    }
 
    return;
@@ -42,12 +43,52 @@ bool FileHandler::IsVaultPasswordMatch(const MasterCredential& master)
 
       if (buffer == master.password)
       {
-         std::cout << "good vault password match\n";
+         std::cout << "\tgood vault password match\n";
+
          return true;
       }
    }
 
-   std::cout << "bad vault password match\n";
+   std::cout << "\tbad vault password match\n";
 
    return false;
+}
+
+void FileHandler::LoadVaultFile(const std::string vaultName, Vault& vault)
+{
+   // logging in already checks file IsUserVaultExist, assume ifstream opens
+   std::ifstream iFS(vaultName + ".vault");
+
+   std::string rawString;
+   std::string username;
+   std::string password;
+   std::string domain;
+   std::string description;
+   std::string tag;
+
+   std::string dummy;
+
+   // skip first two lines to avoid master password and column parameter
+   for (int i = 0; i < 2; ++i)
+   {
+      std::getline(iFS, rawString);
+   }
+
+   while (std::getline(iFS, rawString))
+   {
+      // load the buffer in new iss
+      std::istringstream iSS(rawString);
+
+      // we know there are 5 parameters because we made it up
+      // extract per delimiter "comma separated values"
+      std::getline(iSS, username, ',');
+      std::getline(iSS, password, ',');
+      std::getline(iSS, domain, ',');
+      std::getline(iSS, description, ',');
+      std::getline(iSS, tag, ',');
+
+      vault.vault[domain].push_back(VaultItem(username, password, domain, description, tag));
+   }
+
+   return;
 }
