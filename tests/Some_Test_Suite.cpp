@@ -36,28 +36,28 @@ TEST(VaultEntityTests, FindVault)
 
 TEST(IllegalUsernameTests, LeadingSpaces)
 {
-   EXPECT_FALSE(InputValidationHandler::IsMasterUsernameGood("    this string has leading space"));
+   EXPECT_FALSE(InputValidationHandler::IsUsernameGood("    this string has leading space"));
 }
 
 TEST(IllegalUsernameTests, TrailingSpaces)
 {
-   EXPECT_FALSE(InputValidationHandler::IsMasterUsernameGood("this string has a trailing space "));
+   EXPECT_FALSE(InputValidationHandler::IsUsernameGood("this string has a trailing space "));
 }
 
 TEST(IllegalUsernameTests, SpecialCharacters)
 {
-   EXPECT_FALSE(InputValidationHandler::IsMasterUsernameGood("this character has !some special character"));
+   EXPECT_FALSE(InputValidationHandler::IsUsernameGood("this character has !some special character"));
 }
 
 TEST(IllegalPasswordTests, LeadingSpace)
 {
-   EXPECT_FALSE(InputValidationHandler::IsMasterPasswordGood(" this string has a leading space"));
+   EXPECT_FALSE(InputValidationHandler::IsPasswordGood(" this string has a leading space"));
 
 }
 
 TEST(IllegalPasswordTests, TrailingSpace)
 {
-   EXPECT_FALSE(InputValidationHandler::IsMasterPasswordGood("this string has a leading space   has many !! ##!@# trailing spaces     "));
+   EXPECT_FALSE(InputValidationHandler::IsPasswordGood("this string has a leading space   has many !! ##!@# trailing spaces     "));
 }
 
 TEST(PasswordQualityTests, invalidPasswords)

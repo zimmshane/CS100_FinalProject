@@ -6,12 +6,11 @@
 class InputValidationHandler
 {
 public:
-   static bool IsMasterUsernameGood(const std::string& username);
-   static bool IsMasterPasswordGood(const std::string& password);
-   static bool IsItemUsernameGood(const std::string& username);
+   static bool IsUsernameGood(const std::string& username);
+   static bool IsPasswordGood(const std::string& password);
    static bool IsContainWhiteSpaceEnds(const std::string& string);
    static bool IsContainComma(const std::string& string);
-   
+
 };
 
 #endif // !INPUTVALIDATIONHANDLER_HPP
