@@ -31,11 +31,10 @@ bool PasswordQualityHandler::IsPasswordStrong(const std::string& pass) {
     return true;
 }
 
-//gets percentage of repetitions
+//calculates percentage of repetitions
 bool PasswordQualityHandler::IsPasswordRepeating(const std::string pass, const Vault& vault) {
-    //uses SearchHandler to search
-    while(){
-        
+    while(SearchHandler::SearchDuplicatePassword(pass, vault)){
+
     }
     return false;
 }

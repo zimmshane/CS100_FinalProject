@@ -23,6 +23,7 @@ bool SearchHandler::SearchDuplicatePassword(const std::string pass, const Vault&
       for (auto it = entry.second.begin(); it != entry.second.end(); ++it)
       {
          if((*it).password == pass){
+            std::cout << (*it).username << " in " << (*it).property.domain << "\n";
             return true;
          }
       }
