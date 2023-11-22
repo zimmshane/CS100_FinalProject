@@ -107,6 +107,10 @@ The above navigation diagram depicts the visual menu flow of the console program
 >     * What SOLID principle(s) did you apply?
 >     * How did you apply it? i.e. describe the change.
 >     * How did this change help you write better code?
+>  New changes in the UML consist of the addition of a new class called UserInputHandler which manages file access and interactions between the run_cli_lock function and the functions inside the UserInputHandler. We applied single responsibility since we created a separate class that handles the user input such as making sure that the user input is turned to upper case character to allow for easier input validation. Instead of putting an uppercase function in the password manager class, we created a separate class to have its own responsibility. This change helps us write better code since it creates simplicity in our classes having one single purpose and organizes the code since it groups functions together by their functionality.
+
+Another change we made in the UML is the replacement of the functions in InputValidationHandler class which now contains bool functions checking if the validity master username and password are valid in addition to if the input contains trailing spaces. We applied single responsibility in this class by creating a separate class to check the validity of the master account which will be used in both the password manager and vault class. This helps us write better code by allowing the program to be scalable. We can group more functions by their use and it allows for the code to be more maintainable. 
+
 > * Perform a new sprint plan like you did in Phase II.
 > * You should also make sure that your README file (and Project board) are up-to-date reflecting the current status of your project and the most recent class diagram. Previous versions of the README file should still be visible through your commit history.
 
