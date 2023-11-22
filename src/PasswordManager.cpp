@@ -15,9 +15,14 @@ void PasswordManager::Exit()
 void PasswordManager::Run_CLI_lock(int argc , char* argv[])
 {
    if(LoginHandler::IsLoginInfoMatchingVault(currentUser))
-   { // start loading information from vault here
+   {
+      // start loading information from vault here
+
+      FileHandler::LoadVaultFile(currentUser.username, userVault);
+
       char mainMenuInput;
-      for(;;)
+
+      for (;;)
       {
          PrintHandler::PrintMainMenu();
          UserInputHandler::GetUpperChar(mainMenuInput);
@@ -27,29 +32,30 @@ void PasswordManager::Run_CLI_lock(int argc , char* argv[])
          switch (mainMenuInput)
          {
          case 'A':
-            userVault.addAccount(UserInputHandler::GetItemInput()); //thanks jeff!
-            std::cout << "ADDED ITEM\n\n" << std::flush;
+            userVault.AddItem(UserInputHandler::GetItemInput());
+            std::cout << "ADDED ITEM\n\n";
             break;
          case 'S':
-            PrintHandler::PrintVault(&userVault); // mostly for testing. IK it isnt search
-            std::cout << "SEARCHED ITEM\n\n";
+            std::cout << "\n\nSEARCHED ITEM\n\n"; // get line, parse arguments, different overload based on # of arguments
             break;
          case 'M':
-            userVault.modifyAccount(UserInputHandler::getStringInput("Search for an account: "));
-            std::cout << "MODIFIED ITEM\n\n";
+            std::cout << "\n\nMODIFIED ITEM\n\n";
             break;
          case 'D':
-           userVault.deleteAccount(UserInputHandler::getStringInput("Search for an account: "));
-            std::cout << "DELETED ITEM\n\n";
+            std::cout << "\n\nDELETED ITEM\n\n";
             break;
          case 'E':
-            std::cout << "EXITED VAULT\n\n";
+            std::cout << "\n\nEXITED VAULT\n\n";
             return;
          case 'L':
-            std::cout << "LOGGED OUT\n\n";
+            std::cout << "\n\nLOGGED OUT\n\n";
             return;
+         case 'P':
+            PrintHandler::PrintVault(userVault);
+            std::cout << "\n\nPRINTED VAULT\n\n";
+            break;
          default:
-            std::cout << "INVALID INPUT\n\n";
+            std::cout << "\n\nINVALID INPUT\n\n";
             break;
          }
 

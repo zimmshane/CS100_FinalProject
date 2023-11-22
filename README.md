@@ -1,5 +1,7 @@
 <h1 align="center">CLI-lock</h1>
 
+[![cli-lock-ci](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/actions/workflows/main.yml)
+
 Authors:
 [Aaron Wang](https://github.com/1aaronw) |
 [Bryce Hojo](https://github.com/Bryce7832) |
@@ -53,7 +55,7 @@ The above navigation diagram depicts the visual menu flow of the console program
 ![Screen Layout Diagram (5)](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/79764515/742161dc-5607-4897-beab-009fa66dc7d6)
 
 ## Class Diagram
-![cli_lock_uml drawio (5)](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/146924675/bd84f478-2bd9-45d2-91d2-e64b31f1641a)
+![cli-lock drawio](https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/146924675/88b1123f-94e0-4d8a-8a45-ef7a813da22b)
 ### Primary Controller
 - **PasswordManager**:
   - **Singleton**: Ensures a single instance during client execution.
@@ -61,20 +63,21 @@ The above navigation diagram depicts the visual menu flow of the console program
   - **Central Access**: Contains the `Run` function as the main interface access point.
 
 ### Utility Classes
-- **UserInputValidationHandler**:
+- **InputValidationHandler**:
   - **Function**: Validates user inputs for menu navigation and password entries, ensuring compatibility with AES256's 32-character data blocks.
 - **PasswordGenerator**:
-  - **Function**: Generates passwords based on user specifications or `UserConfig` settings.
-- **Login**:
+  - **Function**: Generates passwords based on user specifications or `UserConfig` attribute settings.
+- **LoginHandler**:
   - **Function**: Handles vault instantiation by detecting `.vault` files, and account registration.
-- **UserConfig**:
+- **Config**:
   - **Structure**: Holds configuration settings from a `config` file for program operations.
 
 ### IOProcessor Namespace
 - **Components**:
+  - **UserInputHandler**: Manages file access and interactions.
   - **FileHandler**: Manages file access and interactions.
   - **PrintHandler**: Handles all console outputs.
-  
+
 ### Handlers and Processing
 - **SearchHandler**:
   - **Function**: Searches for accounts using overloading signatures of a "tag" (standard string).

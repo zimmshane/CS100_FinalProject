@@ -1,21 +1,5 @@
 #include "../include/Vault.hpp"
 
-bool Vault::addAccount(const VaultItem &vlt)
-{
-    if (SearchHandler::returnAll(vlt.property.domain,*this).size()==0) // domain not in list
-    { 
-        for (auto it = this->vault[vlt.property.domain].begin(); it != this->vault[vlt.property.domain].end(); ++it)
-        {
-            if (it->username == vlt.username)
-            {
-                std::cout << vlt.property.domain << " already has an account with same username\n"; // same domain and username exists don't add
-                return false;
-            }
-        } 
-    } 
-        this->vault[vlt.property.domain].push_back(vlt); // domain and username free
-        return true;
-}
 void Vault::deleteAccount(const std::string &acct)
 { 
     VaultItem target = Vault::findFromSearch(acct);
@@ -110,3 +94,15 @@ std::vector<VaultItem>::iterator Vault::getPositionedItr(const VaultItem& target
     return it;
 }
 
+bool Vault::AddItem(const VaultItem& item)
+{
+   if (!(SearchHandler::IsUsernameExistInDomainVector(item.username, vault[item.property.domain]))) // pass in vault at specified domain key value to get vector
+   {
+      vault[item.property.domain].push_back(item);
+      return true;
+   }
+
+   std::cout << "account already exists in domain\n";
+
+   return false;
+}

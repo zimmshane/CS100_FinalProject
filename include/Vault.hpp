@@ -19,7 +19,8 @@ public:
 
    Vault() { }
    ~Vault() { }
-   bool addAccount(const VaultItem&);
+  
+   bool AddItem(const VaultItem& item);
    void deleteAccount(const std::string&);
    void forceDeleteAccount(const VaultItem&);
    void modifyAccount(const std::string&);
@@ -30,6 +31,13 @@ public:
    // std::unordered_map<std::string, std::vector<VaultItem>> GetVault() { return vault; }
 
  
+   // void DeleteItem(const std::string& username);
+   // void ModifyItem(const std::string& username);
+
+
+   std::unordered_map<std::string, std::vector<VaultItem>> vault;
+
+   // std::unordered_map<std::string, std::unordered_map<std::string, VaultItem>> keyDomainKeyUsername;
 };
 
 #endif // !VAULT_HPP

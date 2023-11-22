@@ -2,20 +2,22 @@
 
 bool LoginHandler::IsLoginInfoMatchingVault(MasterCredential& master)
 {
-   char registerInput;
+   // TODO: check config file for credentials under [CURRENT])
 
-   // TODO: check config file for credentials under [CURRENT]
-   // force relogin after register to ensure user input the right information they wanted
+   char registerConfirmation;
 
    for (;;)
    {
       UserInputHandler::GetMasterInfo(master);
 
+      // force relogin after register to ensure user input the right information they wanted
       if (!(FileHandler::IsUserVaultExist(master.username)))
       {
          std::cout << "><>register: \"" << master.username << "\"? (Y/y): ";
-         UserInputHandler::GetUpperChar(registerInput);
-         if (registerInput == 'Y')
+        
+         UserInputHandler::GetUpperChar(registerConfirmation);
+
+         if (registerConfirmation == 'Y')
          {
             RegisterVault(master);
          }
@@ -36,7 +38,7 @@ void LoginHandler::RegisterVault(const MasterCredential& master)
   
       FileHandler::CreateVaultFile(master);
 
-      std::cout << "generated \"" << master.username << ".vault\"\n";
+      std::cout << "\tgenerated \"" << master.username << ".vault\n";
    }
 
    return;
