@@ -2,6 +2,7 @@
 #define PASSWORDQUALITYHANDLER_HPP
 
 #include "Account.hpp"
+#include "Vault.hpp"
 
 class PasswordQualityHandler
 {
