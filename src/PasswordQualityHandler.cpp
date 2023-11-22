@@ -33,8 +33,26 @@ bool PasswordQualityHandler::IsPasswordStrong(const std::string& pass) {
 
 //calculates percentage of repetitions
 bool PasswordQualityHandler::IsPasswordRepeating(const std::string pass, const Vault& vault) {
-    while(SearchHandler::SearchDuplicatePassword(pass, vault)){
-
+    int repeatCounter = 0;
+    int length = 0;
+    for(auto& entry : vault.vault){
+        for (auto it = entry.second.begin(); it != entry.second.end(); ++it){
+            if((*it).password == pass){
+                repeatCounter++;
+                std::cout << "Repeat password at "<< (*it).username << " in " << (*it).property.domain << "\n";
+            }
+            length++;
+         
+        }
+    }
+    if(repeatCounter != 0){
+        double sum = repeatCounter * 100.0 / length;
+        std::cout << "Percentage of repetitions in the vault: " << sum << "%\n";
+        return true;
+    }
+    else{
+        std::cout << "No repetitions found" << "\n";
+        return false;
     }
     return false;
 }

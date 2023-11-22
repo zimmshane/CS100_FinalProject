@@ -17,16 +17,19 @@ bool SearchHandler::IsUsernameExistInDomainVector(const std::string username, co
    return false;
 }
 
-bool SearchHandler::SearchDuplicatePassword(const std::string pass, const Vault& vault){
+bool SearchHandler::SearchDuplicate(const std::string domain, const Vault& vault){
+   bool isRepeating = false;
    for (auto& entry : vault.vault)
    {
-      for (auto it = entry.second.begin(); it != entry.second.end(); ++it)
-      {
-         if((*it).password == pass){
-            std::cout << (*it).username << " in " << (*it).property.domain << "\n";
-            return true;
+      for (auto it = entry.second.begin(); it != entry.second.end(); ++it) {
+         if((*it).property.domain == domain){
+            isRepeating = true;
+            std::cout << (*it).username << " has a duplicate domain of " << (*it).property.domain << "\n";
          }
       }
+   }
+   if(isRepeating){
+      return true;
    }
    return false;
 }
