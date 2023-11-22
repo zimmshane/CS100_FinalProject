@@ -42,6 +42,8 @@ void PasswordManager::Run_CLI_lock(int argc , char* argv[])
             std::cout << "\n\nSEARCHED ITEM\n\n"; // get line, parse arguments, different overload based on # of arguments
             break;
          case 'M':
+            UserInputHandler::GetGenericInput("><>username: ", menuStringInput);
+            userVault.ModifyItem(menuStringInput);
             std::cout << "\n\nMODIFIED ITEM\n\n";
             break;
          case 'D':

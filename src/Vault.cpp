@@ -59,44 +59,35 @@ void Vault::DeleteItem(const std::string& usernameForDeletion)
 
 void Vault::ModifyItem(const std::string& usernameForModification)
 {
-   std::vector<std::vector<VaultItem>::const_iterator> domainsContainingUsername;
+   std::vector<std::vector<VaultItem>::iterator> domainVectorPositions;
 
-   //  get vector of domains that contain an item with username
-   // we are sure of non duplicate during std::any_of due to AddItem() declining duplicate usernames per domain
-   for (const auto& keyDomainIter : vaultContainer)
+   for (auto& keyDomainIter : vaultContainer)
    {
-      // lambda function [capture variables for use](parameter of function sent in by iterator) { FUNCTION_HERE }
       auto iter = std::find_if(keyDomainIter.second.begin(), keyDomainIter.second.end(), [usernameForModification](const VaultItem& item) { return (item.username == usernameForModification); });
 
-      // make sure not end to prevent adding iterators that may have bad access
       if (iter != keyDomainIter.second.end())
       {
-         domainsContainingUsername.push_back(iter);
+         domainVectorPositions.push_back(iter);
       }
    }
 
-   for (size_t i { 0 }; i < domainsContainingUsername.size(); ++i)
+   for (size_t i { 0 }; i < domainVectorPositions.size(); ++i)
    {
-      std::cout << i << " " << (*domainsContainingUsername.at(i)).property.domain << " | "
-                           << (*domainsContainingUsername.at(i)).username << " | "
-                           << (*domainsContainingUsername.at(i)).property.description<< "\n";
+      std::cout << i << " " << (*domainVectorPositions.at(i)).property.domain << " | "
+                           << (*domainVectorPositions.at(i)).username << " | "
+                           << (*domainVectorPositions.at(i)).property.description<< "\n";
    }
 
    size_t indexInput;
-   std::cout << "><>index to delete: ";
+   std::cout << "><>index to modify: ";
    UserInputHandler::GetIndex(indexInput);
 
-   if (indexInput < domainsContainingUsername.size() && !(domainsContainingUsername.empty()))
+   if (indexInput < domainVectorPositions.size() && !(domainVectorPositions.empty()))
    {
       // vault at the hash key value of the domain given by the iterator, erase at the vector of the hash key
-      vaultContainer.at((*domainsContainingUsername.at(indexInput)).property.domain).erase(domainsContainingUsername.at(indexInput));
-
-      // check key container (vector) if it is empty after an element is removed from it
-      if (vaultContainer.at((*domainsContainingUsername.at(indexInput)).property.domain).empty())
-      {
-         // remove the key with an empty vector
-         vaultContainer.erase((*domainsContainingUsername.at(indexInput)).property.domain);
-         std::cout << "empty domain key removed\n";
-      }
+      UserInputHandler::GetGenericInput("><>username: ", (*domainVectorPositions.at(indexInput)).username);
+      UserInputHandler::GetItemPassword((*domainVectorPositions.at(indexInput)).password);
+      UserInputHandler::GetGenericInput("><>description: ", (*domainVectorPositions.at(indexInput)).property.description);
+      UserInputHandler::GetGenericInput("><>tag: ", (*domainVectorPositions.at(indexInput)).property.tag);
    }
 }

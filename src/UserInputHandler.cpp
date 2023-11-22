@@ -79,12 +79,19 @@ void UserInputHandler::GetItemPassword(std::string& itemPassword)
 
 void UserInputHandler::GetGenericInput(const std::string& msg, std::string& inputStrField)
 {
+   std::string oldString = inputStrField;
+
    for (;;)
    {
       std::cout << msg;
       std::getline(std::cin, inputStrField);
 
-      if (!(InputValidationHandler::IsContainWhiteSpaceEnds(inputStrField)) && !(inputStrField.size() == 0))
+      if ((inputStrField == "~~") && !(oldString.size() == 0)) // sentinel value for retaining old input if old input isn't empty
+      {
+         inputStrField = oldString;
+         return;
+      }
+      else if (!(InputValidationHandler::IsContainWhiteSpaceEnds(inputStrField)) && !(inputStrField.size() == 0))
       {
          return;
       }

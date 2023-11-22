@@ -19,6 +19,7 @@ public:
    ~Vault() { }
    bool AddItem(const VaultItem& item);
    void DeleteItem(const std::string& usernameForDeletion);
+   // doesn't make sense to change domain of an account to another domain
    void ModifyItem(const std::string& usernameForModification);
 
    // put this inside PasswordManager class later
