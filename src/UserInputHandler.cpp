@@ -59,8 +59,7 @@ void UserInputHandler::GetItemPassword(std::string& itemPassword)
    {
       std::cout << "><>password: ";
       std::getline(std::cin, itemPassword);
-
-      if (!(InputValidationHandler::IsContainWhiteSpaceEnds(itemPassword)) && (itemPassword.size() != 0) && PasswordQualityHandler::StrengthChecker(itemPassword) && !(InputValidationHandler::IsContainComma(itemPassword)))
+      if (!(InputValidationHandler::IsContainWhiteSpaceEnds(itemPassword)) && (itemPassword.size() != 0) && PasswordQualityHandler::IsPasswordStrong(itemPassword))
       {
          return;
       }
