@@ -7,14 +7,14 @@ void UserInputHandler::GetMasterInfo(MasterCredential& master)
       std::cout << "><>username: ";
       std::getline(std::cin, master.username);
 
-      if (InputValidationHandler::IsMasterUsernameGood(master.username))
+      if (InputValidationHandler::IsUsernameGood(master.username))
       {
          for (;;)
          {
             std::cout << "><>password: ";
             std::getline(std::cin, master.password);
 
-            if (InputValidationHandler::IsMasterPasswordGood(master.password))
+            if (InputValidationHandler::IsPasswordGood(master.password))
             {
                return;
             }
@@ -59,7 +59,6 @@ void UserInputHandler::GetItemPassword(std::string& itemPassword)
    {
       std::cout << "><>password: ";
       std::getline(std::cin, itemPassword);
-
       if (!(InputValidationHandler::IsContainWhiteSpaceEnds(itemPassword)) && (itemPassword.size() != 0) && PasswordQualityHandler::IsPasswordStrong(itemPassword))
       {
          return;
@@ -75,7 +74,7 @@ void UserInputHandler::GetGenericInput(const std::string& msg, std::string& inpu
       std::cout << msg;
       std::getline(std::cin, inputStrField);
 
-      if (!(InputValidationHandler::IsContainWhiteSpaceEnds(inputStrField)) && !(inputStrField.size() == 0))
+      if (!(InputValidationHandler::IsContainWhiteSpaceEnds(inputStrField)) && !(inputStrField.size() == 0) && !(InputValidationHandler::IsContainComma(inputStrField)))
       {
          return;
       }

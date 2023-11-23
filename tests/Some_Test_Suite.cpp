@@ -36,28 +36,50 @@ TEST(VaultEntityTests, FindVault)
 
 TEST(IllegalUsernameTests, LeadingSpaces)
 {
-   EXPECT_FALSE(InputValidationHandler::IsMasterUsernameGood("    this string has leading space"));
+   EXPECT_FALSE(InputValidationHandler::IsUsernameGood("    this string has leading space"));
+}
+
+TEST(IllegalUsernameTests, ContainingCommas)
+{
+   EXPECT_FALSE(InputValidationHandler::IsUsernameGood("    this,, string includes commas,,"));
+}
+
+TEST(IllegalUsernameTests, BigUsernameSize)
+{
+   EXPECT_FALSE(InputValidationHandler::IsUsernameGood("thisusernameisover 25 characters long"));
 }
 
 TEST(IllegalUsernameTests, TrailingSpaces)
 {
-   EXPECT_FALSE(InputValidationHandler::IsMasterUsernameGood("this string has a trailing space "));
+   EXPECT_FALSE(InputValidationHandler::IsUsernameGood("this string has a trailing space "));
 }
 
 TEST(IllegalUsernameTests, SpecialCharacters)
 {
-   EXPECT_FALSE(InputValidationHandler::IsMasterUsernameGood("this character has !some special character"));
+   EXPECT_FALSE(InputValidationHandler::IsUsernameGood("this character has !some special character"));
 }
 
 TEST(IllegalPasswordTests, LeadingSpace)
 {
-   EXPECT_FALSE(InputValidationHandler::IsMasterPasswordGood(" this string has a leading space"));
+   EXPECT_FALSE(InputValidationHandler::IsPasswordGood(" this string has a leading space"));
+
+}
+
+TEST(IllegalPasswordTests, BigPasswordSize)
+{
+   EXPECT_FALSE(InputValidationHandler::IsPasswordGood(" thisstringisover25characterslong"));
+
+}
+
+TEST(IllegalPasswordTests, ContainingCommas)
+{
+   EXPECT_FALSE(InputValidationHandler::IsPasswordGood(" this,, string,, has a comma"));
 
 }
 
 TEST(IllegalPasswordTests, TrailingSpace)
 {
-   EXPECT_FALSE(InputValidationHandler::IsMasterPasswordGood("this string has a leading space   has many !! ##!@# trailing spaces     "));
+   EXPECT_FALSE(InputValidationHandler::IsPasswordGood("this string has a leading space   has many !! ##!@# trailing spaces     "));
 }
 
 TEST(PasswordQualityTests, invalidPasswords)
@@ -74,4 +96,16 @@ TEST(PasswordQualityTests, verifyValidPasswords)
 {
    EXPECT_TRUE(PasswordQualityHandler::IsPasswordStrong("H3LLoT4ere!"));
    EXPECT_TRUE(PasswordQualityHandler::IsPasswordStrong("#Th1sworks"));
+}
+
+TEST(StringContainsComma, validStringInput)
+{
+   EXPECT_TRUE(InputValidationHandler::IsContainComma(",Hello1234"));
+   EXPECT_TRUE(InputValidationHandler::IsContainComma("Hiii,000,"));
+}
+
+TEST(StringContainsComma, invalidStringInput)
+{
+   EXPECT_FALSE(InputValidationHandler::IsContainComma("Hello1234"));
+   EXPECT_FALSE(InputValidationHandler::IsContainComma("JoeDoe 689"));
 }
