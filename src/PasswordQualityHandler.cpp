@@ -28,7 +28,7 @@ bool PasswordQualityHandler::IsPasswordStrong(const std::string& pass) {
         }
     }
     if(containsSymbol == false || containsUpper == false || containsNumber == false){
-        std::cout << "\tpassword needs symbol, uppercase, and digits.\n";
+        std::cout << "\tpassword requires uppercase, digit, and symbol.\n";
         return false;
     }
 

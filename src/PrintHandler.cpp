@@ -1,8 +1,31 @@
 #include "../include/PrintHandler.hpp"
 
+void PrintHandler::PrintMainMenu()
+{
+   std::cout << "(A)dd\n"
+            << "(S)earch \n"
+            << "(M)odify\n"
+            << "(D)elete\n"
+            << "(E)xit\n"
+            << "(L)ogout\n"
+            << "(P)rint vault\n"
+            << "><>choice: ";
+
+   return;
+}
+
+void PrintHandler::PrintItem(const VaultItem& item)
+{
+   std::cout << "domain: " << item.property.domain << "\n" // remove this line in prod
+            << "username: " << item.username << "\n"
+            << "password: " << item.password << "\n"
+            << "description: " << item.property.description << "\n"
+            << "tag: " << item.property.tag << "\n\n";
+}
+
 void PrintHandler::PrintVault(const Vault& vault)
 {
-   for (auto& entry : vault.vault)
+   for (auto& entry : vault.vaultContainer)
    {
       std::cout << "========" << entry.first << "========\n";
 
@@ -20,18 +43,4 @@ void PrintHandler::PrintVault(const Vault& vault)
                   << "tag: " << (*it).property.tag << "\n\n";
       }
    }
-}
-
-void PrintHandler::PrintMainMenu()
-{
-   std::cout << "(A)dd\n"
-            << "(S)earch \n"
-            << "(M)odify\n"
-            << "(D)elete\n"
-            << "(E)xit\n"
-            << "(L)ogout\n"
-            << "(P)rint vault\n"
-            << "><>choice: ";
-
-   return;
 }

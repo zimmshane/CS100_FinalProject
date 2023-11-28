@@ -26,23 +26,23 @@ int main()
 
    Vault vault{ };
 
-   vault.vault[item0.property.domain].push_back(item0);
-   vault.vault[item1.property.domain].push_back(item1);
-   vault.vault[item2.property.domain].push_back(item2);
-   vault.vault[item3.property.domain].push_back(item3);
-   vault.vault[item4.property.domain].push_back(item4);
-   vault.vault[item5.property.domain].push_back(item5);
-   vault.vault[item6.property.domain].push_back(item6);
-   vault.vault[item7.property.domain].push_back(item7);
-   vault.vault[item8.property.domain].push_back(item8);
-   vault.vault[item9.property.domain].push_back(item9);
+   vault.vaultContainer[item0.property.domain].push_back(item0);
+   vault.vaultContainer[item1.property.domain].push_back(item1);
+   vault.vaultContainer[item2.property.domain].push_back(item2);
+   vault.vaultContainer[item3.property.domain].push_back(item3);
+   vault.vaultContainer[item4.property.domain].push_back(item4);
+   vault.vaultContainer[item5.property.domain].push_back(item5);
+   vault.vaultContainer[item6.property.domain].push_back(item6);
+   vault.vaultContainer[item7.property.domain].push_back(item7);
+   vault.vaultContainer[item8.property.domain].push_back(item8);
+   vault.vaultContainer[item9.property.domain].push_back(item9);
 
 
    Timer timer{ };
 
    // use const for printing
    // non const for when sorting buckets on map<>
-   for ( auto& entry : vault.vault)
+   for ( auto& entry : vault.vaultContainer)
    {
       std::cout << "========" << entry.first << "========\n";
 

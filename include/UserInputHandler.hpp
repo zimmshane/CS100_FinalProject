@@ -11,6 +11,7 @@ class UserInputHandler
 public:
    static void GetMasterInfo(MasterCredential& master);
    static void GetUpperChar(char& input);
+   static void GetIndex(size_t& input);
 
    // prevent leading or trailing for all
    static VaultItem GetItemInput();

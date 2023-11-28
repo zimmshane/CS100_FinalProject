@@ -2,6 +2,7 @@
 #define VAULT_HPP
 
 #include "Account.hpp"
+#include <algorithm>
 // #include <map>
 #include <unordered_map>
 #include <vector>
@@ -17,13 +18,14 @@ public:
    Vault() { }
    ~Vault() { }
    bool AddItem(const VaultItem& item);
-   void DeleteItem(const std::string& username);
-   void ModifyItem(const std::string& username);
+   void DeleteItem(const std::string& usernameForDeletion);
+   // doesn't make sense to change domain of an account to another domain
+   void ModifyItem(const std::string& usernameForModification);
 
    // put this inside PasswordManager class later
    // std::unordered_map<std::string, std::vector<VaultItem>> GetVault() { return vault; }
 
-   std::unordered_map<std::string, std::vector<VaultItem>> vault;
+   std::unordered_map<std::string, std::vector<VaultItem>> vaultContainer;
 
    // std::unordered_map<std::string, std::unordered_map<std::string, VaultItem>> keyDomainKeyUsername;
 };
