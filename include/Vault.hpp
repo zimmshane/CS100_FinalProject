@@ -9,6 +9,8 @@
 #include <iostream>
 #include <string>
 #include "Account.hpp"
+
+// bad includes, causes circular dependency
 //#include "PrintHandler.hpp"
 // #include "SearchHandler.hpp"
 
