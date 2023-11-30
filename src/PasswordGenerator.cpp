@@ -3,7 +3,6 @@
 #include "../include/Vault.hpp"
 #include <stdlib.h>
 #include <algorithm>
-#include <ctime>
 
 /*
     -Accepted symbols derived from IBM's Business Automation Workflow for
@@ -21,6 +20,5 @@ std::string PasswordGenerator::GeneratePassword(){
     for(int i = 4; i < passLength; i++){
         generatedPassword += pass[std::rand() % sizeof(pass)];
     }
-    //std::random_shuffle(generatedPassword.begin(), generatedPassword.end());
     return generatedPassword;
 }
