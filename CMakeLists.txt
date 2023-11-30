@@ -25,6 +25,7 @@ add_executable(dev
     ./src/PasswordQualityHandler.cpp
     ./src/PrintHandler.cpp
     ./src/UserInputHandler.cpp
+    ./src/PasswordGenerator.cpp
 ) # dev build
 
 add_executable(dev_tests
@@ -37,6 +38,7 @@ add_executable(dev_tests
     ./src/PasswordQualityHandler.cpp
     ./src/PrintHandler.cpp
     ./src/UserInputHandler.cpp
+    ./src/PasswordGenerator.cpp
 )
 
 # put your personal test files here, DO NOT PUSH YOUR PERSONAL TEST FILES
