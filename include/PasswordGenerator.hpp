@@ -8,7 +8,7 @@
 class PasswordGenerator
 {
 public:
-    static string GeneratePassword();
+    static std::string GeneratePassword();
 };
 
 #endif // !PASSWORDGENERATOR_HPP
