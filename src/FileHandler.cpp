@@ -92,3 +92,8 @@ void FileHandler::LoadVaultFile(const std::string vaultName, Vault& vault)
 
    return;
 }
+
+void FileHandler::WriteVaultToFile(const std::unordered_map<std::string, std::vector<VaultItem>> container, std::string fileName)
+{
+
+}

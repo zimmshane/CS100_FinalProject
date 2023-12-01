@@ -4,11 +4,16 @@
 
 void PasswordManager::Logout()
 {
+   // write to file first FileHandler::
+   FileHandler::WriteVaultToFile(userVault.vaultContainer, currentUser.username);
 
    return;
 }
+
 void PasswordManager::Exit()
 {
+   // write to file first FileHandler::
+   FileHandler::WriteVaultToFile(userVault.vaultContainer, currentUser.username);
 
    return;
 }

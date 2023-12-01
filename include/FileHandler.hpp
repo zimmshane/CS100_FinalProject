@@ -13,6 +13,7 @@ public:
    static bool IsVaultPasswordMatch(const MasterCredential& master);
    static void CreateVaultFile(const MasterCredential& master);
    static void LoadVaultFile(const std::string vaultName, Vault& vault);
+   static void WriteVaultToFile(const std::unordered_map<std::string, std::vector<VaultItem>> container, std::string fileName);
 };
 
 #endif // !FILEHANDLER_HPP
