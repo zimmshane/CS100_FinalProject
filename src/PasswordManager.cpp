@@ -2,13 +2,22 @@
 #include "../src/Vault.cpp"
 #include "../src/SearchHandler.cpp"
 
-void PasswordManager::Logout()
+void PasswordManager::LogoutVault()
 {
+   // write to file first FileHandler::
+   FileHandler::WriteVaultToFile(currentUser, userVault.vaultContainer);
+
+   // rewrite config file with currentUser login information
 
    return;
 }
-void PasswordManager::Exit()
+
+void PasswordManager::ExitVault()
 {
+   // write to file first FileHandler::
+   FileHandler::WriteVaultToFile(currentUser, userVault.vaultContainer);
+
+   // donothing?
 
    return;
 }
@@ -53,9 +62,11 @@ void PasswordManager::Run_CLI_lock(int argc , char* argv[])
             break;
          case 'E':
             std::cout << "\n\nEXITED VAULT\n\n";
+            ExitVault();
             return;
          case 'L':
             std::cout << "\n\nLOGGED OUT\n\n";
+            LogoutVault();
             return;
          case 'P':
             PrintHandler::PrintVault(userVault);
