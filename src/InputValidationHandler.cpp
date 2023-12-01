@@ -15,7 +15,6 @@ bool InputValidationHandler::IsUsernameGood(const std::string& username)
    }
    else if (IsContainWhiteSpaceEnds(username))
    {
-      std::cout << "username contains leading or trailing whitespace\n";
       return false;
    }
    else if ((illegalCharPos = username.find_first_of("`!@#$%^&*()+=[]{}\\|;:'\",<>?/\t")) != std::string::npos)
@@ -43,7 +42,6 @@ bool InputValidationHandler::IsPasswordGood(const std::string& password)
    }
    else if (IsContainWhiteSpaceEnds(password))
    {
-      std::cout << "password contains leading or trailing whitespace\n";
       return false;
    }
    else if(IsContainComma(password)){

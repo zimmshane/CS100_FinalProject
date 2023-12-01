@@ -38,6 +38,15 @@ void UserInputHandler::GetUpperChar(char& input)
    return;
 }
 
+void UserInputHandler::GetIndex(size_t& input)
+{
+   std::cin >> input;
+
+   std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+   return;
+}
+
 VaultItem UserInputHandler::GetItemInput()
 {
    VaultItem newItem;
@@ -69,12 +78,19 @@ void UserInputHandler::GetItemPassword(std::string& itemPassword)
 
 void UserInputHandler::GetGenericInput(const std::string& msg, std::string& inputStrField)
 {
+   std::string oldString = inputStrField;
+
    for (;;)
    {
       std::cout << msg;
       std::getline(std::cin, inputStrField);
 
-      if (!(InputValidationHandler::IsContainWhiteSpaceEnds(inputStrField)) && !(inputStrField.size() == 0) && !(InputValidationHandler::IsContainComma(inputStrField)))
+      if ((inputStrField == "~~") && !(oldString.size() == 0)) // sentinel value for retaining old input if old input isn't empty
+      {
+         inputStrField = oldString;
+         return;
+      }
+      else if (!(InputValidationHandler::IsContainWhiteSpaceEnds(inputStrField)) && !(inputStrField.size() == 0))
       {
          return;
       }

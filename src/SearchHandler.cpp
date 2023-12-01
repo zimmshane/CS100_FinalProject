@@ -24,7 +24,7 @@ bool SearchHandler::IsUsernameExistInDomainVector(const std::string username, co
 
 bool SearchHandler::SearchDuplicate(const std::string domain, const Vault& vault){
    bool isRepeating = false;
-   for (auto& entry : vault.vault)
+   for (auto& entry : vault.vaultContainer)
    {
       for (auto it = entry.second.begin(); it != entry.second.end(); ++it) {
          if((*it).property.domain == domain){

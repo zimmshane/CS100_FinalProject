@@ -28,7 +28,7 @@ bool PasswordQualityHandler::IsPasswordStrong(const std::string& pass) {
         }
     }
     if(containsSymbol == false || containsUpper == false || containsNumber == false){
-        std::cout << "\tpassword needs symbol, uppercase, and digits.\n";
+        std::cout << "\tpassword requires uppercase, digit, and symbol.\n";
         return false;
     }
 
@@ -39,14 +39,14 @@ bool PasswordQualityHandler::IsPasswordStrong(const std::string& pass) {
 bool PasswordQualityHandler::IsPasswordRepeating(const std::string pass, const Vault& vault) {
     int repeatCounter = 0;
     int length = 0;
-    for(auto& entry : vault.vault){
+    for(auto& entry : vault.vaultContainer){
         for (auto it = entry.second.begin(); it != entry.second.end(); ++it){
             if((*it).password == pass){
                 repeatCounter++;
                 std::cout << "Repeat password at "<< (*it).username << " in " << (*it).property.domain << "\n";
             }
             length++;
-         
+
         }
     }
     if(repeatCounter != 0){
