@@ -6,6 +6,7 @@
 #include "../include/PasswordManager.hpp"
 #include "../include/UserInputHandler.hpp"
 #include "../include/Vault.hpp"
+#include "../include/PasswordGenerator.hpp"
 
 TEST(ItemContainerTests, VerifyValues)
 {
@@ -96,6 +97,13 @@ TEST(PasswordQualityTests, verifyValidPasswords)
 {
    EXPECT_TRUE(PasswordQualityHandler::IsPasswordStrong("H3LLoT4ere!"));
    EXPECT_TRUE(PasswordQualityHandler::IsPasswordStrong("#Th1sworks"));
+}
+
+TEST(PasswordQualityTests, randomPasswordIsValid)
+{
+   std::string pass = PasswordGenerator::GeneratePassword();
+   EXPECT_TRUE(PasswordQualityHandler::IsPasswordStrong(pass));
+
 }
 
 TEST(StringContainsComma, validStringInput)

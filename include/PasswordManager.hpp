@@ -6,6 +6,7 @@
 #include "PrintHandler.hpp"
 #include "Vault.hpp"
 
+
 class PasswordManager
 {
 public:
