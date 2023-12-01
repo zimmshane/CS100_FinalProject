@@ -64,11 +64,17 @@ VaultItem UserInputHandler::GetItemInput()
 
 void UserInputHandler::GetItemPassword(std::string& itemPassword)
 {
+   std::string oldPassword = itemPassword;
    for (;;)
    {
       std::cout << "><>password: ";
       std::getline(std::cin, itemPassword);
-      if (!(InputValidationHandler::IsContainWhiteSpaceEnds(itemPassword)) && (itemPassword.size() != 0) && PasswordQualityHandler::IsPasswordStrong(itemPassword))
+      if (itemPassword == "~~")
+      {
+         itemPassword = oldPassword;
+         return;
+      }
+      else if (!(InputValidationHandler::IsContainWhiteSpaceEnds(itemPassword)) && (itemPassword.size() != 0) && PasswordQualityHandler::IsPasswordStrong(itemPassword))
       {
          return;
       }

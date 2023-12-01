@@ -54,10 +54,10 @@ bool FileHandler::IsVaultPasswordMatch(const MasterCredential& master)
    return false;
 }
 
-void FileHandler::LoadVaultFile(const std::string vaultName, Vault& vault)
+void FileHandler::LoadVaultFile(const std::string& vaultName, Vault& vault)
 {
    // logging in already checks file IsUserVaultExist, assume ifstream opens
-   std::ifstream iFS(vaultName + ".vault");
+   std::ifstream iFS{vaultName + ".vault"};
 
    std::string rawString;
    std::string username;
@@ -93,7 +93,23 @@ void FileHandler::LoadVaultFile(const std::string vaultName, Vault& vault)
    return;
 }
 
-void FileHandler::WriteVaultToFile(const std::unordered_map<std::string, std::vector<VaultItem>> container, std::string fileName)
+void FileHandler::WriteVaultToFile(const MasterCredential& currentUser, const std::unordered_map<std::string, std::vector<VaultItem>>& container)
 {
+   // BAD: assumes file bit is good from successful vault login access
+   std::ofstream oFS{currentUser.username + ".vault"};
 
+   // preprocessing file
+   oFS << currentUser.password << "\n";      // look into
+   oFS << "username,password,domain,description,tag\n";
+
+
+
+
+   for (const auto& keyIter : container)
+   {
+      for (const auto& itemVectorIter : keyIter.second)
+      {
+         oFS << itemVectorIter.username << "," << itemVectorIter.password << "," << itemVectorIter.property.domain << "," << itemVectorIter.property.description << "," << itemVectorIter.property.tag << "\n";
+      }
+   }
 }

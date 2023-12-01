@@ -14,8 +14,8 @@ public:
    void Run_CLI_lock(int argc , char* argv[]);
 
    // config cache
-   void Logout(); // empty [CURRENT]
-   void Exit(); // save under [CURRENT]
+   void LogoutVault(); // empty [CURRENT]
+   void ExitVault(); // save under [CURRENT]
 
    MasterCredential currentUser;
    Vault userVault;

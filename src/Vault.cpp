@@ -71,12 +71,14 @@ void Vault::ModifyItem(const std::string& usernameForModification)
       }
    }
 
+
    for (size_t i { 0 }; i < domainVectorPositions.size(); ++i)
    {
       std::cout << i << " " << (*domainVectorPositions.at(i)).property.domain << " | "
                            << (*domainVectorPositions.at(i)).username << " | "
                            << (*domainVectorPositions.at(i)).property.description<< "\n";
    }
+
 
    size_t indexInput;
    std::cout << "><>index to modify: ";
