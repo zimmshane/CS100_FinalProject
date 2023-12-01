@@ -6,6 +6,6 @@
 class UserConfig
 {
 public:
-    //std::int dictWordUse();
+    static int dictWordUse();
 };
 #endif // !USERCONFIG_HPP
