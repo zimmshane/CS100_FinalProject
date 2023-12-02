@@ -6,6 +6,18 @@
 #include "PrintHandler.hpp"
 #include "Vault.hpp"
 
+struct Config
+   {
+      //These values are set by FileHandler::ParseConfig()
+      // [GENERATE] password generating settings
+      int passwordLength;
+      int alphaCount;
+      int numberCount;
+      int symbolCount;
+      // [CURRENT] remembered credentials without logout
+      MasterCredential rememberedUser;
+   };
+
 class PasswordManager
 {
 public:
@@ -20,16 +32,6 @@ public:
    MasterCredential currentUser;
    Vault userVault;
    Vault encryptedVault;
-
-   struct Config
-   {
-      // [GENERATE] password generating settings
-
-
-      // [CURRENT] remembered credentials without logout
-      MasterCredential rememberedUser;
-   };
-
    Config config;
 
 
