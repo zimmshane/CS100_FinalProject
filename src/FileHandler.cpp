@@ -94,9 +94,9 @@ void FileHandler::LoadVaultFile(const std::string vaultName, Vault &vault)
    return;
 }
 
-void FileHandler::ParseConfig(Config &config)
+void FileHandler::ParseConfig(Config &config,const string fileName)
 {
-   std::ifstream iFS{"config.txt"};
+   std::ifstream iFS{fileName};
    bool errorFlag = false; // set when error occurs in loading config values into PasswordManager::Config
 
    if (iFS.good())
@@ -116,7 +116,6 @@ void FileHandler::ParseConfig(Config &config)
             {
                std::string parameterValue;
                std::getline(lineStream, parameterValue); // grabs remainder of line containing value
-               std::cout << parameterValue << std::endl; // testing
                if (parameterName == "length")
                {
                   try
@@ -170,6 +169,11 @@ void FileHandler::ParseConfig(Config &config)
       }
    }
    else { errorFlag = true;} //file failed to open
+   iFS.close();
+
+   if((config.alphaCount+config.numberCount+config.symbolCount) != config.passwordLength){ //make sure values sum to length
+      errorFlag = true;
+   }
 
    if (errorFlag == true)
    {
@@ -180,4 +184,5 @@ void FileHandler::ParseConfig(Config &config)
       config.symbolCount = 2;
       return;
    }
+
 }

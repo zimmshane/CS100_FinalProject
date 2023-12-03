@@ -16,7 +16,7 @@ public:
    static bool IsVaultPasswordMatch(const MasterCredential& master);
    static void CreateVaultFile(const MasterCredential& master);
    static void LoadVaultFile(const std::string vaultName, Vault& vault);
-   static void ParseConfig(Config& config);
+   static void ParseConfig(Config& config, const std::string fileName);
 };
 
 #endif // !FILEHANDLER_HPP
