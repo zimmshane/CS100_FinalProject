@@ -1,6 +1,7 @@
 #include "../include/FileHandler.hpp"
 
-bool FileHandler::IsUserVaultExist(const std::string& username)
+
+bool FileHandler::IsUserVaultExist(const std::string &username)
 {
    std::string fileName{username + ".vault"};
 
@@ -17,7 +18,7 @@ bool FileHandler::IsUserVaultExist(const std::string& username)
    return false;
 }
 
-void FileHandler::CreateVaultFile(const MasterCredential& master)
+void FileHandler::CreateVaultFile(const MasterCredential &master)
 {
    std::ofstream oFS{master.username + ".vault"}; // generates .vault file via ofstream
 
@@ -32,7 +33,7 @@ void FileHandler::CreateVaultFile(const MasterCredential& master)
    return;
 }
 
-bool FileHandler::IsVaultPasswordMatch(const MasterCredential& master)
+bool FileHandler::IsVaultPasswordMatch(const MasterCredential &master)
 {
    std::ifstream iFS{master.username + ".vault"};
    std::string buffer;
@@ -54,7 +55,7 @@ bool FileHandler::IsVaultPasswordMatch(const MasterCredential& master)
    return false;
 }
 
-void FileHandler::LoadVaultFile(const std::string vaultName, Vault& vault)
+void FileHandler::LoadVaultFile(const std::string vaultName, Vault &vault)
 {
    // logging in already checks file IsUserVaultExist, assume ifstream opens
    std::ifstream iFS(vaultName + ".vault");
@@ -91,4 +92,92 @@ void FileHandler::LoadVaultFile(const std::string vaultName, Vault& vault)
    }
 
    return;
+}
+
+void FileHandler::ParseConfig(Config &config)
+{
+   std::ifstream iFS{"config.txt"};
+   bool errorFlag = false; // set when error occurs in loading config values into PasswordManager::Config
+
+   if (iFS.good())
+   {
+      std::string gotLine;
+      std::getline(iFS, gotLine);
+      if (gotLine == "[GENERATE]") // Verify config file first line correct
+      {
+         while (std::getline(iFS, gotLine)) // grabs whole lines to pass into lineStream
+         {
+
+            if (gotLine == "[CURRENT]") { break; } // Past userconfigs
+            std::stringstream lineStream(gotLine);
+            std::string parameterName;
+
+            while (std::getline(lineStream, parameterName, '=') && errorFlag == false) // grabs text until '='
+            {
+               std::string parameterValue;
+               std::getline(lineStream, parameterValue); // grabs remainder of line containing value
+               std::cout << parameterValue << std::endl; // testing
+               if (parameterName == "length")
+               {
+                  try
+                  {
+                     config.passwordLength = stoi(parameterValue);
+                  }
+                  catch (...)
+                  {
+                     errorFlag = true;
+                  }
+               }
+               else if (parameterName == "alpha")
+               {
+                  try
+                  {
+                     config.alphaCount = stoi(parameterValue);
+                  }
+                  catch (...)
+                  {
+                     errorFlag = true;
+                  }
+               }
+               else if (parameterName == "numeric")
+               {
+                  try
+                  {
+                     config.numberCount = stoi(parameterValue);
+                  }
+                  catch (...)
+                  {
+                     errorFlag = true;
+                  }
+               }
+               else if (parameterName == "symbol")
+               {
+                  try
+                  {
+                     config.symbolCount = stoi(parameterValue);
+                  }
+                  catch (...)
+                  {
+                     errorFlag = true;
+                  }
+               }
+               else
+               {
+                  errorFlag = true;
+               }
+            }
+         }
+      }
+   }
+   else { errorFlag = true;} //file failed to open
+
+   if (errorFlag == true)
+   {
+      std::cout << "Error loading config file! Using default settings.\n";
+      config.passwordLength = 12;
+      config.alphaCount = 8;
+      config.numberCount = 2;
+      config.symbolCount = 2;
+      return;
+   }
 }
