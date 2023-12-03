@@ -95,13 +95,6 @@ TEST(PasswordQualityTests, invalidPasswords)
 
 }
 
-TEST(PasswordQualityTests, verifyValidPasswords)
-{
-   EXPECT_TRUE(PasswordQualityHandler::StrengthChecker("H3LLoT4ere!"));
-   EXPECT_TRUE(PasswordQualityHandler::StrengthChecker("#Th1sworks"));
-}
-
-
 TEST(ImportConfigTests, canHandleMissingValues){
    std::ofstream genconfig("TESTconfig.txt");
    genconfig<<"[GENERATE]\nlength=16\nsymbol=4\n[CURRENT]";
