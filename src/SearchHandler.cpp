@@ -1,6 +1,13 @@
 #include "../include/SearchHandler.hpp"
 
 void SearchHandler::Search(const std::string& domainForSearch, const std::string& username, const Vault& vault){
+   try{
+      std::vector<VaultItem> itemsAtDomain = vault.vaultContainer.at(domainForSearch);
+   }
+   catch(const std::exception& e){
+      std::cout<<"No account with specified domain\n";
+      return;
+   }
    std::vector<VaultItem> itemsAtDomain = vault.vaultContainer.at(domainForSearch);
    for (const auto& iter : itemsAtDomain)
    {
@@ -12,10 +19,12 @@ void SearchHandler::Search(const std::string& domainForSearch, const std::string
             << "description: " << (iter).property.description << "\n"
             << "tag: " << (iter).property.tag << "\n";
          return;
-      }
+      }else{
+         std::cout<<"No account with specified domain\n";
+         return;
 
+      }
    }
-   std::cout<<"No account with specified domain\n";
 }
 
 bool SearchHandler::IsUsernameExistInDomainVector(const std::string username, const std::vector<VaultItem>& itemVector)
