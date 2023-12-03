@@ -94,7 +94,7 @@ void FileHandler::LoadVaultFile(const std::string vaultName, Vault &vault)
    return;
 }
 
-void FileHandler::ParseConfig(Config &config,const string fileName)
+void FileHandler::ParseConfig(Config &config,const std::string fileName)
 {
    std::ifstream iFS{fileName};
    bool errorFlag = false; // set when error occurs in loading config values into PasswordManager::Config
@@ -169,15 +169,14 @@ void FileHandler::ParseConfig(Config &config,const string fileName)
       }
    }
    else { errorFlag = true;} //file failed to open
-   iFS.close();
-
+ 
    if((config.alphaCount+config.numberCount+config.symbolCount) != config.passwordLength){ //make sure values sum to length
       errorFlag = true;
-   }
+   } 
 
    if (errorFlag == true)
    {
-      std::cout << "Error loading config file! Using default settings.\n";
+      std::cout << "Error Loading Configuration File!\nUsing Default Settings Instead.\n";
       config.passwordLength = 12;
       config.alphaCount = 8;
       config.numberCount = 2;
