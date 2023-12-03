@@ -19,10 +19,6 @@ void SearchHandler::Search(const std::string& domainForSearch, const std::string
             << "description: " << (iter).property.description << "\n"
             << "tag: " << (iter).property.tag << "\n";
          return;
-      }else{
-         std::cout<<"No account with specified domain\n";
-         return;
-
       }
    }
 }
