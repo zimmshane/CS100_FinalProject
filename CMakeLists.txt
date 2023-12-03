@@ -7,8 +7,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fno-inline -Wall -Wextra -Wpedan
 # prod build flags
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20 -Ofast -Wall -Wextra -flto -s -Wl,-s,--as-needed")
 
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin")
 
 add_subdirectory(./external/googletest/)
@@ -25,6 +23,8 @@ add_executable(dev
     ./src/PasswordQualityHandler.cpp
     ./src/PrintHandler.cpp
     ./src/UserInputHandler.cpp
+    ./src/PasswordGenerator.cpp
+    ./src/UserConfig.cpp
 ) # dev build
 
 add_executable(dev_tests
@@ -37,10 +37,13 @@ add_executable(dev_tests
     ./src/PasswordQualityHandler.cpp
     ./src/PrintHandler.cpp
     ./src/UserInputHandler.cpp
+    ./src/PasswordGenerator.cpp
+    ./src/UserConfig.cpp
 )
 
 # put your personal test files here, DO NOT PUSH YOUR PERSONAL TEST FILES
 # add_executable(jeff ./tests/jeff.cpp ./src/Login.cpp ./src/FileHandler.cpp)
+#add_executable(aaron ./tests/aaron.cpp ./src/SearchHandler.cpp ./src/PasswordQualityHandler.cpp ./src/PasswordGenerator.cpp ./src/UserConfig.cpp)
 
 target_link_libraries(dev_tests gtest gtest_main)
 

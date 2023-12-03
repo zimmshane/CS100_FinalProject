@@ -7,14 +7,14 @@ void UserInputHandler::GetMasterInfo(MasterCredential& master)
       std::cout << "><>username: ";
       std::getline(std::cin, master.username);
 
-      if (InputValidationHandler::IsMasterUsernameGood(master.username))
+      if (InputValidationHandler::IsUsernameGood(master.username))
       {
          for (;;)
          {
             std::cout << "><>password: ";
             std::getline(std::cin, master.password);
 
-            if (InputValidationHandler::IsMasterPasswordGood(master.password))
+            if (InputValidationHandler::IsPasswordGood(master.password))
             {
                return;
             }
@@ -38,6 +38,15 @@ void UserInputHandler::GetUpperChar(char& input)
    return;
 }
 
+void UserInputHandler::GetIndex(size_t& input)
+{
+   std::cin >> input;
+
+   std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+   return;
+}
+
 VaultItem UserInputHandler::GetItemInput()
 {
    VaultItem newItem;
@@ -55,12 +64,17 @@ VaultItem UserInputHandler::GetItemInput()
 
 void UserInputHandler::GetItemPassword(std::string& itemPassword)
 {
+   std::string oldPassword = itemPassword;
    for (;;)
    {
       std::cout << "><>password: ";
       std::getline(std::cin, itemPassword);
-
-      if (!(InputValidationHandler::IsContainWhiteSpaceEnds(itemPassword)) && (itemPassword.size() != 0) && PasswordQualityHandler::StrengthChecker(itemPassword))
+      if (itemPassword == "~~")
+      {
+         itemPassword = oldPassword;
+         return;
+      }
+      else if (!(InputValidationHandler::IsContainWhiteSpaceEnds(itemPassword)) && (itemPassword.size() != 0) && PasswordQualityHandler::IsPasswordStrong(itemPassword))
       {
          return;
       }
@@ -70,12 +84,19 @@ void UserInputHandler::GetItemPassword(std::string& itemPassword)
 
 void UserInputHandler::GetGenericInput(const std::string& msg, std::string& inputStrField)
 {
+   std::string oldString = inputStrField;
+
    for (;;)
    {
       std::cout << msg;
       std::getline(std::cin, inputStrField);
 
-      if (!(InputValidationHandler::IsContainWhiteSpaceEnds(inputStrField)) && !(inputStrField.size() == 0))
+      if ((inputStrField == "~~") && !(oldString.size() == 0)) // sentinel value for retaining old input if old input isn't empty
+      {
+         inputStrField = oldString;
+         return;
+      }
+      else if (!(InputValidationHandler::IsContainWhiteSpaceEnds(inputStrField)) && !(inputStrField.size() == 0))
       {
          return;
       }

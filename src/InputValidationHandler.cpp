@@ -1,12 +1,16 @@
 #include "../include/InputValidationHandler.hpp"
 
-bool InputValidationHandler::IsMasterUsernameGood(const std::string& username)
+bool InputValidationHandler::IsUsernameGood(const std::string& username)
 {
    std::size_t illegalCharPos;
 
    if (username.size() == 0)
    {
       std::cout << "username is empty\n";
+      return false;
+   }
+   else if(username.size() > 25 ){
+      std::cout << "length of username exceeds the limit of 25 characters\n";
       return false;
    }
    else if (IsContainWhiteSpaceEnds(username))
@@ -17,20 +21,31 @@ bool InputValidationHandler::IsMasterUsernameGood(const std::string& username)
    {
       std::cout << "username contains illegal character '" << username[illegalCharPos] << "'\n";
       return false;
+   }else if(IsContainComma(username)){
+      std::cout << "username can not include commas\n";
+      return false;
    }
 
    return true;
 }
 
-bool InputValidationHandler::IsMasterPasswordGood(const std::string& password)
+bool InputValidationHandler::IsPasswordGood(const std::string& password)
 {
    if (password.size() == 0)
-   { // do we really care about an empty password thhough?
+   {
       std::cout << "password is empty\n";
+      return false;
+   }
+   else if(password.size() > 25){
+      std::cout << "password exceeds the limit of 25 characters\n";
       return false;
    }
    else if (IsContainWhiteSpaceEnds(password))
    {
+      return false;
+   }
+   else if(IsContainComma(password)){
+      std::cout << "password can not include commas\n";
       return false;
    }
 
@@ -47,4 +62,12 @@ bool InputValidationHandler::IsContainWhiteSpaceEnds(const std::string& checkStr
    }
 
    return false;
+}
+
+bool InputValidationHandler::IsContainComma(const std::string& checkStr){
+   if(checkStr.find_first_of(",") == std::string::npos){
+      return false;
+   }else{
+      return true;
+   }
 }

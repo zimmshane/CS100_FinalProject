@@ -6,6 +6,7 @@
 #include "../include/PasswordManager.hpp"
 #include "../include/UserInputHandler.hpp"
 #include "../include/Vault.hpp"
+#include "../include/PasswordGenerator.hpp"
 #include <iostream>
 
 
@@ -38,37 +39,59 @@ TEST(VaultEntityTests, FindVault)
 
 TEST(IllegalUsernameTests, LeadingSpaces)
 {
-   EXPECT_FALSE(InputValidationHandler::IsMasterUsernameGood("    this string has leading space"));
+   EXPECT_FALSE(InputValidationHandler::IsUsernameGood("    this string has leading space"));
+}
+
+TEST(IllegalUsernameTests, ContainingCommas)
+{
+   EXPECT_FALSE(InputValidationHandler::IsUsernameGood("    this,, string includes commas,,"));
+}
+
+TEST(IllegalUsernameTests, BigUsernameSize)
+{
+   EXPECT_FALSE(InputValidationHandler::IsUsernameGood("thisusernameisover 25 characters long"));
 }
 
 TEST(IllegalUsernameTests, TrailingSpaces)
 {
-   EXPECT_FALSE(InputValidationHandler::IsMasterUsernameGood("this string has a trailing space "));
+   EXPECT_FALSE(InputValidationHandler::IsUsernameGood("this string has a trailing space "));
 }
 
 TEST(IllegalUsernameTests, SpecialCharacters)
 {
-   EXPECT_FALSE(InputValidationHandler::IsMasterUsernameGood("this character has !some special character"));
+   EXPECT_FALSE(InputValidationHandler::IsUsernameGood("this character has !some special character"));
 }
 
 TEST(IllegalPasswordTests, LeadingSpace)
 {
-   EXPECT_FALSE(InputValidationHandler::IsMasterPasswordGood(" this string has a leading space"));
+   EXPECT_FALSE(InputValidationHandler::IsPasswordGood(" this string has a leading space"));
+
+}
+
+TEST(IllegalPasswordTests, BigPasswordSize)
+{
+   EXPECT_FALSE(InputValidationHandler::IsPasswordGood(" thisstringisover25characterslong"));
+
+}
+
+TEST(IllegalPasswordTests, ContainingCommas)
+{
+   EXPECT_FALSE(InputValidationHandler::IsPasswordGood(" this,, string,, has a comma"));
 
 }
 
 TEST(IllegalPasswordTests, TrailingSpace)
 {
-   EXPECT_FALSE(InputValidationHandler::IsMasterPasswordGood("this string has a leading space   has many !! ##!@# trailing spaces     "));
+   EXPECT_FALSE(InputValidationHandler::IsPasswordGood("this string has a leading space   has many !! ##!@# trailing spaces     "));
 }
 
 TEST(PasswordQualityTests, invalidPasswords)
 {
-   EXPECT_FALSE(PasswordQualityHandler::StrengthChecker("2short"));
-   EXPECT_FALSE(PasswordQualityHandler::StrengthChecker("notacceptablecuzalllower"));
-   EXPECT_FALSE(PasswordQualityHandler::StrengthChecker("NOTACCEPTABLECUZALLUPPER"));
-   EXPECT_FALSE(PasswordQualityHandler::StrengthChecker("!@#$%^&****"));
-   EXPECT_FALSE(PasswordQualityHandler::StrengthChecker("DoesnthaveSymbol1"));
+   EXPECT_FALSE(PasswordQualityHandler::IsPasswordStrong("2short"));
+   EXPECT_FALSE(PasswordQualityHandler::IsPasswordStrong("notacceptablecuzalllower"));
+   EXPECT_FALSE(PasswordQualityHandler::IsPasswordStrong("NOTACCEPTABLECUZALLUPPER"));
+   EXPECT_FALSE(PasswordQualityHandler::IsPasswordStrong("!@#$%^&****"));
+   EXPECT_FALSE(PasswordQualityHandler::IsPasswordStrong("DoesnthaveSymbol1"));
 
 }
 
@@ -132,5 +155,23 @@ TEST(ImportConfigTests, canImportConfig){
    EXPECT_EQ(testConfig.alphaCount,9);
    EXPECT_EQ(testConfig.passwordLength,16);
    EXPECT_EQ(testConfig.numberCount,3);
-   EXPECT_EQ(testConfig.symbolCount,4);
+   EXPECT_EQ(testConfig.symbolCount,4);}
+
+TEST(PasswordQualityTests, randomPasswordIsValid)
+{
+   std::string pass = PasswordGenerator::GeneratePassword();
+   EXPECT_TRUE(PasswordQualityHandler::IsPasswordStrong(pass));
+
+}
+
+TEST(StringContainsComma, validStringInput)
+{
+   EXPECT_TRUE(InputValidationHandler::IsContainComma(",Hello1234"));
+   EXPECT_TRUE(InputValidationHandler::IsContainComma("Hiii,000,"));
+}
+
+TEST(StringContainsComma, invalidStringInput)
+{
+   EXPECT_FALSE(InputValidationHandler::IsContainComma("Hello1234"));
+   EXPECT_FALSE(InputValidationHandler::IsContainComma("JoeDoe 689"));
 }

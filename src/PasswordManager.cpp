@@ -2,13 +2,22 @@
 #include "../src/Vault.cpp"
 #include "../src/SearchHandler.cpp"
 
-void PasswordManager::Logout()
+void PasswordManager::LogoutVault()
 {
+   // write to file first FileHandler::
+   FileHandler::WriteVaultToFile(currentUser, userVault.vaultContainer);
+
+   // rewrite config file with currentUser login information
 
    return;
 }
-void PasswordManager::Exit()
+
+void PasswordManager::ExitVault()
 {
+   // write to file first FileHandler::
+   FileHandler::WriteVaultToFile(currentUser, userVault.vaultContainer);
+
+   // donothing?
 
    return;
 }
@@ -23,6 +32,7 @@ void PasswordManager::Run_CLI_lock(int argc , char* argv[])
       FileHandler::ParseConfig(this->config,"config.txt");
 
       char mainMenuInput;
+      std::string menuStringInput;
 
       for (;;)
       {
@@ -42,16 +52,22 @@ void PasswordManager::Run_CLI_lock(int argc , char* argv[])
             std::cout << "\n\nSEARCHED ITEM\n\n"; // get line, parse arguments, different overload based on # of arguments
             break;
          case 'M':
+            UserInputHandler::GetGenericInput("><>username: ", menuStringInput);
+            userVault.ModifyItem(menuStringInput);
             std::cout << "\n\nMODIFIED ITEM\n\n";
             break;
          case 'D':
+            UserInputHandler::GetGenericInput("><>username: ", menuStringInput);
+            userVault.DeleteItem(menuStringInput);
             std::cout << "\n\nDELETED ITEM\n\n";
             break;
          case 'E':
             std::cout << "\n\nEXITED VAULT\n\n";
+            ExitVault();
             return;
          case 'L':
             std::cout << "\n\nLOGGED OUT\n\n";
+            LogoutVault();
             return;
          case 'P':
             PrintHandler::PrintVault(userVault);

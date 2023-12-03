@@ -1,5 +1,5 @@
 #include "../include/SearchHandler.hpp"
-
+#include"../include/Account.hpp"
 // void SearchHandler::Search(const std::string& username)
 // {
 
@@ -19,5 +19,22 @@ bool SearchHandler::IsUsernameExistInDomainVector(const std::string username, co
 
    }
 
+   return false;
+}
+
+bool SearchHandler::SearchDuplicate(const std::string domain, const Vault& vault){
+   bool isRepeating = false;
+   for (auto& entry : vault.vaultContainer)
+   {
+      for (auto it = entry.second.begin(); it != entry.second.end(); ++it) {
+         if((*it).property.domain == domain){
+            isRepeating = true;
+            std::cout << (*it).username << " has a duplicate domain of " << (*it).property.domain << "\n";
+         }
+      }
+   }
+   if(isRepeating){
+      return true;
+   }
    return false;
 }
