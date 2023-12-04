@@ -5,12 +5,12 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fno-inline -Wall -Wextra -Wpedantic -Wconversion -Wcast-align -Wold-style-cast -Wpointer-arith -Wcast-qual -Wunused -Wshadow")
 
 # prod build flags
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20 -Ofast -Wall -Wextra -flto -s -Wl,-s,--as-needed")
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20 -Ofast -s -Wl,-s,--as-needed")
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin")
 
-add_subdirectory(./external/googletest/)
-include_directories(./include/)
+add_subdirectory(./external/googletest)
+include_directories(./include)
 
 # add_executable(a ./src/main.cpp) # prod build, make sure to change flags for this build
 add_executable(dev
