@@ -5,10 +5,14 @@ bool LoginHandler::IsLoginInfoMatchingVault(MasterCredential& master)
    // TODO: check config file for credentials under [CURRENT])
 
    char registerConfirmation;
+   std::string hashedUser;
+   std::string hashedPass;
 
    for (;;)
    {
       UserInputHandler::GetMasterInfo(master);
+      hashedUser = CipherHandler::ScryptHashKDF(master.username);
+      hashedPass = CipherHandler::ScryptHashKDF(master.password);
 
       // force relogin after register to ensure user input the right information they wanted
       if (!(FileHandler::IsUserVaultExist(master.username)))
@@ -23,6 +27,8 @@ bool LoginHandler::IsLoginInfoMatchingVault(MasterCredential& master)
       }
       else if (FileHandler::IsVaultPasswordMatch(master))
       {
+         master.hashed.hashedUserName = hashedUser;
+         master.hashed.hashedPassWord = hashedPass;
          return true;
       }
    }

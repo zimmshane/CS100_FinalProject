@@ -1,6 +1,6 @@
 #include "../include/CipherHandler.hpp"
 
-std::string CipherHandler::ScryptKDF(const std::string& inputStr)
+std::string CipherHandler::ScryptHashKDF(const std::string& inputStr)
 {
    std::string defaultSalt {"NaCl OMEGALUL"};
 

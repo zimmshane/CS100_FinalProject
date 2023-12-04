@@ -8,7 +8,7 @@
 class CipherHandler
 {
 public:
-   std::string ScryptKDF(const std::string& inputStr);
+   static std::string ScryptHashKDF(const std::string& inputStr);
 
 };
 
