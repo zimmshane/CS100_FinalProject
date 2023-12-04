@@ -64,5 +64,5 @@ target_link_libraries(dev ${CMAKE_SOURCE_DIR}/external/cryptopp/libcryptopp.a)
 
 
 # add_dependencies(dev_tests cleanbuild)
-add_dependencies(gtest cleanbuild)
+add_dependencies(gtest cleanbuild build_cryptopp)
 add_dependencies(dev build_cryptopp)
