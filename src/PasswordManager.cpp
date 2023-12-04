@@ -29,7 +29,7 @@ void PasswordManager::Run_CLI_lock(int argc , char* argv[])
       PrintMasterCredentials();
 
       // start loading information from vault here
-      FileHandler::LoadVaultFile(currentUser.username, userVault);
+      FileHandler::LoadVaultFile(currentUser.hashed.hashedUsername, userVault);
       // FileHandler::ParseConfig(this->config,"config.txt");
 
       char mainMenuInput;

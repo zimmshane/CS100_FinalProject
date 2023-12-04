@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0)
 project(CLI-lock)
 
 set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fno-inline -Wall -Wextra -Wpedantic -Wconversion -Wcast-align -Wpointer-arith -Wcast-qual -Wunused -Wshadow")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fno-inline -Wall -Wextra -Wpedantic -Wunused-variable -Wconversion -Wcast-align -Wpointer-arith -Wcast-qual -Wunused -Wshadow")
 
 # prod build flags
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Ofast -Wall -Wextra -s -Wl,-s,--as-needed")
