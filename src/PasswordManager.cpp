@@ -30,7 +30,7 @@ void PasswordManager::Run_CLI_lock(int argc , char* argv[])
 
       // start loading information from vault here
       FileHandler::LoadVaultFile(currentUser.username, userVault);
-      FileHandler::ParseConfig(this->config,"config.txt");
+      // FileHandler::ParseConfig(this->config,"config.txt");
 
       char mainMenuInput;
       std::string menuStringInput;

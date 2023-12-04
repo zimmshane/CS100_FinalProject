@@ -11,11 +11,11 @@ bool LoginHandler::IsLoginInfoMatchingVault(MasterCredential& master)
    for (;;)
    {
       UserInputHandler::GetMasterInfo(master);
-      hashedUser = CipherHandler::ScryptHashKDF(master.username);
-      hashedPass = CipherHandler::ScryptHashKDF(master.password);
+      master.hashed.hashedUserName = CipherHandler::ScryptHashKDF(master.username);
+      master.hashed.hashedPassWord = CipherHandler::ScryptHashKDF(master.password);
 
       // force relogin after register to ensure user input the right information they wanted
-      if (!(FileHandler::IsUserVaultExist(master.username)))
+      if (!(FileHandler::IsUserVaultExist(master.hashed.hashedUserName))) // if hashed user vault dne
       {
          std::cout << "><>register: \"" << master.username << "\"? (Y/y): ";
          UserInputHandler::GetUpperChar(registerConfirmation);
@@ -27,8 +27,6 @@ bool LoginHandler::IsLoginInfoMatchingVault(MasterCredential& master)
       }
       else if (FileHandler::IsVaultPasswordMatch(master))
       {
-         master.hashed.hashedUserName = hashedUser;
-         master.hashed.hashedPassWord = hashedPass;
          return true;
       }
    }
@@ -38,11 +36,9 @@ bool LoginHandler::IsLoginInfoMatchingVault(MasterCredential& master)
 
 void LoginHandler::RegisterVault(const MasterCredential& master)
 {
-   if (!((master.username.empty()) && (master.password.empty()))) // prevent CTRL+C exit midway of empty password str
+   if (!((master.hashed.hashedUserName.empty()) && (master.hashed.hashedPassWord.empty()))) // prevent CTRL+C exit midway of empty password str
    {
       FileHandler::CreateVaultFile(master);
-
-      std::cout << "\tgenerated \"" << master.username << ".vault\n";
    }
 
    return;
