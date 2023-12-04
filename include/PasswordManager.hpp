@@ -7,16 +7,16 @@
 #include "Vault.hpp"
 
 struct Config
-   {
-      //These values are set by FileHandler::ParseConfig()
-      // [GENERATE] password generating settings
-      int passwordLength;
-      int alphaCount;
-      int numberCount;
-      int symbolCount;
-      // [CURRENT] remembered credentials without logout
-      MasterCredential rememberedUser;
-   };
+{
+   //These values are set by FileHandler::ParseConfig()
+   // [GENERATE] password generating settings
+   int passwordLength;
+   int alphaCount;
+   int numberCount;
+   int symbolCount;
+   // [CURRENT] remembered credentials without logout
+   MasterCredential rememberedUser;
+};
 
 class PasswordManager
 {
