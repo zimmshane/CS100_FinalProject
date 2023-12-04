@@ -7,6 +7,8 @@
 #include "../include/UserInputHandler.hpp"
 #include "../include/Vault.hpp"
 #include "../include/PasswordGenerator.hpp"
+#include <iostream>
+
 
 TEST(ItemContainerTests, VerifyValues)
 {
@@ -98,6 +100,62 @@ TEST(PasswordQualityTests, verifyValidPasswords)
    EXPECT_TRUE(PasswordQualityHandler::IsPasswordStrong("H3LLoT4ere!"));
    EXPECT_TRUE(PasswordQualityHandler::IsPasswordStrong("#Th1sworks"));
 }
+
+
+TEST(ImportConfigTests, canHandleMissingValues){
+   std::ofstream genconfig("TESTconfig.txt");
+   genconfig<<"[GENERATE]\nlength=16\nsymbol=4\n[CURRENT]";
+   genconfig.close();
+   Config testConfig;
+   FileHandler::ParseConfig(testConfig,"TESTconfig.txt");
+   EXPECT_TRUE(testConfig.alphaCount==8);
+   EXPECT_TRUE(testConfig.passwordLength==12);
+   EXPECT_TRUE(testConfig.numberCount==2);
+   EXPECT_TRUE(testConfig.symbolCount==2);
+
+
+}
+TEST(ImportConfigTests, canHandleNonNumber){
+   std::ofstream genconfig("TESTconfig.txt");
+   genconfig<<"[GENERATE]\nlength=16\nalpha=NOTANUMBER\nnumeric=3\nsymbol=4\n[CURRENT]";
+   genconfig.close();
+   Config testConfig;
+   FileHandler::ParseConfig(testConfig,"TESTconfig.txt");
+   EXPECT_TRUE(testConfig.alphaCount==8);
+   EXPECT_TRUE(testConfig.passwordLength==12);
+   EXPECT_TRUE(testConfig.numberCount==2);
+   EXPECT_TRUE(testConfig.symbolCount==2);
+}
+TEST(ImportConfigTests, canHandleBadMath){
+   std::ofstream genconfig("TESTconfig.txt");
+   genconfig<<"[GENERATE]\nlength=16\nalpha=24\nnumeric=45\nsymbol=4\n[CURRENT]";
+   genconfig.close();
+   Config testConfig;
+   FileHandler::ParseConfig(testConfig,"TESTconfig.txt");
+   EXPECT_TRUE(testConfig.alphaCount==8);
+   EXPECT_TRUE(testConfig.passwordLength==12);
+   EXPECT_TRUE(testConfig.numberCount==2);
+   EXPECT_TRUE(testConfig.symbolCount==2);
+}
+TEST(ImportConfigTests, canHandleNoFile){
+   Config testConfig;
+   FileHandler::ParseConfig(testConfig,"THISFILEDOESNTEXIST.txt");
+   EXPECT_TRUE(testConfig.alphaCount==8);
+   EXPECT_TRUE(testConfig.passwordLength==12);
+   EXPECT_TRUE(testConfig.numberCount==2);
+   EXPECT_TRUE(testConfig.symbolCount==2);
+}
+
+TEST(ImportConfigTests, canImportConfig){
+   std::ofstream genconfig("TESTconfig.txt");
+   genconfig<<"[GENERATE]\nlength=16\nalpha=9\nnumeric=3\nsymbol=4\n[CURRENT]";
+   genconfig.close();
+   Config testConfig;
+   FileHandler::ParseConfig(testConfig,"TESTconfig.txt");
+   EXPECT_EQ(testConfig.alphaCount,9);
+   EXPECT_EQ(testConfig.passwordLength,16);
+   EXPECT_EQ(testConfig.numberCount,3);
+   EXPECT_EQ(testConfig.symbolCount,4);}
 
 TEST(PasswordQualityTests, randomPasswordIsValid)
 {
