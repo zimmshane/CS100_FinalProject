@@ -33,7 +33,7 @@ std::string StringToSHA256(const std::string& input)
 
 int main()
 {
-   std::cout << StringToSHA256("my password");
+   std::cout << StringToSHA256("wtf is ligma@#$//|?");
 
    return 0;
 }
