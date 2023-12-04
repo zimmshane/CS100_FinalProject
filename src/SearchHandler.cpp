@@ -1,13 +1,28 @@
 #include "../include/SearchHandler.hpp"
-#include"../include/Account.hpp"
-// void SearchHandler::Search(const std::string& username)
-// {
 
-//     return;
-// }
+void SearchHandler::Search(const std::string& domainForSearch, const std::string& username, const Vault& vault){
+   try{
+      std::vector<VaultItem> itemsAtDomain = vault.vaultContainer.at(domainForSearch);
+   }
+   catch(const std::exception& e){
+      std::cout<<"No account with specified domain\n";
+      return;
+   }
+   std::vector<VaultItem> itemsAtDomain = vault.vaultContainer.at(domainForSearch);
+   for (const auto& iter : itemsAtDomain)
+   {
+      if (iter.username == username)
+      {
+         std::cout << "domain: " << (iter).property.domain << "\n"
+            << "username: " << (iter).username << "\n"
+            << "password: " << (iter).password << "\n"
+            << "description: " << (iter).property.description << "\n"
+            << "tag: " << (iter).property.tag << "\n";
+         return;
+      }
+   }
+}
 
-// avoid this by making vault values a map as well for keys of username to avoid all collisions               vvv username string
-// linear search bad, replace data structure later for std::unordered_map<std::string, std::unordered_map<std::string, VaultItem>>
 bool SearchHandler::IsUsernameExistInDomainVector(const std::string username, const std::vector<VaultItem>& itemVector)
 {
    for (const auto& iter : itemVector)

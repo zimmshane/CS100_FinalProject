@@ -32,7 +32,7 @@ void PasswordManager::Run_CLI_lock(int argc , char* argv[])
 
       char mainMenuInput;
       std::string menuStringInput;
-
+      std::string domainStringInput;
       for (;;)
       {
          PrintHandler::PrintMainMenu();
@@ -48,6 +48,9 @@ void PasswordManager::Run_CLI_lock(int argc , char* argv[])
             std::cout << "ADDED ITEM\n\n";
             break;
          case 'S':
+            UserInputHandler::GetGenericInput("><>domain: ", domainStringInput);
+            UserInputHandler::GetGenericInput("><>username: ", menuStringInput);
+            SearchHandler::Search(domainStringInput, menuStringInput, userVault);
             std::cout << "\n\nSEARCHED ITEM\n\n"; // get line, parse arguments, different overload based on # of arguments
             break;
          case 'M':
