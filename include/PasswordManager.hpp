@@ -36,7 +36,8 @@ public:
 
 
    // debug functions
-   inline void PrintMasterCredentials() { std::cout << currentUser.username << " | " << currentUser.password << "\n"; }
+   inline void PrintMasterCredentials() { std::cout << currentUser.username << " | " << currentUser.password << "\n";
+                                          std::cout << currentUser.hashed.hashedUserName << " | " << currentUser.hashed.hashedPassWord << "\n"; }
 
 };
 
