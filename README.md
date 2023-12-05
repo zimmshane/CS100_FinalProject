@@ -96,18 +96,6 @@ The above navigation diagram depicts the visual menu flow of the console program
   - **Function**: Represents individual account objects within the vault.
   - **Encapsulation**: Includes relevant nested classes to encapsulate members.
 
-> ## Phase III
-> You will need to schedule a check-in for the second scrum meeting with the same reader you had your first scrum meeting with (using Calendly). Your entire team must be present. This meeting will occur on Zoom and should be conducted by Wednesday of week 8.
-
-> BEFORE the meeting you should do the following:
-> * Update your class diagram from Phase II to include any feedback you received from your TA/grader.
-> * Considering the SOLID design principles, reflect back on your class diagram and think about how you can use the SOLID principles to improve your design. You should then update the README.md file by adding the following:
->   * A new class diagram incorporating your changes after considering the SOLID principles.
->   * For each update in your class diagram, you must explain in 3-4 sentences:
->     * What SOLID principle(s) did you apply?
->     * How did you apply it? i.e. describe the change.
->     * How did this change help you write better code?
->  
 New changes in the UML consist of the addition of a new class called UserInputHandler which manages file access and interactions between the run_cli_lock function and the functions inside the UserInputHandler. We applied single responsibility since we created a separate class that handles the user input such as making sure that the user input is turned to upper case character to allow for easier input validation. Instead of putting an uppercase function in the password manager class, we created a separate class to have its own responsibility. This change helps us write better code since it creates simplicity in our classes having one single purpose and organizes the code since it groups functions together by their functionality.
 
 Another change we made in the UML is the replacement of the functions in InputValidationHandler class which now contains bool functions checking if the validity master username and password are valid in addition to if the input contains trailing spaces. We applied single responsibility in this class by creating a separate class to check the validity of the master account which will be used in both the password manager and vault class. This helps us write better code by allowing the program to be scalable. We can group more functions by their use and it allows for the code to be more maintainable.
@@ -141,5 +129,24 @@ By creating different interfaces with classes relating only to their purposes, w
 > Screenshots of the input/output after running your application
 ## Installation/Usage
 > Instructions on installing and running your application
+
 ## Testing
-> How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
+### Overview of Testing Strategy
+CLI-lock employs a rigorous testing regimen primarily utilizing the GoogleTest framework. Presently, the project encompasses approximately 30 comprehensive unit tests. These tests meticulously examine the functionality of key components such as the InputHandler, FileHandler, CipherHandler, Password Generator, and the core data structures integral to CLI-lock. This strategic testing framework is pivotal in ensuring the application's consistent performance and reliability throughout the development lifecycle.
+
+### Building and Running Tests
+
+1. **Environment Setup**: Initiating the testing environment is straightforward. The initial step involves cloning the repository with precise attention to detail. It is imperative to clone the repository recursively to ensure all dependent submodules are adequately retrieved. The cloning command is as follows: `git clone --recursive https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236.git`. In instances where the recursive flag might have been omitted, executing `git submodule update --init` is a necessary step to compel the download of the required submodules.
+
+2. **Building Tests**: The construction of CLI-lock and its associated tests is facilitated through CMake and Make. To compile the development tests, navigate to the root directory of the repository and execute `cmake .` followed by `make dev_tests`.
+
+3. **Running Tests**: Upon successful build, the test executable is generated and located in the `/bin/` directory within the project. To run the tests, use the command `./bin/dev_tests`. The output from this command will be instrumental in assessing the successful execution and outcomes of the tests.
+
+### Continuous Integration
+Continuous Integration, orchestrated via GitHub Actions, plays a crucial role in maintaining the integrity and stability of the master build. Every push or pull request made to the master branch triggers the execution of the unit tests previously mentioned. The results of these automated tests are prominently displayed on the badge at the top of the README file, and can also be viewed in greater detail under the `Actions` tab.
+
+### Reporting Issues
+We encourage the diligent reporting of any issues or irregularities encountered during the usage or testing of CLI-lock. Such reports should be submitted through the `Issues` tab of the repository. We request that reports be as detailed as possible, encompassing error messages, screenshots, and a thorough description of steps to replicate the issue, to facilitate effective troubleshooting.
+
+### Future Testing Plans
+Looking ahead, the project team is committed to an ongoing expansion of our test suite. This enhancement will be aimed at achieving more extensive coverage across the entirety of the project's codebase, thereby elevating the overall quality and dependability of CLI-lock.
