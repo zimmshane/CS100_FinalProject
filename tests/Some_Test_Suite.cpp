@@ -7,8 +7,7 @@
 #include "../include/UserInputHandler.hpp"
 #include "../include/Vault.hpp"
 #include "../include/PasswordGenerator.hpp"
-#include <iostream>
-
+#include "../include/CipherHandler.hpp"
 
 TEST(ItemContainerTests, VerifyValues)
 {
@@ -174,4 +173,29 @@ TEST(StringContainsComma, invalidStringInput)
 {
    EXPECT_FALSE(InputValidationHandler::IsContainComma("Hello1234"));
    EXPECT_FALSE(InputValidationHandler::IsContainComma("JoeDoe 689"));
+}
+
+// if any of these go bad, that means the hash value has changed
+TEST(CipherHandlerScryptHash, BasicString)
+{
+   std::string myHash {CipherHandler::ScryptHashKDF("Mypasswordstring")};
+   ASSERT_EQ(myHash, "D9A174BF421E24AA5C3D8BF67DFA0F7B8B5DB964F77BE4B8CED14FFB236F3440");
+}
+
+TEST(CipherHandlerScryptHash, StrongPasswordString)
+{
+   std::string myHash {CipherHandler::ScryptHashKDF("SomepasswordString##!9230$")};
+   ASSERT_EQ(myHash, "985C4DB0EDC3F113F92356CA9CB4E362DD94E02E4604D9083A48D553FF768F68");
+}
+
+TEST(CipherHandlerScryptHash, ZeroLiteralString)
+{
+   std::string myHash {CipherHandler::ScryptHashKDF("0")};
+   ASSERT_EQ(myHash, "ACB8301CED5B38329141912D80C19191E8DA735875DAA0B41DF231800255A0EF");
+}
+
+TEST(CipherHandlerScryptHash, EmptyString)
+{
+   std::string myHash {CipherHandler::ScryptHashKDF("")};
+   ASSERT_EQ(myHash, "9A118D5C3A9B67480ED0A02B357BF1FD8254FFF82D4FC6E66E36999C74DADCB0");
 }
