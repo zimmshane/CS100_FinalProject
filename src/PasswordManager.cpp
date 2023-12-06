@@ -26,7 +26,7 @@ void PasswordManager::Run_CLI_lock(int argc , char* argv[])
 {
    if(LoginHandler::IsLoginInfoMatchingVault(currentUser))
    {
-      PrintMasterCredentials();
+      // PrintMasterCredentials();
 
       // start loading information from vault here
       FileHandler::LoadVaultFile(currentUser.hashed.hashedUsername, userVault);
