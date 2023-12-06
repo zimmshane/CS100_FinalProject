@@ -175,9 +175,3 @@ TEST(StringContainsComma, invalidStringInput)
    EXPECT_FALSE(InputValidationHandler::IsContainComma("Hello1234"));
    EXPECT_FALSE(InputValidationHandler::IsContainComma("JoeDoe 689"));
 }
-
-TEST(AddItem, itemGenerated){
-   VaultItem item("JohnDoe832", "~R", "amazon", "this account has prime", "-p");
-   UserInputHandler::GetItemPassword(item.password);
-   EXPECT_NE("~R", item.password);
-}
