@@ -4,6 +4,9 @@
 #include <iostream>
 #include "Account.hpp"
 #include "Vault.hpp"
+#include <stdlib.h>
+#include <algorithm>
+#include <fstream>
 
 class PasswordGenerator
 {
