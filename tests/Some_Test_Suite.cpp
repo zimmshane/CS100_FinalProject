@@ -175,3 +175,27 @@ TEST(StringContainsComma, invalidStringInput)
    EXPECT_FALSE(InputValidationHandler::IsContainComma("Hello1234"));
    EXPECT_FALSE(InputValidationHandler::IsContainComma("JoeDoe 689"));
 }
+
+TEST(AddItem, item_EmptyVault){
+   VaultItem item("JohnDoe832", "Doughy$1332", "amazon", "this account has prime", "-p");
+   Vault userVault;
+   bool isTrue = userVault.AddItem(item);
+   EXPECT_TRUE(isTrue);
+}
+
+TEST(AddItem, duplicateItem_Vault){
+   VaultItem item("JohnDoe832", "Doughy$1332", "amazon", "this account has prime", "-p");
+   Vault userVault;
+   bool isTrue = userVault.AddItem(item);
+   isTrue = userVault.AddItem(item);
+   EXPECT_FALSE(isTrue);
+}
+
+TEST(AddItem, differentItems_Vault){
+   VaultItem item("JohnDoe832", "Doughy$1332", "amazon", "this account has prime", "-p");
+   VaultItem item1("JohnDoe832", "Doughy$1332", "bestbuy", "this account has best buy", "-b");
+   Vault userVault;
+   bool isTrue = userVault.AddItem(item);
+   isTrue = userVault.AddItem(item1);
+   EXPECT_TRUE(isTrue);
+}
