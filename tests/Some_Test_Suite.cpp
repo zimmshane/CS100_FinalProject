@@ -199,3 +199,27 @@ TEST(AddItem, differentItems_Vault){
    isTrue = userVault.AddItem(item1);
    EXPECT_TRUE(isTrue);
 }
+
+TEST(IsUsernameExistInDomainVector, emptyVector){
+   std::vector<VaultItem> itemVector;
+   bool falseOutput = SearchHandler::IsUsernameExistInDomainVector("", itemVector);
+   EXPECT_FALSE(falseOutput);
+}
+
+TEST(IsUsernameExistInDomainVector, usernameExists){
+   std::vector<VaultItem> itemVector;
+   VaultItem item("JohnDoe832", "Doughy$1332", "amazon", "this account has prime", "-p");
+   itemVector.push_back(item);
+   bool trueOutput = SearchHandler::IsUsernameExistInDomainVector("JohnDoe832", itemVector);
+   EXPECT_TRUE(trueOutput);
+}
+
+TEST(IsUsernameExistInDomainVector, noExistingUsername){
+   std::vector<VaultItem> itemVector;
+   VaultItem item("JohnDoe832", "Doughy$1332", "amazon", "this account has prime", "-p");
+   VaultItem item1("MaryJohn156", "JJMon876$9", "bestbuy", "this account has best buy", "-b");
+   itemVector.push_back(item);
+   itemVector.push_back(item1);
+   bool falseOutput = SearchHandler::IsUsernameExistInDomainVector("JohnDoe8442", itemVector);
+   EXPECT_FALSE(falseOutput);
+}
