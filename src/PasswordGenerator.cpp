@@ -1,8 +1,5 @@
 #include "../include/PasswordGenerator.hpp"
-#include "../include/Account.hpp"
-#include "../include/Vault.hpp"
-#include <stdlib.h>
-#include <algorithm>
+
 
 /*
     -Accepted symbols derived from IBM's Business Automation Workflow for
