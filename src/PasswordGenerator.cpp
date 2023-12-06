@@ -30,7 +30,6 @@ std::string PasswordGenerator::GeneratePassword(){
     generatedPassword += pass[std::rand() % 26 + 26]; //upercase
     generatedPassword += pass[std::rand() % 10 + 52]; //numbers
     generatedPassword += pass[std::rand() % 14 + 62]; //symbols
-    int size = 0;
     for(int i = 0; i < passLength; i++){
         generatedPassword.insert(rand() % generatedPassword.size(), 1, pass[std::rand() % sizeof(pass)]);
     }
