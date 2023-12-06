@@ -21,7 +21,7 @@ std::string PasswordGenerator::GeneratePassword(){
     file.close();
 
     char pass[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!()-.?[]_`~;@#$%^&*+=";
-    int passLength = std::rand() % 10;
+    int passLength = std::rand() % 5;
     int randomIndex = std::rand() % 150;
 
     std::string generatedPassword = "";
