@@ -8,6 +8,7 @@
 #include "../include/Vault.hpp"
 #include "../include/PasswordGenerator.hpp"
 #include <iostream>
+#include <string>
 
 
 TEST(ItemContainerTests, VerifyValues)
@@ -174,6 +175,25 @@ TEST(StringContainsComma, invalidStringInput)
 {
    EXPECT_FALSE(InputValidationHandler::IsContainComma("Hello1234"));
    EXPECT_FALSE(InputValidationHandler::IsContainComma("JoeDoe 689"));
+}
+
+TEST(StringContainWhiteSpaceEnds, emptyString)
+{
+   bool falseOutput = InputValidationHandler::IsContainWhiteSpaceEnds(" ");
+   EXPECT_TRUE(falseOutput);
+}
+
+TEST(StringContainWhiteSpaceEnds, noWhiteSpaces)
+{
+   EXPECT_FALSE(InputValidationHandler::IsContainWhiteSpaceEnds("JoeDoe158"));
+   EXPECT_FALSE(InputValidationHandler::IsContainWhiteSpaceEnds("Bob1257"));
+}
+
+TEST(StringContainWhiteSpaceEnds, inValidStrings)
+{
+   EXPECT_TRUE(InputValidationHandler::IsContainWhiteSpaceEnds("JoeDoe158 "));
+   EXPECT_TRUE(InputValidationHandler::IsContainWhiteSpaceEnds(" Bob1257"));
+   EXPECT_TRUE(InputValidationHandler::IsContainWhiteSpaceEnds(" Sandra8903 "));
 }
 
 TEST(AddItem, item_EmptyVault){
