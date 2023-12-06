@@ -1,0 +1,6 @@
+[GENERATE]
+length=16
+alpha=9
+numeric=3
+symbol=4
+[CURRENT]

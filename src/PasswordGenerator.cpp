@@ -20,18 +20,19 @@ std::string PasswordGenerator::GeneratePassword(){
     
     file.close();
 
-    const char pass[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!()-.?[]_`~;@#$%^&*+=";
-    const int passLength = rand() % 12 + 8;
-    const int randomIndex = rand() % 150;
+    char pass[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!()-.?[]_`~;@#$%^&*+=";
+    int passLength = std::rand() % 10;
+    int randomIndex = std::rand() % 150;
 
     std::string generatedPassword = "";
+    generatedPassword += wordList.at(randomIndex);
     generatedPassword += pass[std::rand() % 26]; //lowercase
     generatedPassword += pass[std::rand() % 26 + 26]; //upercase
     generatedPassword += pass[std::rand() % 10 + 52]; //numbers
-    generatedPassword += pass[std::rand() % 14 + 62]; //lowercase
-    generatedPassword += wordList.at(randomIndex);
-    for(int i = 4; i < passLength; i++){
-        generatedPassword += pass[std::rand() % sizeof(pass)];
+    generatedPassword += pass[std::rand() % 14 + 62]; //symbols
+    int size = 0;
+    for(int i = 0; i < passLength; i++){
+        generatedPassword.insert(rand() % generatedPassword.size(), 1, pass[std::rand() % sizeof(pass)]);
     }
     return generatedPassword;
 }
