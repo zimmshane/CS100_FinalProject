@@ -223,3 +223,32 @@ TEST(IsUsernameExistInDomainVector, noExistingUsername){
    bool falseOutput = SearchHandler::IsUsernameExistInDomainVector("JohnDoe8442", itemVector);
    EXPECT_FALSE(falseOutput);
 }
+
+TEST(SearchDuplicate, emptyVault){
+   Vault userVault;
+   bool falseOutput = SearchHandler::SearchDuplicate("JohnDoe8442", userVault);
+   EXPECT_FALSE(falseOutput);
+}
+
+TEST(SearchDuplicate, duplicateDomains){
+   Vault userVault;
+   std::unordered_map<std::string, std::vector<VaultItem>> vaultContainer;
+   VaultItem item("JohnDoe832", "Doughy$1332", "amazon", "this account has prime", "-p");
+   VaultItem item1("JohnDoe832", "JJMon876$9", "amazon", "this account has prime", "-p");
+   userVault.vaultContainer[item.property.domain].push_back(item);
+   userVault.vaultContainer[item1.property.domain].push_back(item1);
+   bool trueOutput = SearchHandler::SearchDuplicate("amazon", userVault);
+   EXPECT_TRUE(trueOutput);
+}
+
+TEST(SearchDuplicate, noDuplicateDomains){
+   Vault userVault;
+   std::unordered_map<std::string, std::vector<VaultItem>> vaultContainer;
+   VaultItem item("JohnDoe832", "Doughy$1332", "amazon", "this account has prime", "-p");
+   VaultItem item1("JohnDoe832", "JJMon876$9", "bestBuy", "this account has electronics", "-b");
+   userVault.vaultContainer[item.property.domain].push_back(item);
+   userVault.vaultContainer[item1.property.domain].push_back(item1);
+   bool falseOutput = SearchHandler::SearchDuplicate("walmart", userVault);
+   EXPECT_FALSE(falseOutput);
+}
+
