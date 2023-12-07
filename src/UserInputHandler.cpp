@@ -78,6 +78,7 @@ void UserInputHandler::GetItemPassword(std::string& itemPassword)
          std::cout << "><>generated random password: ";
          itemPassword = PasswordGenerator::GeneratePassword();
          std::cout << itemPassword << "\n";
+         return;
       }
       else if (!(InputValidationHandler::IsContainWhiteSpaceEnds(itemPassword)) && (itemPassword.size() != 0) && PasswordQualityHandler::IsPasswordStrong(itemPassword))
       {
