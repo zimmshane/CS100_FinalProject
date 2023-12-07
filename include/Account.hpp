@@ -24,8 +24,8 @@ public:
 
    struct HashedCredential
    {
-      std::string hashedUserName;
-      std::string hashedPassWord;
+      std::string hashedUsername;
+      std::string hashedPassword;
       std::string key;
    };
 
