@@ -5,6 +5,7 @@
 #include "Account.hpp"
 #include "InputValidationHandler.hpp"
 #include "PasswordQualityHandler.hpp"
+#include "PasswordGenerator.hpp"
 
 class UserInputHandler
 {

@@ -165,6 +165,17 @@ TEST(PasswordQualityTests, randomPasswordIsValid)
 
 }
 
+TEST(PasswordQualityTests, randomPasswordsAreDiff)
+{
+   std::string pass = PasswordGenerator::GeneratePassword();
+   std::string pass2 = PasswordGenerator::GeneratePassword();
+   std::string pass3 = PasswordGenerator::GeneratePassword();
+   EXPECT_NE(pass, pass2);
+   EXPECT_NE(pass, pass3);
+   EXPECT_NE(pass3, pass2);
+
+}
+
 TEST(StringContainsComma, validStringInput)
 {
    EXPECT_TRUE(InputValidationHandler::IsContainComma(",Hello1234"));
@@ -175,6 +186,7 @@ TEST(StringContainsComma, invalidStringInput)
 {
    EXPECT_FALSE(InputValidationHandler::IsContainComma("Hello1234"));
    EXPECT_FALSE(InputValidationHandler::IsContainComma("JoeDoe 689"));
+
 }
 
 TEST(StringContainWhiteSpaceEnds, emptyString)

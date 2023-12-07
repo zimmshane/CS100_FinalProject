@@ -1,24 +1,37 @@
 #include "../include/PasswordGenerator.hpp"
-#include "../include/Account.hpp"
-#include "../include/Vault.hpp"
-#include <stdlib.h>
-#include <algorithm>
 
 /*
     -Accepted symbols derived from IBM's Business Automation Workflow for
     characters that are valid for passwords
 */
 std::string PasswordGenerator::GeneratePassword(){
-    const char pass[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!()-.?[]_`~;@#$%^&*+=";
-    const int passLength = rand() % 25 + 8;
+    std::ifstream file("./external/dictionary/words.txt");
+    std::vector<std::string> wordList;
+    std::string word;
+
+    if (!file.is_open())
+    {
+      std::cout << "Error retrieving word list file!\n";
+      return "";
+    }
+    while(file >> word){
+        wordList.push_back(word);
+    }
+    
+    file.close();
+
+    char pass[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!()-.?[]_`~;@#$%^&*+=";
+    int passLength = std::rand() % 5;
+    int randomIndex = std::rand() % 150;
+
     std::string generatedPassword = "";
+    generatedPassword += wordList.at(randomIndex);
     generatedPassword += pass[std::rand() % 26]; //lowercase
     generatedPassword += pass[std::rand() % 26 + 26]; //upercase
     generatedPassword += pass[std::rand() % 10 + 52]; //numbers
-    generatedPassword += pass[std::rand() % 14 + 62]; //lowercase
-
-    for(int i = 4; i < passLength; i++){
-        generatedPassword += pass[std::rand() % sizeof(pass)];
+    generatedPassword += pass[std::rand() % 14 + 62]; //symbols
+    for(int i = 0; i < passLength; i++){
+        generatedPassword.insert(rand() % generatedPassword.size(), 1, pass[std::rand() % sizeof(pass)]);
     }
     return generatedPassword;
 }
