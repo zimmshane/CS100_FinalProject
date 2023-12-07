@@ -31,6 +31,13 @@ void Vault::DeleteItem(const std::string& usernameForDeletion)
       }
    }
 
+   if (domainsContainingUsername.empty())
+   {
+      return;
+   }
+
+   // refactor into PrintHandler for parameter:
+   // std::vector<std::vector<VaultItem>::const_iterator>
    for (size_t i { 0 }; i < domainsContainingUsername.size(); ++i)
    {
       std::cout << i << " " << (*domainsContainingUsername.at(i)).property.domain << " | "
@@ -39,22 +46,38 @@ void Vault::DeleteItem(const std::string& usernameForDeletion)
    }
 
    size_t indexInput;
-   std::cout << "><>index to delete: ";
-   UserInputHandler::GetIndex(indexInput);
+   UserInputHandler::GetIndex(indexInput, domainsContainingUsername.size());
 
-   if (indexInput < domainsContainingUsername.size() && !(domainsContainingUsername.empty()))
+   // sentinel value to exit vault manip
+   if (indexInput == size_t(-1))
    {
-      // vault at the hash key value of the domain given by the iterator, erase at the vector of the hash key
-      vaultContainer.at((*domainsContainingUsername.at(indexInput)).property.domain).erase(domainsContainingUsername.at(indexInput));
-
-      // check key container (vector) if it is empty after an element is removed from it
-      if (vaultContainer.at((*domainsContainingUsername.at(indexInput)).property.domain).empty())
-      {
-         // remove the key with an empty vector
-         vaultContainer.erase((*domainsContainingUsername.at(indexInput)).property.domain);
-         std::cout << "empty domain key removed\n";
-      }
+      return;
    }
+
+   // vault at the hash key value of the domain given by the iterator, erase at the vector of the hash key
+   vaultContainer.at((*domainsContainingUsername.at(indexInput)).property.domain).erase(domainsContainingUsername.at(indexInput));
+
+   // check key container (vector) if it is empty after an element is removed from it
+   if (vaultContainer.at((*domainsContainingUsername.at(indexInput)).property.domain).empty())
+   {
+      // remove the key with an empty vector
+      vaultContainer.erase((*domainsContainingUsername.at(indexInput)).property.domain);
+      std::cout << "empty domain key removed\n";
+   }
+
+   // if (indexInput < domainsContainingUsername.size() && !(domainsContainingUsername.empty()))
+   // {
+   //    // vault at the hash key value of the domain given by the iterator, erase at the vector of the hash key
+   //    vaultContainer.at((*domainsContainingUsername.at(indexInput)).property.domain).erase(domainsContainingUsername.at(indexInput));
+
+   //    // check key container (vector) if it is empty after an element is removed from it
+   //    if (vaultContainer.at((*domainsContainingUsername.at(indexInput)).property.domain).empty())
+   //    {
+   //       // remove the key with an empty vector
+   //       vaultContainer.erase((*domainsContainingUsername.at(indexInput)).property.domain);
+   //       std::cout << "empty domain key removed\n";
+   //    }
+   // }
 }
 
 void Vault::ModifyItem(const std::string& usernameForModification)
@@ -71,7 +94,13 @@ void Vault::ModifyItem(const std::string& usernameForModification)
       }
    }
 
+   // check for empty then return early
+   if (domainVectorPositions.empty())
+   {
+      return;
+   }
 
+   // if reach here, that means not empty
    for (size_t i { 0 }; i < domainVectorPositions.size(); ++i)
    {
       std::cout << i << " " << (*domainVectorPositions.at(i)).property.domain << " | "
@@ -79,17 +108,29 @@ void Vault::ModifyItem(const std::string& usernameForModification)
                            << (*domainVectorPositions.at(i)).property.description<< "\n";
    }
 
-
    size_t indexInput;
-   std::cout << "><>index to modify: ";
-   UserInputHandler::GetIndex(indexInput);
+   UserInputHandler::GetIndex(indexInput, domainVectorPositions.size());
 
-   if (indexInput < domainVectorPositions.size() && !(domainVectorPositions.empty()))
+   // sentinel value to exit vault manip
+   if (indexInput == size_t(-1))
    {
-      // vault at the hash key value of the domain given by the iterator, erase at the vector of the hash key
-      UserInputHandler::GetGenericInput("><>username: ", (*domainVectorPositions.at(indexInput)).username);
-      UserInputHandler::GetItemPassword((*domainVectorPositions.at(indexInput)).password);
-      UserInputHandler::GetGenericInput("><>description: ", (*domainVectorPositions.at(indexInput)).property.description);
-      UserInputHandler::GetGenericInput("><>tag: ", (*domainVectorPositions.at(indexInput)).property.tag);
+      return;
    }
+
+   // vault at the hash key value of the domain given by the iterator, erase at the vector of the hash key
+   UserInputHandler::GetGenericInput("><>username: ", (*domainVectorPositions.at(indexInput)).username);
+   UserInputHandler::GetItemPassword((*domainVectorPositions.at(indexInput)).password);
+   UserInputHandler::GetGenericInput("><>description: ", (*domainVectorPositions.at(indexInput)).property.description);
+   UserInputHandler::GetGenericInput("><>tag: ", (*domainVectorPositions.at(indexInput)).property.tag);
+
+   // if (!(domainVectorPositions.empty()) && (indexInput < domainVectorPositions.size()) && (indexInput > -1))
+   // {
+   //    // vault at the hash key value of the domain given by the iterator, erase at the vector of the hash key
+   //    UserInputHandler::GetGenericInput("><>username: ", (*domainVectorPositions.at(indexInput)).username);
+   //    UserInputHandler::GetItemPassword((*domainVectorPositions.at(indexInput)).password);
+   //    UserInputHandler::GetGenericInput("><>description: ", (*domainVectorPositions.at(indexInput)).property.description);
+   //    UserInputHandler::GetGenericInput("><>tag: ", (*domainVectorPositions.at(indexInput)).property.tag);
+   // }
+
+   return;
 }

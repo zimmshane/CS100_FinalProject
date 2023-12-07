@@ -17,7 +17,7 @@ std::string PasswordGenerator::GeneratePassword(){
     while(file >> word){
         wordList.push_back(word);
     }
-    
+
     file.close();
 
     char pass[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!()-.?[]_`~;@#$%^&*+=";
