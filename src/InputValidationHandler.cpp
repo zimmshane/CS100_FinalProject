@@ -55,7 +55,8 @@ bool InputValidationHandler::IsPasswordGood(const std::string& password)
 // maybe unneeded, create string whitespace trimmer left and right
 bool InputValidationHandler::IsContainWhiteSpaceEnds(const std::string& checkStr)
 {
-   if (checkStr.front() == ' ' || checkStr.back() == ' ')
+   // leading or for empty short circuit
+   if (checkStr.empty() || checkStr.front() == ' ' || checkStr.back() == ' ')
    {
       std::cout << "field contains leading or trailing whitespace\n";
       return true;
