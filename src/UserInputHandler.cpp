@@ -38,11 +38,28 @@ void UserInputHandler::GetUpperChar(char& input)
    return;
 }
 
-void UserInputHandler::GetIndex(size_t& input)
+void UserInputHandler::GetIndex(size_t& input, const size_t size)
 {
-   std::cin >> input;
+   for (;;)
+   {
+      std::cout << "><>index: ";
+      std::cin >> input;
 
-   std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+      // dont need to check for less than 0, size_t cant be less than 0
+      // loops back to MAX value, which is > size
+      if (!(input >= size))
+      {
+         return;
+      }
+      else if (input == size_t(-1))
+      {
+         return;
+      }
+
+      std::cout << "bad index\n";
+   }
 
    return;
 }
@@ -74,6 +91,12 @@ void UserInputHandler::GetItemPassword(std::string& itemPassword)
          itemPassword = oldPassword;
          return;
       }
+      else if (itemPassword == "~R"){
+         std::cout << "><>generated random password: ";
+         itemPassword = PasswordGenerator::GeneratePassword();
+         std::cout << itemPassword << "\n";
+         return;
+      }
       else if (!(InputValidationHandler::IsContainWhiteSpaceEnds(itemPassword)) && (itemPassword.size() != 0) && PasswordQualityHandler::IsPasswordStrong(itemPassword))
       {
          return;
@@ -86,7 +109,7 @@ void UserInputHandler::GetGenericInput(const std::string& msg, std::string& inpu
 {
    std::string oldString = inputStrField;
 
-   for (;;)
+   for(;;)
    {
       std::cout << msg;
       std::getline(std::cin, inputStrField);
