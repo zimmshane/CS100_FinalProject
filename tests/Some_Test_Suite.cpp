@@ -7,6 +7,8 @@
 #include "../include/UserInputHandler.hpp"
 #include "../include/Vault.hpp"
 #include "../include/PasswordGenerator.hpp"
+#include <iostream>
+#include <string>
 #include "../include/CipherHandler.hpp"
 
 TEST(ItemContainerTests, VerifyValues)
@@ -173,6 +175,101 @@ TEST(StringContainsComma, invalidStringInput)
 {
    EXPECT_FALSE(InputValidationHandler::IsContainComma("Hello1234"));
    EXPECT_FALSE(InputValidationHandler::IsContainComma("JoeDoe 689"));
+}
+
+TEST(StringContainWhiteSpaceEnds, emptyString)
+{
+   bool falseOutput = InputValidationHandler::IsContainWhiteSpaceEnds(" ");
+   EXPECT_TRUE(falseOutput);
+}
+
+TEST(StringContainWhiteSpaceEnds, noWhiteSpaces)
+{
+   EXPECT_FALSE(InputValidationHandler::IsContainWhiteSpaceEnds("JoeDoe158"));
+   EXPECT_FALSE(InputValidationHandler::IsContainWhiteSpaceEnds("Bob1257"));
+}
+
+TEST(StringContainWhiteSpaceEnds, inValidStrings)
+{
+   EXPECT_TRUE(InputValidationHandler::IsContainWhiteSpaceEnds("JoeDoe158 "));
+   EXPECT_TRUE(InputValidationHandler::IsContainWhiteSpaceEnds(" Bob1257"));
+   EXPECT_TRUE(InputValidationHandler::IsContainWhiteSpaceEnds(" Sandra8903 "));
+}
+
+TEST(AddItem, item_EmptyVault){
+   VaultItem item("JohnDoe832", "Doughy$1332", "amazon", "this account has prime", "-p");
+   Vault userVault;
+   bool isTrue = userVault.AddItem(item);
+   EXPECT_TRUE(isTrue);
+}
+
+TEST(AddItem, duplicateItem_Vault){
+   VaultItem item("JohnDoe832", "Doughy$1332", "amazon", "this account has prime", "-p");
+   Vault userVault;
+   bool isTrue = userVault.AddItem(item);
+   isTrue = userVault.AddItem(item);
+   EXPECT_FALSE(isTrue);
+}
+
+TEST(AddItem, differentItems_Vault){
+   VaultItem item("JohnDoe832", "Doughy$1332", "amazon", "this account has prime", "-p");
+   VaultItem item1("JohnDoe832", "Doughy$1332", "bestbuy", "this account has best buy", "-b");
+   Vault userVault;
+   bool isTrue = userVault.AddItem(item);
+   isTrue = userVault.AddItem(item1);
+   EXPECT_TRUE(isTrue);
+}
+
+TEST(IsUsernameExistInDomainVector, emptyVector){
+   std::vector<VaultItem> itemVector;
+   bool falseOutput = SearchHandler::IsUsernameExistInDomainVector("", itemVector);
+   EXPECT_FALSE(falseOutput);
+}
+
+TEST(IsUsernameExistInDomainVector, usernameExists){
+   std::vector<VaultItem> itemVector;
+   VaultItem item("JohnDoe832", "Doughy$1332", "amazon", "this account has prime", "-p");
+   itemVector.push_back(item);
+   bool trueOutput = SearchHandler::IsUsernameExistInDomainVector("JohnDoe832", itemVector);
+   EXPECT_TRUE(trueOutput);
+}
+
+TEST(IsUsernameExistInDomainVector, noExistingUsername){
+   std::vector<VaultItem> itemVector;
+   VaultItem item("JohnDoe832", "Doughy$1332", "amazon", "this account has prime", "-p");
+   VaultItem item1("MaryJohn156", "JJMon876$9", "bestbuy", "this account has best buy", "-b");
+   itemVector.push_back(item);
+   itemVector.push_back(item1);
+   bool falseOutput = SearchHandler::IsUsernameExistInDomainVector("JohnDoe8442", itemVector);
+   EXPECT_FALSE(falseOutput);
+}
+
+TEST(SearchDuplicate, emptyVault){
+   Vault userVault;
+   bool falseOutput = SearchHandler::SearchDuplicate("JohnDoe8442", userVault);
+   EXPECT_FALSE(falseOutput);
+}
+
+TEST(SearchDuplicate, duplicateDomains){
+   Vault userVault;
+   std::unordered_map<std::string, std::vector<VaultItem>> vaultContainer;
+   VaultItem item("JohnDoe832", "Doughy$1332", "amazon", "this account has prime", "-p");
+   VaultItem item1("JohnDoe832", "JJMon876$9", "amazon", "this account has prime", "-p");
+   userVault.vaultContainer[item.property.domain].push_back(item);
+   userVault.vaultContainer[item1.property.domain].push_back(item1);
+   bool trueOutput = SearchHandler::SearchDuplicate("amazon", userVault);
+   EXPECT_TRUE(trueOutput);
+}
+
+TEST(SearchDuplicate, noDuplicateDomains){
+   Vault userVault;
+   std::unordered_map<std::string, std::vector<VaultItem>> vaultContainer;
+   VaultItem item("JohnDoe832", "Doughy$1332", "amazon", "this account has prime", "-p");
+   VaultItem item1("JohnDoe832", "JJMon876$9", "bestBuy", "this account has electronics", "-b");
+   userVault.vaultContainer[item.property.domain].push_back(item);
+   userVault.vaultContainer[item1.property.domain].push_back(item1);
+   bool falseOutput = SearchHandler::SearchDuplicate("walmart", userVault);
+   EXPECT_FALSE(falseOutput);
 }
 
 // if any of these go bad, that means the hash value has changed
