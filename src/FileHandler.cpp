@@ -20,11 +20,13 @@ bool FileHandler::IsUserVaultExist(const std::string &username)
 
 void FileHandler::CreateVaultFile(const MasterCredential &master)
 {
-   std::ofstream oFS{master.username + ".vault"}; // generates .vault file via ofstream
+   std::ofstream oFS{master.hashed.hashedUsername + ".vault"}; // generates .vault file via ofstream
 
    if (oFS.is_open())
    {
-      oFS << master.password << "\n"; // first line is vault password
+      oFS << master.hashed.hashedPassword << "\n"; // first line is vault password
+
+      // remove this later on, unless for export purposes
       oFS << "username,password,domain,description,tag";
 
       std::cout << "\tvault sucessfully registered\n";
@@ -35,16 +37,16 @@ void FileHandler::CreateVaultFile(const MasterCredential &master)
 
 bool FileHandler::IsVaultPasswordMatch(const MasterCredential &master)
 {
-   std::ifstream iFS{master.username + ".vault"};
-   std::string buffer;
+   std::ifstream iFS{master.hashed.hashedUsername + ".vault"};
+   std::string passwordBuffer;
 
    if (iFS.is_open())
    {
-      std::getline(iFS, buffer);
+      std::getline(iFS, passwordBuffer);
 
-      if (buffer == master.password)
+      if (passwordBuffer == master.hashed.hashedPassword)
       {
-         std::cout << "\tgood vault password match\n";
+         std::cout << "\tgood vault password hash\n";
 
          return true;
       }
@@ -66,8 +68,6 @@ void FileHandler::LoadVaultFile(const std::string& vaultName, Vault& vault)
    std::string domain;
    std::string description;
    std::string tag;
-
-   std::string dummy;
 
    // skip first two lines to avoid master password and column parameter
    for (int i = 0; i < 2; ++i)
@@ -169,10 +169,10 @@ void FileHandler::ParseConfig(Config &config,const std::string fileName)
       }
    }
    else { errorFlag = true;} //file failed to open
- 
+
    if((config.alphaCount+config.numberCount+config.symbolCount) != config.passwordLength){ //make sure values sum to length
       errorFlag = true;
-   } 
+   }
 
    if (errorFlag == true)
    {
@@ -187,14 +187,11 @@ void FileHandler::ParseConfig(Config &config,const std::string fileName)
 void FileHandler::WriteVaultToFile(const MasterCredential& currentUser, const std::unordered_map<std::string, std::vector<VaultItem>>& container)
 {
    // BAD: assumes file bit is good from successful vault login access
-   std::ofstream oFS{currentUser.username + ".vault"};
+   std::ofstream oFS{currentUser.hashed.hashedUsername + ".vault"};
 
    // preprocessing file
-   oFS << currentUser.password << "\n";      // look into
+   oFS << currentUser.hashed.hashedPassword << "\n";      // look into
    oFS << "username,password,domain,description,tag\n";
-
-
-
 
    for (const auto& keyIter : container)
    {

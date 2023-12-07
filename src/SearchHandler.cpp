@@ -6,8 +6,23 @@ void SearchHandler::Search(const std::string& domainForSearch, const std::string
    }
    catch(const std::exception& e){
       std::cout<<"No account with specified domain\n";
+      if(vault.vaultContainer.empty() == true){
+         return;
+      }
+      std::cout<<"Other domains:\n";
+      int counter = 1;
+      for (auto& entry : vault.vaultContainer)
+      {
+         for (auto it = entry.second.begin(); it != entry.second.end(); ++it)
+         {
+            std::cout << counter<< ". " << (*it).property.domain << "\n";
+            counter++;
+         }
+      }
       return;
    }
+
+
    std::vector<VaultItem> itemsAtDomain = vault.vaultContainer.at(domainForSearch);
    for (const auto& iter : itemsAtDomain)
    {

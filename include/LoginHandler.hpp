@@ -3,6 +3,7 @@
 
 #include "UserInputHandler.hpp"
 #include "FileHandler.hpp"
+#include "CipherHandler.hpp"
 
 class LoginHandler
 {

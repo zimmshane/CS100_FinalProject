@@ -23,7 +23,7 @@ This project is important to us because it relates to the creation of practical 
 
 [GDB](https://www.sourceware.org/gdb/) | [GoogleTest](https://github.com/google/googletest) | [Valgrind](https://valgrind.org/) - Set of tools used to assist in debugging and testing during our development stages.
 
-[Crypto++](https://github.com/weidai11/cryptopp) - Library for implementing various SHA, AES, and KDF algorithms.
+[Crypto++](https://github.com/weidai11/cryptopp) - Library for implementing various SHA, AES, and various KDF algorithms.
 
 [Git](https://git-scm.com/) + [GitHub](https://github.com/) - Version control systems to keep our project organized.
 
@@ -37,7 +37,7 @@ The primary inputs of the program will be the account's information, such as use
 Outputs consist mostly of printing account information which the user has stored within their vault file that is encrypted upon input but decrypted for retrieval. The search function of the program will output all relevant search results, where the results are the accounts and all of the account's information (domain, username, password, description, tag.)
 
 ### Features:
-The main features of this program will allow the user to store accounts with descriptions that provide where and what the account is used for. Some of the more important features rely on computational cryptography, such as master credential hashing using SHA-3 family of algorithms, account information encryption, general file salting, and decryption of retrieved information. On startup, the program will look for a config file in its directory where the user can store preset settings to increase the conveniency of interaction with the program. Shell provided arguments will allow the program to flow differently, such as instead of going to the login menu, the user may provide master account information that leads straight to the main menu, or even provide substrings for immediate retrieval of aggregated information from the relevant master username's vault.
+The main features of this program will allow the user to store accounts with descriptions that provide where and what the account is used for. Some of the more important features rely on computational cryptography, such as master credential hashing using Scrypt KDF algorithms, account information encryption, general file salting, and decryption of retrieved information. On startup, the program will look for a config file in its directory where the user can store preset settings to increase the conveniency of interaction with the program. Shell provided arguments will allow the program to flow differently, such as instead of going to the login menu, the user may provide master account information that leads straight to the main menu, or even provide substrings for immediate retrieval of aggregated information from the relevant master username's vault.
 
 ## User Interface Specification
 
@@ -82,7 +82,7 @@ The above navigation diagram depicts the visual menu flow of the console program
 - **SearchHandler**:
   - **Function**: Searches for accounts using overloading signatures of a "tag" (standard string).
 - **CipherHandler**:
-  - **Function**: Implements SHA256 and AES256 algorithms for encryption/decryption of the Vault when writing to files.
+  - **Function**: Implements Scrypt KDF function and AES256 algorithms for encryption/decryption of the Vault when writing to files.
 - **PasswordQualityHandler**:
   - **Function**: Assesses password strength and detects repetition among vault passwords.
 
@@ -107,15 +107,15 @@ The above navigation diagram depicts the visual menu flow of the console program
 >     * What SOLID principle(s) did you apply?
 >     * How did you apply it? i.e. describe the change.
 >     * How did this change help you write better code?
->  
+>
 New changes in the UML consist of the addition of a new class called UserInputHandler which manages file access and interactions between the run_cli_lock function and the functions inside the UserInputHandler. We applied single responsibility since we created a separate class that handles the user input such as making sure that the user input is turned to upper case character to allow for easier input validation. Instead of putting an uppercase function in the password manager class, we created a separate class to have its own responsibility. This change helps us write better code since it creates simplicity in our classes having one single purpose and organizes the code since it groups functions together by their functionality.
 
 Another change we made in the UML is the replacement of the functions in InputValidationHandler class which now contains bool functions checking if the validity master username and password are valid in addition to if the input contains trailing spaces. We applied single responsibility in this class by creating a separate class to check the validity of the master account which will be used in both the password manager and vault class. This helps us write better code by allowing the program to be scalable. We can group more functions by their use and it allows for the code to be more maintainable.
 
-### All SOLID Principles: 
+### All SOLID Principles:
 We applied the single responsibility principle, liskov substitution principle, and the interface segregation principle.  We are adhering to SRP by splitting down their purposes to their own classes. They also have only one reason to change and that is adding functions relating to their utility handler classes. For instance, in the Vault class it only deals with modifying or adding new account items to the vault and nothing else. Search Handler is responsible purely for searching for a specific account item that the vault class would then use to implement a display domain function. This helps us write better code since classes are easy to read and it reduces the risk of creating errors in other classes.
 
-We applied the Liskov Substitution Principle with our program objects being easily replaceable by their subtypes and not altering correctness. To be specific, with MasterCrediential and VaultItem, they inherit from Account and are able to do everything in that parent class, such as creating an account with the given username and password in its own class. Our classes adhering to LSP helps us write better code by being able to interchange classes with its subtypes and increasing reliability on those subtypes to be capable of doing its parent’s functions without needing to create one themselves. 
+We applied the Liskov Substitution Principle with our program objects being easily replaceable by their subtypes and not altering correctness. To be specific, with MasterCrediential and VaultItem, they inherit from Account and are able to do everything in that parent class, such as creating an account with the given username and password in its own class. Our classes adhering to LSP helps us write better code by being able to interchange classes with its subtypes and increasing reliability on those subtypes to be capable of doing its parent’s functions without needing to create one themselves.
 
 By creating different interfaces with classes relating only to their purposes, we are using ISP  which makes sure the single class is small while relevant without stretching its influence over to other classes. Essentially, classes will only include what is needed for its sole purpose, and no more. For example, in the Print Handler class, it only includes functions that print the vault with all their accounts or displays the menu that the password manager would use in the Run_Cli_lock function. The user is not being exposed to methods that they don’t need. This change helped us to write better code by making the Run_Cli_lock function easy to read while calling other functions from different classes to only include what is needed.
 
