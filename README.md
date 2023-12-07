@@ -176,7 +176,14 @@ Prints everything added into the vault
 
 
 ## Installation/Usage
-> Instructions on installing and running your application
+To install and run our application:
+
+1.`git clone --recursive https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236.git` Since we used libraries from GoogleTest as well as Crypto++ it is important to include the `--recursive` flag to receive the code within the submodule.
+
+2.Next, run `cmake .` This will build both of our dev and dev_tests executables as well as including the google test and Cyptro++ directories. We installed a clean build target on `dev_test` to clear the asset compiler cache. Expect the first time running this command to take about nine minutes to compile. This is largely due to how large the crypto library is. 
+
+3.To run our application type in the terminal  `make dev`. Click enter then type in `./bin/dev`. Our executables will be stored in our bin folder. To test our unit tests type `make dev_tests` followed by `./bin/dev_tests`. Since dev_tests relies on a clean build it will remove previous compiled files. As a result, you have to `make` both the files seperately since the clean build would erase the compiled dev executable if you just did `make`.
+
 
 ## Testing
 ### Overview of Testing Strategy
