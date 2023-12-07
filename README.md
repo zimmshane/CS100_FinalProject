@@ -126,7 +126,55 @@ By creating different interfaces with classes relating only to their purposes, w
 > * Make sure your README file and Project board are up-to-date reflecting the current status of your project (e.g. any changes that you have made during the project such as changes to your class diagram). Previous versions should still be visible through your commit history.
 
 ## Screenshots
-> Screenshots of the input/output after running your application
+### Login
+> <img width="636" alt="image2" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/39263d37-fa38-4f1d-ac99-fd8e61158ca0">
+
+When first initializing the program, the login screen asks for the input of a username and password. They can register if the name is not familiar to the program, otherwise the successful login attempt brings the user to the main menu
+### Main Menu
+<img width="234" alt="image4" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/20aaed3d-3078-4ff1-806a-0229b524de9e">
+
+### Invalid Input In Main Menu
+<img width="287" alt="image9" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/0b69ed8f-9aad-45d2-8137-bb1659b8cb38">
+
+### Add Vault Item
+<img width="371" alt="image14" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/86407442-f46e-4b60-bc8f-f03587135401">
+<img width="453" alt="image10" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/5f290476-b2ca-46ae-a122-1905956b3e0f">
+
+When inputting A into the main menu, you input the domain, username, password, description, and tag. The password in this instance requires an uppercase, digit, and symbol, which will not continue the program unless it meets the requirement. The user also has the option to generate a random password, using ~R, that meets these requirements. After all are added, it returns back to the main menu.
+
+### Search
+<img width="264" alt="image3" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/2c646cf0-b822-4232-adff-69ed6c84733b">
+
+When inputting S, they can search for domain’s username. If they enter a valid domain and username, it lists out the username’s password, description, and tag from that domain and returns to the main menu.
+
+### Modify
+<img width="391" alt="image8" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/ba59d3c2-86f0-44ab-b7c6-5e27cf2bd032">
+
+Inputting m, the user can enter a username to modify its features.
+### Upon entering old username/invalid input
+<img width="255" alt="image13" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/8b81444c-3e4d-4fa0-9b46-b7e4a98549f6">
+
+### Delete
+<img width="239" alt="image1" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/9bebb646-3e66-49ab-9c72-78701d2b3850">
+<img width="305" alt="image11" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/f231a5a3-50b5-4145-b732-02d5b4a64d9a">
+
+Entering d allows the user to delete a username and its description, password, and etc. If the 
+username is found they can select from an index and remove it from the created vault file.
+
+### Print Vault
+<img width="288" alt="image12" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/4960e6eb-7b7a-4c03-968a-ed6ee23a8aa5">
+
+Prints everything added into the vault
+
+### Logout & Exit
+<img width="639" alt="image5" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/e9792a17-9e50-4abf-8da7-33bfa9f324d6">
+<img width="711" alt="image7" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/323d4cbf-6ed9-4296-8b06-4bcab04647ae">
+
+### Logging Out Saves Information Onto Vault File
+<img width="641" alt="image6" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/76a717f1-2762-4a6e-ba4c-bf289953a8ad">
+
+
+
 ## Installation/Usage
 > Instructions on installing and running your application
 
