@@ -96,18 +96,6 @@ The above navigation diagram depicts the visual menu flow of the console program
   - **Function**: Represents individual account objects within the vault.
   - **Encapsulation**: Includes relevant nested classes to encapsulate members.
 
-> ## Phase III
-> You will need to schedule a check-in for the second scrum meeting with the same reader you had your first scrum meeting with (using Calendly). Your entire team must be present. This meeting will occur on Zoom and should be conducted by Wednesday of week 8.
-
-> BEFORE the meeting you should do the following:
-> * Update your class diagram from Phase II to include any feedback you received from your TA/grader.
-> * Considering the SOLID design principles, reflect back on your class diagram and think about how you can use the SOLID principles to improve your design. You should then update the README.md file by adding the following:
->   * A new class diagram incorporating your changes after considering the SOLID principles.
->   * For each update in your class diagram, you must explain in 3-4 sentences:
->     * What SOLID principle(s) did you apply?
->     * How did you apply it? i.e. describe the change.
->     * How did this change help you write better code?
->
 New changes in the UML consist of the addition of a new class called UserInputHandler which manages file access and interactions between the run_cli_lock function and the functions inside the UserInputHandler. We applied single responsibility since we created a separate class that handles the user input such as making sure that the user input is turned to upper case character to allow for easier input validation. Instead of putting an uppercase function in the password manager class, we created a separate class to have its own responsibility. This change helps us write better code since it creates simplicity in our classes having one single purpose and organizes the code since it groups functions together by their functionality.
 
 Another change we made in the UML is the replacement of the functions in InputValidationHandler class which now contains bool functions checking if the validity master username and password are valid in addition to if the input contains trailing spaces. We applied single responsibility in this class by creating a separate class to check the validity of the master account which will be used in both the password manager and vault class. This helps us write better code by allowing the program to be scalable. We can group more functions by their use and it allows for the code to be more maintainable.
@@ -138,8 +126,82 @@ By creating different interfaces with classes relating only to their purposes, w
 > * Make sure your README file and Project board are up-to-date reflecting the current status of your project (e.g. any changes that you have made during the project such as changes to your class diagram). Previous versions should still be visible through your commit history.
 
 ## Screenshots
-> Screenshots of the input/output after running your application
+### Login
+> <img width="636" alt="image2" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/39263d37-fa38-4f1d-ac99-fd8e61158ca0">
+
+When first initializing the program, the login screen asks for the input of a username and password. They can register if the name is not familiar to the program, otherwise the successful login attempt brings the user to the main menu
+### Main Menu
+<img width="234" alt="image4" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/20aaed3d-3078-4ff1-806a-0229b524de9e">
+
+### Invalid Input In Main Menu
+<img width="287" alt="image9" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/0b69ed8f-9aad-45d2-8137-bb1659b8cb38">
+
+### Add Vault Item
+<img width="371" alt="image14" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/86407442-f46e-4b60-bc8f-f03587135401">
+<img width="453" alt="image10" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/5f290476-b2ca-46ae-a122-1905956b3e0f">
+
+When inputting A into the main menu, you input the domain, username, password, description, and tag. The password in this instance requires an uppercase, digit, and symbol, which will not continue the program unless it meets the requirement. The user also has the option to generate a random password, using ~R, that meets these requirements. After all are added, it returns back to the main menu.
+
+### Search
+<img width="264" alt="image3" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/2c646cf0-b822-4232-adff-69ed6c84733b">
+
+When inputting S, they can search for domain’s username. If they enter a valid domain and username, it lists out the username’s password, description, and tag from that domain and returns to the main menu.
+
+### Modify
+<img width="391" alt="image8" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/ba59d3c2-86f0-44ab-b7c6-5e27cf2bd032">
+
+Inputting m, the user can enter a username to modify its features.
+### Upon entering old username/invalid input
+<img width="255" alt="image13" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/8b81444c-3e4d-4fa0-9b46-b7e4a98549f6">
+
+### Delete
+<img width="239" alt="image1" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/9bebb646-3e66-49ab-9c72-78701d2b3850">
+<img width="305" alt="image11" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/f231a5a3-50b5-4145-b732-02d5b4a64d9a">
+
+Entering d allows the user to delete a username and its description, password, and etc. If the 
+username is found they can select from an index and remove it from the created vault file.
+
+### Print Vault
+<img width="288" alt="image12" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/4960e6eb-7b7a-4c03-968a-ed6ee23a8aa5">
+
+Prints everything added into the vault
+
+### Logout & Exit
+<img width="639" alt="image5" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/e9792a17-9e50-4abf-8da7-33bfa9f324d6">
+<img width="711" alt="image7" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/323d4cbf-6ed9-4296-8b06-4bcab04647ae">
+
+### Logging Out Saves Information Onto Vault File
+<img width="641" alt="image6" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/76a717f1-2762-4a6e-ba4c-bf289953a8ad">
+
+
+
 ## Installation/Usage
-> Instructions on installing and running your application
+To install and run our application:
+
+1.`git clone --recursive https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236.git` Since we used libraries from GoogleTest as well as Crypto++ it is important to include the `--recursive` flag to receive the code within the submodule.
+
+2.Next, run `cmake .` This will build both of our dev and dev_tests executables as well as including the google test and Cyptro++ directories. We installed a clean build target on `dev_test` to clear the asset compiler cache. Expect the first time running this command to take about nine minutes to compile. This is largely due to how large the crypto library is. 
+
+3.To run our application type in the terminal  `make dev`. Click enter then type in `./bin/dev`. Our executables will be stored in our bin folder. To test our unit tests type `make dev_tests` followed by `./bin/dev_tests`. Since dev_tests relies on a clean build it will remove previous compiled files. As a result, you have to `make` both the files seperately since the clean build would erase the compiled dev executable if you just did `make`.
+
+
 ## Testing
-> How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
+### Overview of Testing Strategy
+CLI-lock employs a rigorous testing regimen primarily utilizing the GoogleTest framework. Presently, the project encompasses approximately 40 comprehensive unit tests. These tests meticulously examine the functionality of key components such as the InputHandler, FileHandler, CipherHandler, Password Generator, and the core data structures integral to CLI-lock. This strategic testing framework is pivotal in ensuring the application's consistent performance and reliability throughout the development lifecycle.
+
+### Building and Running Tests
+
+1. **Environment Setup**: Initiating the testing environment is straightforward. The initial step involves cloning the repository with precise attention to detail. It is imperative to clone the repository recursively to ensure all dependent submodules are adequately retrieved. The cloning command is as follows: `git clone --recursive https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236.git`. In instances where the recursive flag might have been omitted, executing `git submodule update --init` is a necessary step to compel the download of the required submodules.
+
+2. **Building Tests**: The construction of CLI-lock and its associated tests is facilitated through CMake and Make. To compile the development tests, navigate to the root directory of the repository and execute `cmake .` followed by `make dev_tests`.
+
+3. **Running Tests**: Upon successful build, the test executable is generated and located in the `/bin/` directory within the project. To run the tests, use the command `./bin/dev_tests`. The output from this command will be instrumental in assessing the successful execution and outcomes of the tests.
+
+### Continuous Integration
+Continuous Integration, orchestrated via GitHub Actions, plays a crucial role in maintaining the integrity and stability of the master build. Every push or pull request made to the master branch triggers the execution of the unit tests previously mentioned. The results of these automated tests are prominently displayed on the badge at the top of the README file, and can also be viewed in greater detail under the `Actions` tab.
+
+### Reporting Issues
+We encourage the diligent reporting of any issues or irregularities encountered during the usage or testing of CLI-lock. Such reports should be submitted through the `Issues` tab of the repository. We request that reports be as detailed as possible, encompassing error messages, screenshots, and a thorough description of steps to replicate the issue, to facilitate effective troubleshooting.
+
+### Future Testing Plans
+Looking ahead, the project team is committed to an ongoing expansion of our test suite. This enhancement will be aimed at achieving more extensive coverage across the entirety of the project's codebase, thereby elevating the overall quality and dependability of CLI-lock.
