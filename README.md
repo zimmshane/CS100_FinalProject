@@ -202,6 +202,3 @@ Continuous Integration, orchestrated via GitHub Actions, plays a crucial role in
 
 ### Reporting Issues
 We encourage the diligent reporting of any issues or irregularities encountered during the usage or testing of CLI-lock. Such reports should be submitted through the `Issues` tab of the repository. We request that reports be as detailed as possible, encompassing error messages, screenshots, and a thorough description of steps to replicate the issue, to facilitate effective troubleshooting.
-
-### Future Testing Plans
-Looking ahead, the project team is committed to an ongoing expansion of our test suite. This enhancement will be aimed at achieving more extensive coverage across the entirety of the project's codebase, thereby elevating the overall quality and dependability of CLI-lock.
