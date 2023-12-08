@@ -107,24 +107,6 @@ We applied the Liskov Substitution Principle with our program objects being easi
 
 By creating different interfaces with classes relating only to their purposes, we are using ISP  which makes sure the single class is small while relevant without stretching its influence over to other classes. Essentially, classes will only include what is needed for its sole purpose, and no more. For example, in the Print Handler class, it only includes functions that print the vault with all their accounts or displays the menu that the password manager would use in the Run_Cli_lock function. The user is not being exposed to methods that they don’t need. This change helped us to write better code by making the Run_Cli_lock function easy to read while calling other functions from different classes to only include what is needed.
 
-
-> * Perform a new sprint plan like you did in Phase II.
-> * You should also make sure that your README file (and Project board) are up-to-date reflecting the current status of your project and the most recent class diagram. Previous versions of the README file should still be visible through your commit history.
-
-> During the meeting with your reader you will discuss:
-> * How effective your last sprint was (each member should talk about what they did)
-> * Any tasks that did not get completed last sprint, and how you took them into consideration for this sprint
-> * Any bugs you've identified and created issues for during the sprint. Do you plan on fixing them in the next sprint or are they lower priority?
-> * What tasks you are planning for this next sprint.
-
-
-> ## Final deliverable
-> All group members will give a demo to the reader during lab time. ou should schedule your demo on Calendly with the same reader who took your second scrum meeting. The reader will check the demo and the project GitHub repository and ask a few questions to all the team members.
-> Before the demo, you should do the following:
-> * Complete the sections below (i.e. Screenshots, Installation/Usage, Testing)
-> * Plan one more sprint (that you will not necessarily complete before the end of the quarter). Your In-progress and In-testing columns should be empty (you are not doing more work currently) but your TODO column should have a full sprint plan in it as you have done before. This should include any known bugs (there should be some) or new features you would like to add. These should appear as issues/cards on your Project board.
-> * Make sure your README file and Project board are up-to-date reflecting the current status of your project (e.g. any changes that you have made during the project such as changes to your class diagram). Previous versions should still be visible through your commit history.
-
 ## Screenshots
 ### Login
 > <img width="636" alt="image2" src="https://github.com/cs100/final-project-ftan012-szimm011-bhojo001-awang236/assets/87725158/39263d37-fa38-4f1d-ac99-fd8e61158ca0">
