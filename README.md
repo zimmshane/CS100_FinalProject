@@ -187,7 +187,7 @@ To install and run our application:
 
 ## Testing
 ### Overview of Testing Strategy
-CLI-lock employs a rigorous testing regimen primarily utilizing the GoogleTest framework. Presently, the project encompasses approximately 30 comprehensive unit tests. These tests meticulously examine the functionality of key components such as the InputHandler, FileHandler, CipherHandler, Password Generator, and the core data structures integral to CLI-lock. This strategic testing framework is pivotal in ensuring the application's consistent performance and reliability throughout the development lifecycle.
+CLI-lock employs a rigorous testing regimen primarily utilizing the GoogleTest framework. Presently, the project encompasses approximately 40 comprehensive unit tests. These tests meticulously examine the functionality of key components such as the InputHandler, FileHandler, CipherHandler, Password Generator, and the core data structures integral to CLI-lock. This strategic testing framework is pivotal in ensuring the application's consistent performance and reliability throughout the development lifecycle.
 
 ### Building and Running Tests
 
